@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Converter</title>
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2 class="logo">Quick Converter</h2>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Converters</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="main">
+        <h1>-Unit Converter-</h1>
+        <h5>-Select Category-</h5>
+        <select id="conversionCategory">
+            <option value="">-select-</option>
+            <option value="temperature">Temperature</option>
+            <option value="area">Area</option>
+            <option value="volume">Volume</option>
+            <option value="weight">Weight</option>
+            <option value="length">Length</option>
+            <option value="time">Time</option>
+        </select>
+
+        <div class="container">
+
+            <!-- Temperature Form -->
+            <div class="conversion" id="temperature">
+                <h2>Temperature</h2>
+                <input type="number" id="temperatureInput" placeholder="Enter value">
+                <select id="fromTemperatureUnit">
+                    <option value="celsius">Celsius</option>
+                    <option value="kelvin">Kelvin</option>
+                    <option value="fahrenheit">Fahrenheit</option>
+                </select>
+                <span>to</span>
+                <select id="toTemperatureUnit">
+                    <option value="celsius">Celsius</option>
+                    <option value="kelvin">Kelvin</option>
+                    <option value="fahrenheit">Fahrenheit</option>
+                </select>
+                <button onclick="swapUnits('fromTemperatureUnit', 'toTemperatureUnit')">Swap Unit</button>
+                <button onclick="convertTemperature()">Convert</button>
+                <div class="result">
+                    <p id="temperatureResult">Result:</p>
+                </div>
+            </div>            
+
+             <!-- Area Form -->
+            <div class="conversion" id="area">
+                <h2>Area</h2>
+                <input type="number" id="areaInput" placeholder="Enter value">
+                <select id="fromAreaUnit">
+                    <option value="sqMeter">Square Meter</option>
+                    <option value="sqKilometer">Square Kilometer</option>
+                    <option value="sqCentimeter">Square Centimeter</option>
+                    <option value="sqMillimeter">Square Millimeter</option>
+                    <option value="acre">Acre</option>
+                    <option value="hectare">Hectare</option>
+                    <option value="sqMile">Square Mile</option>
+                    <option value="sqYard">Square Yard</option>
+                    <option value="sqFoot">Square Foot</option>
+                    <option value="sqInch">Square Inch</option>
+                </select>
+                <span>to</span>
+                <select id="toAreaUnit">
+                    <option value="sqMeter">Square Meter</option>
+                    <option value="sqKilometer">Square Kilometer</option>
+                    <option value="sqCentimeter">Square Centimeter</option>
+                    <option value="sqMillimeter">Square Millimeter</option>
+                    <option value="acre">Acre</option>
+                    <option value="hectare">Hectare</option>
+                    <option value="sqMile">Square Mile</option>
+                    <option value="sqYard">Square Yard</option>
+                    <option value="sqFoot">Square Foot</option>
+                    <option value="sqInch">Square Inch</option>
+                </select>
+                <button onclick="swapUnits('fromAreaUnit', 'toAreaUnit')">Swap Unit</button>                
+                <button onclick="convertArea()">Convert</button>
+                <div class="result">
+                    <p id="areaResult">Result:</p>
+                </div>
+            </div>
+            
+            <!-- Volume Form -->
+            <div class="conversion" id="volume">
+                <h2>Volume</h2>
+                <input type="number" id="volumeInput" placeholder="Enter value">
+                <select id="fromVolumeUnit">
+                    <option value="cubic_meter">Cubic Meter</option>
+                    <option value="cubic_kilometer">Cubic Kilometer</option>
+                    <option value="cubic_centimeter">Cubic Centimeter</option>
+                    <option value="cubic_millimeter">Cubic Millimeter</option>
+                    <option value="liter">Liter</option>
+                    <option value="milliliter">Milliliter</option>
+                    <option value="us_gallon">US Gallon</option>
+                    <option value="us_quart">US Quart</option>
+                    <option value="us_pint">US Pint</option>
+                    <option value="us_cup">US Cup</option>
+                    <option value="us_fluid_ounce">US Fluid Ounce</option>
+                    <option value="us_tablespoon">US Tablespoon</option>
+                    <option value="us_teaspoon">US Teaspoon</option>
+                    <option value="imperial_gallon">Imperial Gallon</option>
+                    <option value="imperial_quart">Imperial Quart</option>
+                    <option value="imperial_pint">Imperial Pint</option>
+                    <option value="imperial_fluid_ounce">Imperial Fluid Ounce</option>
+                    <option value="imperial_tablespoon">Imperial Tablespoon</option>
+                    <option value="imperial_teaspoon">Imperial Teaspoon</option>
+                    <option value="cubic_mile">Cubic Mile</option>
+                    <option value="cubic_yard">Cubic Yard</option>
+                    <option value="cubic_foot">Cubic Foot</option>
+                </select>
+                <span>to</span>
+                <select id="toVolumeUnit">
+                    <option value="cubic_meter">Cubic Meter</option>
+                    <option value="cubic_kilometer">Cubic Kilometer</option>
+                    <option value="cubic_centimeter">Cubic Centimeter</option>
+                    <option value="cubic_millimeter">Cubic Millimeter</option>
+                    <option value="liter">Liter</option>
+                    <option value="milliliter">Milliliter</option>
+                    <option value="us_gallon">US Gallon</option>
+                    <option value="us_quart">US Quart</option>
+                    <option value="us_pint">US Pint</option>
+                    <option value="us_cup">US Cup</option>
+                    <option value="us_fluid_ounce">US Fluid Ounce</option>
+                    <option value="us_tablespoon">US Tablespoon</option>
+                    <option value="us_teaspoon">US Teaspoon</option>
+                    <option value="imperial_gallon">Imperial Gallon</option>
+                    <option value="imperial_quart">Imperial Quart</option>
+                    <option value="imperial_pint">Imperial Pint</option>
+                    <option value="imperial_fluid_ounce">Imperial Fluid Ounce</option>
+                    <option value="imperial_tablespoon">Imperial Tablespoon</option>
+                    <option value="imperial_teaspoon">Imperial Teaspoon</option>
+                    <option value="cubic_mile">Cubic Mile</option>
+                    <option value="cubic_yard">Cubic Yard</option>
+                    <option value="cubic_foot">Cubic Foot</option>
+                </select>
+                <button onclick="swapUnits('fromVolumeUnit', 'toVolumeUnit')">Swap Unit</button>                
+                <button onclick="convertVolume()">Convert</button>
+                <div class="result">
+                    <p id="volumeResult">Result:
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Weight Form -->
+            <div class="conversion" id="weight">
+                <h2>Weight</h2>
+                <input type="number" id="weightInput" placeholder="Enter value">
+                <select id="fromWeightUnit">
+                    <option value="gram">Gram</option>
+                    <option value="kilogram">Kilogram</option>
+                    <option value="milligram">Milligram</option>
+                    <option value="metricTon">Metric Ton</option>
+                    <option value="longTon">Long Ton</option>
+                    <option value="shortTon">Short Ton</option>
+                    <option value="pound">Pound</option>
+                    <option value="ounce">Ounce</option>
+                    <option value="carat">Carat</option>
+                </select>
+                <span>to</span>
+                <select id="toWeightUnit">
+                    <option value="gram">Gram</option>
+                    <option value="kilogram">Kilogram</option>
+                    <option value="milligram">Milligram</option>
+                    <option value="metricTon">Metric Ton</option>
+                    <option value="longTon">Long Ton</option>
+                    <option value="shortTon">Short Ton</option>
+                    <option value="pound">Pound</option>
+                    <option value="ounce">Ounce</option>
+                    <option value="carat">Carat</option>
+                </select>
+                <button onclick="swapUnits('fromWeightUnit', 'toWeightUnit')">Swap Unit</button> 
+                <button onclick="convertWeight()">Convert</button>               
+                <div class="result">
+                    <p id="weightResult">Result:</p>
+                </div>
+            </div>            
+            
+            <!-- Length Form -->
+            <div class="conversion" id="length">
+                <h2>Length</h2>
+                <input type="number" id="lengthInput" placeholder="Enter value">
+                <select id="fromLengthUnit">
+                    <option value="meter">Meter</option>
+                    <option value="kilometer">Kilometer</option>
+                    <option value="centimeter">Centimeter</option>
+                    <option value="millimeter">Millimeter</option>
+                    <option value="mile">Mile</option>
+                    <option value="yard">Yard</option>
+                    <option value="foot">Foot</option>
+                    <option value="inch">Inch</option>
+                </select>
+                <span>to</span>
+                <select id="toLengthUnit">
+                    <option value="meter">Meter</option>
+                    <option value="kilometer">Kilometer</option>
+                    <option value="centimeter">Centimeter</option>
+                    <option value="millimeter">Millimeter</option>
+                    <option value="micrometer">Micrometer</option>
+                    <option value="mile">Mile</option>
+                    <option value="yard">Yard</option>
+                    <option value="foot">Foot</option>
+                    <option value="inch">Inch</option>
+                </select>
+                <button onclick="swapUnits('fromLengthUnit', 'toLengthUnit')">Swap Unit</button>               
+                <button onclick="convertLength()">Convert</button>
+                <div class="result">
+                    <p id="lengthResult">Result:</p>
+                </div>
+            </div>
+            
+
+            <!-- Time Form -->
+            <div class="conversion" id="time">
+                <h2>Time</h2>
+                <input type="number" id="timeInput" placeholder="Enter value">
+                <select id="fromTimeUnit">
+                    <option value="second">Second</option>
+                    <option value="millisecond">Millisecond</option>
+                    <option value="minute">Minute</option>
+                    <option value="hour">Hour</option>
+                    <option value="day">Day</option>
+                    <option value="week">Week</option>
+                    <option value="month">Month</option>
+                    <option value="year">Year</option>
+                </select>
+                <span>to</span>
+                <select id="toTimeUnit">
+                    <option value="second">Second</option>
+                    <option value="millisecond">Millisecond</option>
+                    <option value="minute">Minute</option>
+                    <option value="hour">Hour</option>
+                    <option value="day">Day</option>
+                    <option value="week">Week</option>
+                    <option value="month">Month</option>
+                    <option value="year">Year</option>
+                </select>
+                <button onclick="swapUnits('fromTimeUnit', 'toTimeUnit')">Swap Unit</button>
+                <button onclick="convertTime()">Convert</button>
+                    <div class="result">
+                    <p id="timeResult">Result:</p>
+                </div>
+            </div>
+            
+
+        </div>
+
+    </div>
+
+    <!-- Common Conversions Section -->
+    <div class="common-conversions">
+        <h2>Common Conversions</h2>
+        <div class="conversion-links">
+        <ul>
+            <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
+            <li><a href="KG_to_LBS_Converter.html">kg to lbs</a></li>
+            <li><a href="Celsius_to_Fahrenheit.html">Celsius to Fahrenheit</a></li>
+            <li><a href="mm_to_inches.html">mm to inches</a></li>
+            <li><a href="meters_to_feet.html">meters to feet</a></li>
+            <li><a href="km_to_miles.html">km to miles</a></li>
+            <li><a href="cm_to_feet.html">cm to feet</a></li>
+            <li><a href="grams_to_ounces.html">grams to ounces</a></li>
+            <li><a href="inches_to_feet.html">inches to feet</a></li>
+            
+        </ul>
+        <ul>
+            <li><a href="liters_to_gallons.html">liters to gallons</a></li>
+            <li><a href="pounds_to_ounces.html">pounds to ounces</a></li>
+            <li><a href="mph_to_kph.html">mph to kph</a></li>
+            <li><a href="acres_to_sqfeet.html">acres to square feet</a></li>
+            <li><a href="radians_to_degrees.html">radians to degrees</a></li>
+            <li><a href="hp_to_kw.html">hp to kw</a></li>
+            <li><a href="meters_to_yards.html">meters to yards</a></li>
+            <li><a href="ml_to_cups.html">mL to cups</a></li>
+        </ul>
+    </div>
+</div>
+ <!-- contact section start -->
+     <title>Contact Us</title>
+     <div class="contact-container">
+         <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
+             <div class="contact-left-title">
+                 <h2>Get in Touch</h2>
+                 <hr>
+             </div>
+                 <input type="hidden" name="access_key" value="664d1136-c6ee-4f8f-bde6-4a96c6183669">
+                 <input type="text" name="name" placeholder="Your name" class="contact-input" required>
+                 <input type="email" name="email" placeholder="Your Email" class="contact-input" required>
+                 <textarea name="message" placeholder="Your message" class="contact-input" required></textarea>
+                 <button type="submit">Submit <img src="images/arrow_icon.png" alt="Arrow"></button>
+             </form>
+         <div class="contact-right">
+             <img src="images/right_img.png" alt="Right Image">
+         </div>
+     </div>
+
+    <!-- Script JS -->
+    <script src="./script.js"></script>
+</body>
+</html>

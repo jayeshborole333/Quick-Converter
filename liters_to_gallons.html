@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liters to Gallons Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+<nav class="navbar">
+    <div class="nav-container">
+        <h2 class="logo">Quick Converter</h2>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+        </ul>
+    </div>
+</nav>
+
+    <div class="converter-box">
+        <h2>Liters to Gallons Converter</h2>
+        <input type="number" id="inputValue" placeholder="Enter value">
+        
+        <select id="fromUnit">
+            <option value="liters">Liters</option>
+            <option value="gallons">Gallons</option>
+        </select>
+
+        <span>to</span>
+
+        <select id="toUnit">
+            <option value="gallons">Gallons</option>
+            <option value="liters">Liters</option>
+        </select>
+
+        <button onclick="swapUnits()">Swap Unit</button>
+        <button onclick="convert()">Convert</button>
+
+        <div class="result-box">
+            <p id="result">Result:</p>
+        </div>
+    </div>
+<!-- Popular Length Unit Conversions Section -->
+<div class="common-conversions">
+    <h2>Popular Length Unit Conversions</h2>
+    <div class="converter-list">
+        <ul>
+            <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
+            <li><a href="mm_to_inches.html">mm to inches</a></li>
+            <li><a href="meters_to_feet.html">meters to feet</a></li>
+            <li><a href="km_to_miles.html">km to miles</a></li>
+            <li><a href="cm_to_feet.html">cm to feet</a></li>
+            <li><a href="inches_to_feet.html">inches to feet</a></li>
+            <li><a href="meters_to_yards.html">meters to yards</a></li>
+            <li><a href="mm_to_cm.html">mm to cm</a></li>
+            <li><a href="cm_to_m.html">cm to m</a></li>
+            <li><a href="cm_to_km.html">cm to km</a></li>
+        </ul>
+        <ul>
+            <li><a href="mm_to_feet.html">mm to feet</a></li>
+            <li><a href="meters_to_miles.html">meters to miles</a></li>
+            <li><a href="feet_to_miles.html">feet to miles</a></li>
+            <li><a href="yards_to_feet.html">yards to feet</a></li>
+            <li><a href="inches_to_meters.html">inches to meters</a></li>
+            <li><a href="mm_to_m.html">mm to m</a></li>
+            <li><a href="km_to_m.html">km to m</a></li>
+            <li><a href="inches_to_yards.html">inches to yards</a></li>
+            <li><a href="yards_to_miles.html">yards to miles</a></li>
+        </ul>
+    </div>
+</div>
+    <script>
+        function swapUnits() {
+            let from = document.getElementById("fromUnit");
+            let to = document.getElementById("toUnit");
+            let temp = from.value;
+            from.value = to.value;
+            to.value = temp;
+        }
+
+        function convert() {
+            let value = parseFloat(document.getElementById("inputValue").value);
+            let fromUnit = document.getElementById("fromUnit").value;
+            let toUnit = document.getElementById("toUnit").value;
+            let resultBox = document.getElementById("result");
+
+            if (isNaN(value)) {
+                resultBox.innerText = "Please enter a valid number!";
+                return;
+            }
+
+            let result;
+            if (fromUnit === "liters" && toUnit === "gallons") {
+                result = value * 0.264172;
+            } else if (fromUnit === "gallons" && toUnit === "liters") {
+                result = value / 0.264172;
+            } else {
+                result = value;
+            }
+
+            resultBox.innerText = `Result: ${result.toFixed(2)} ${toUnit}`;
+        }
+    </script>
+</body>
+</html>

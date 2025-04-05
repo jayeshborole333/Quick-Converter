@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yard to Foot Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2 class="logo">Quick Converter</h2>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="converter-box">
+        <h2>Yard to Foot Converter</h2>
+        <input type="number" id="inputValue" placeholder="Enter value">
+
+        <select id="fromUnit">
+            <option value="yard">Yard</option>
+            <option value="foot">Foot</option>
+        </select>
+
+        <span>to</span>
+
+        <select id="toUnit">
+            <option value="foot">Foot</option>
+            <option value="yard">Yard</option>
+        </select>
+
+        <button onclick="swapUnits()">Swap Unit</button>
+        <button onclick="convert()">Convert</button>
+
+        <div class="result-box">
+            <p id="result">Result:</p>
+        </div>
+    </div>
+
+    <!-- Informational Paragraph Section -->
+    <div class="info-box">
+    <h3>Yard</h3>
+    <p><strong>Definition:</strong> A yard (symbol: yd) is a unit of length in both the imperial and US customary systems of measurement. Since 1959, a yard has been defined as exactly 0.9144 meters. It is also equal to 3 feet, or 36 inches.</p>
+    
+    <p><strong>History/origin:</strong> The origin of the yard as a unit is unclear. It is an English unit (predecessor of imperial units) and the term was derived from "gerd" in Old English, the earliest historical form of the English language. Some suggest that the yard could have been derived based on the girth of a person's waist.</p>
+    
+    <p><strong>Current use:</strong> The yard is commonly used in field-length measurement for certain sports such as American and Canadian football, and association football (soccer). The yard is also used in cricket pitch dimensions, and sometimes in golf fairway measurements. In the United Kingdom (UK) as well as the United States, the yard is frequently used when referring to distance. In the UK, it is also a legal requirement that road signs indicating shorter distances are displayed in yards.</p>
+
+    <h3>Foot</h3>
+    <p><strong>Definition:</strong> A foot (symbol: ft) is a unit of length in the imperial and US customary systems of measurement. A foot was defined as exactly 0.3048 meters in 1959. One foot contains 12 inches, and one yard is comprised of three feet.</p>
+    
+    <p><strong>History/origin:</strong> Prior to standardization of units of measurement, and the definition of the foot currently in use, the measurement of the foot was used in many different systems including the Greek, Roman, English, Chinese, and French systems, varying in length between each. The various lengths were due to parts of the human body historically being used as a basis for units of length (such as the cubit, hand, span, digit, and many others, sometimes referred to as anthropic units). This resulted in the measurement of a foot varying between 250 mm and 335 mm in the past compared to the current definition of 304.8 mm. While the United States is one of the few, if not only, countries in which the foot is still widely used, many countries used their own version of the foot prior to metrication, as evidenced by a fairly large list of obsolete feet measurements.</p>
+    
+    <p><strong>Current use:</strong> The foot is primarily used in the United States, Canada, and the United Kingdom for many everyday applications. In the US, feet and inches are commonly used to measure height, shorter distances, field length (sometimes in the form of yards), etc. Feet are also commonly used to measure altitude (aviation) as well as elevation (such as that of a mountain). The international foot corresponds to human feet with shoe size 13 (UK), 14 (US male), 15.5 (US female), or 46 (EU).</p>
+</div>
+
+<!-- Popular Length Unit Conversions Section -->
+<div class="common-conversions">
+    <h2>Popular Length Unit Conversions</h2>
+    <div class="converter-list">
+        <ul>
+            <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
+            <li><a href="mm_to_inches.html">mm to inches</a></li>
+            <li><a href="meters_to_feet.html">meters to feet</a></li>
+            <li><a href="km_to_miles.html">km to miles</a></li>
+            <li><a href="cm_to_feet.html">cm to feet</a></li>
+            <li><a href="inches_to_feet.html">inches to feet</a></li>
+            <li><a href="meters_to_yards.html">meters to yards</a></li>
+            <li><a href="mm_to_cm.html">mm to cm</a></li>
+            <li><a href="cm_to_m.html">cm to m</a></li>
+            <li><a href="cm_to_km.html">cm to km</a></li>
+        </ul>
+        <ul>
+            <li><a href="mm_to_feet.html">mm to feet</a></li>
+            <li><a href="meters_to_miles.html">meters to miles</a></li>
+            <li><a href="feet_to_miles.html">feet to miles</a></li>
+            <li><a href="yards_to_feet.html">yards to feet</a></li>
+            <li><a href="inches_to_meters.html">inches to meters</a></li>
+            <li><a href="mm_to_m.html">mm to m</a></li>
+            <li><a href="km_to_m.html">km to m</a></li>
+            <li><a href="inches_to_yards.html">inches to yards</a></li>
+            <li><a href="yards_to_miles.html">yards to miles</a></li>
+        </ul>
+    </div>
+</div>
+    <script>
+        function swapUnits() {
+            let from = document.getElementById("fromUnit");
+            let to = document.getElementById("toUnit");
+            let temp = from.value;
+            from.value = to.value;
+            to.value = temp;
+        }
+
+        function convert() {
+            let value = parseFloat(document.getElementById("inputValue").value);
+            let fromUnit = document.getElementById("fromUnit").value;
+            let toUnit = document.getElementById("toUnit").value;
+            let resultBox = document.getElementById("result");
+
+            if (isNaN(value)) {
+                resultBox.innerText = "Please enter a valid number!";
+                return;
+            }
+
+            let result;
+            if (fromUnit === "yard" && toUnit === "foot") {
+                result = value * 3;
+            } else if (fromUnit === "foot" && toUnit === "yard") {
+                result = value / 3;
+            } else {
+                result = value;
+            }
+
+            resultBox.innerText = `Result: ${result.toFixed(4)} ${toUnit}`;
+        }
+    </script>
+</body>
+</html>

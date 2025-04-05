@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CM to Inches Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2 class="logo">Quick Converter</h2>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Converters</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="converter-box">
+        <h2>CM to Inches Converter</h2>
+
+        <input type="number" id="inputValue" placeholder="Enter value">
+
+        <select id="fromUnit">
+            <option value="cm">Centimeter</option>
+            <option value="inch">Inches</option>
+        </select>
+
+        <span>to</span>
+
+        <select id="toUnit">
+            <option value="inch">Inches</option>
+            <option value="cm">Centimeter</option>
+        </select>
+
+        <button onclick="swapUnits()">Swap Unit</button>
+        <button onclick="convert()">Convert</button>
+
+        <div class="result-box">
+            <p id="result">Result:</p>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <h3>Centimeter</h3>
+        <p><strong>Definition:</strong> A centimeter (symbol: cm) is a unit of length in the International System of Units (SI), the current form of the metric system. It is defined as 1/100 meters.</p>
+        <p><strong>History/origin:</strong> A centimeter is based on the SI unit meter, and as the prefix "centi" indicates, is equal to one hundredth of a meter.</p>
+        <p><strong>Current use:</strong> The centimeter is widely used worldwide in countries that follow the metric system, particularly to measure height, small objects, or distances.</p>
+
+        <h3>Inch</h3>
+        <p><strong>Definition:</strong> An inch (symbol: in) is a unit of length in the imperial and US customary systems of measurement. An inch is exactly equal to 25.4 millimeters.</p>
+        <p><strong>History/origin:</strong> The word "inch" comes from the Latin "uncia" meaning one-twelfth of a Roman foot.</p>
+        <p><strong>Current use:</strong> Inches are mostly used in the US, UK, and Canada, especially for measuring height, screen sizes, and in construction industries.</p>
+    </div>
+
+    <div class="conversion-table">
+        <h3>Centimeter to Inch Conversion Table</h3>
+        <table border="1">
+            <tr><th>Centimeter [cm]</th><th>Inch [in]</th></tr>
+            <tr><td>1 cm</td><td>0.3937 in</td></tr>
+            <tr><td>2 cm</td><td>0.7874 in</td></tr>
+            <tr><td>5 cm</td><td>1.9685 in</td></tr>
+            <tr><td>10 cm</td><td>3.9370 in</td></tr>
+            <tr><td>20 cm</td><td>7.8740 in</td></tr>
+            <tr><td>50 cm</td><td>19.6850 in</td></tr>
+            <tr><td>100 cm</td><td>39.3701 in</td></tr>
+        </table>
+    </div>
+
+    <div class="conversion-info">
+        <h3>How to Convert Centimeter to Inch</h3>
+        <p>1 cm = 0.3937 in</p>
+        <p>1 in = 2.54 cm</p>
+        <p><strong>Example:</strong> 15 cm = 15 × 0.3937 = 5.9055 in</p>
+    </div>
+
+    <div class="common-conversions">
+        <h2>Popular Length Unit Conversions</h2>
+        <div class="converter-list">
+            <ul>
+                <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
+                <li><a href="mm_to_inches.html">mm to inches</a></li>
+                <li><a href="meters_to_feet.html">meters to feet</a></li>
+                <li><a href="km_to_miles.html">km to miles</a></li>
+                <li><a href="cm_to_feet.html">cm to feet</a></li>
+                <li><a href="inches_to_feet.html">inches to feet</a></li>
+                <li><a href="meters_to_yards.html">meters to yards</a></li>
+                <li><a href="mm_to_cm.html">mm to cm</a></li>
+                <li><a href="cm_to_m.html">cm to m</a></li>
+                <li><a href="cm_to_km.html">cm to km</a></li>
+            </ul>
+            <ul>
+                <li><a href="mm_to_feet.html">mm to feet</a></li>
+                <li><a href="meters_to_miles.html">meters to miles</a></li>
+                <li><a href="feet_to_miles.html">feet to miles</a></li>
+                <li><a href="yards_to_feet.html">yards to feet</a></li>
+                <li><a href="inches_to_meters.html">inches to meters</a></li>
+                <li><a href="mm_to_m.html">mm to m</a></li>
+                <li><a href="km_to_m.html">km to m</a></li>
+                <li><a href="inches_to_yards.html">inches to yards</a></li>
+                <li><a href="yards_to_miles.html">yards to miles</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function swapUnits() {
+            let from = document.getElementById("fromUnit");
+            let to = document.getElementById("toUnit");
+
+            let temp = from.value;
+            from.value = to.value;
+            to.value = temp;
+        }
+
+        function convert() {
+            let value = parseFloat(document.getElementById("inputValue").value);
+            let fromUnit = document.getElementById("fromUnit").value;
+            let toUnit = document.getElementById("toUnit").value;
+            let resultBox = document.getElementById("result");
+
+            if (isNaN(value)) {
+                resultBox.innerText = "Please enter a valid number!";
+                return;
+            }
+
+            let result;
+            if (fromUnit === "cm" && toUnit === "inch") {
+                result = value / 2.54;
+            } else if (fromUnit === "inch" && toUnit === "cm") {
+                result = value * 2.54;
+            } else {
+                result = value;
+            }
+
+            resultBox.innerText = `Result: ${result.toFixed(2)} ${toUnit}`;
+        }
+    </script>
+
+</body>
+</html>
