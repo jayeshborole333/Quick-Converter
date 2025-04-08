@@ -433,6 +433,7 @@ form {
     margin: 20px auto;
     padding: 20px;
     font-size: 14px;
+    font-size: 30px;
   }
 
   h1 {
@@ -453,28 +454,37 @@ form {
   }
 
   .nav-container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
   }
 
   .nav-links {
-    flex-direction: column;
-    width: 100%;
-    padding-left: 10px;
+    flex-direction: row;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    margin-right: 50px;
   }
+
+  .nav-links li {
+    margin: 0;
+  }
+}
 
   .logo a {
     font-size: 24px;
   }
 
   .navbar {
-    height: auto; /* ✅ navbar उंची dynamic केली */
+    height: auto;
     padding: 15px 0;
   }
 
   body {
-    padding-top: 100px; /* ✅ navbar height नुसार खाली content खाली ढकला */
+    padding-top: 100px;
   }
 
   .contact-input {
@@ -484,4 +494,3 @@ form {
   .contact-right {
     display: none;
   }
-}
