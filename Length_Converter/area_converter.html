@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Converter</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2 class="logo">
+                <a href="/index.html">
+                    <span class="quick">Quick</span> <span class="converter">Converter</span>
+                </a>
+            </h2>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="converter-box">
+        <h2>Area Converter</h2>
+        <input type="number" id="inputValue" placeholder="Enter value">
+    
+        <select id="fromUnit">
+            <option value="m2">square meter</option>
+            <option value="km2">square kilometer</option>
+            <option value="cm2">square centimeter</option>
+            <option value="mm2">square millimeter</option>
+            <option value="µm2">square micrometer</option>
+            <option value="ha">hectare</option>
+            <option value="ac">acre</option>
+            <option value="mi2">square mile</option>
+            <option value="yd2">square yard</option>
+            <option value="ft2">square foot</option>
+            <option value="in2">square inch</option>
+            <option value="hm2">square hectometer</option>
+            <option value="dam2">square dekameter</option>
+            <option value="dm2">square decimeter</option>
+            <option value="nm2">square nanometer</option>
+            <option value="a">are</option>
+            <option value="b">barn</option>
+        </select>
+        <span>to</span>
+        <select id="toUnit">
+            <option value="m2">square meter</option>
+            <option value="km2">square kilometer</option>
+            <option value="cm2">square centimeter</option>
+            <option value="mm2">square millimeter</option>
+            <option value="µm2">square micrometer</option>
+            <option value="ha">hectare</option>
+            <option value="ac">acre</option>
+            <option value="mi2">square mile</option>
+            <option value="yd2">square yard</option>
+            <option value="ft2">square foot</option>
+            <option value="in2">square inch</option>
+            <option value="hm2">square hectometer</option>
+            <option value="dam2">square dekameter</option>
+            <option value="dm2">square decimeter</option>
+            <option value="nm2">square nanometer</option>
+            <option value="a">are</option>
+            <option value="b">barn</option>
+        </select>
+    
+        <button onclick="swapUnits()">Swap Unit</button>
+        <button onclick="convert()">Convert</button>
+    
+        <div class="result-box">
+            <p id="result">Result:</p>
+        </div>
+    </div>
+    
+     <!-- Popular Length Unit Conversions Section -->
+<div class="common-conversions">
+    <h2>Popular Unit Conversions</h2>
+    <div class="converter-list">
+        <ul>
+            <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
+            <li><a href="mm_to_inches.html">mm to inches</a></li>
+            <li><a href="meters_to_feet.html">meters to feet</a></li>
+            <li><a href="km_to_miles.html">km to miles</a></li>
+            <li><a href="cm_to_feet.html">cm to feet</a></li>
+            <li><a href="inches_to_feet.html">inches to feet</a></li>
+            <li><a href="meters_to_yards.html">meters to yards</a></li>
+            <li><a href="mm_to_cm.html">mm to cm</a></li>
+            <li><a href="cm_to_m.html">cm to m</a></li>
+            <li><a href="cm_to_km.html">cm to km</a></li>
+        </ul>
+        <ul>
+            <li><a href="mm_to_feet.html">mm to feet</a></li>
+            <li><a href="meters_to_miles.html">meters to miles</a></li>
+            <li><a href="feet_to_miles.html">feet to miles</a></li>
+            <li><a href="yards_to_feet.html">yards to feet</a></li>
+            <li><a href="inches_to_meters.html">inches to meters</a></li>
+            <li><a href="mm_to_m.html">mm to m</a></li>
+            <li><a href="km_to_m.html">km to m</a></li>
+            <li><a href="inches_to_yards.html">inches to yards</a></li>
+            <li><a href="yards_to_miles.html">yards to miles</a></li>
+        </ul>
+    </div>
+</div>
+
+    <script>
+        const conversions = {
+            'm2': 1,
+            'km2': 1e6,
+            'cm2': 0.0001,
+            'mm2': 1e-6,
+            'µm2': 1e-12,
+            'nm2': 1e-18,
+            'ha': 10000,
+            'ac': 4046.8564224,
+            'mi2': 2589988.110336,
+            'yd2': 0.83612736,
+            'ft2': 0.09290304,
+            'in2': 0.00064516,
+            'hm2': 10000,
+            'dam2': 100,
+            'dm2': 0.01,
+            'a': 100,
+            'b': 1e-28
+        };
+    
+        function swapUnits() {
+            let from = document.getElementById("fromUnit");
+            let to = document.getElementById("toUnit");
+            let temp = from.value;
+            from.value = to.value;
+            to.value = temp;
+        }
+    
+        function convert() {
+            let value = parseFloat(document.getElementById("inputValue").value);
+            let fromUnit = document.getElementById("fromUnit").value;
+            let toUnit = document.getElementById("toUnit").value;
+            let resultBox = document.getElementById("result");
+    
+            if (isNaN(value)) {
+                resultBox.innerText = "Please enter a valid number!";
+                return;
+            }
+    
+            let baseValue = value * conversions[fromUnit];
+            let result = baseValue / conversions[toUnit];
+            resultBox.innerText = `Result: ${result.toFixed(6)} ${toUnit}`;
+        }
+    </script>
+    
+</body>
+</html>

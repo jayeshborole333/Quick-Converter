@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pressure Converter</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2 class="logo">
+                <a href="/index.html">
+                    <span class="quick">Quick</span> <span class="converter">Converter</span>
+                </a>
+            </h2>
+            <ul class="nav-links">
+                <li><a href="/index.html">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="converter-box">
+        <h2>Pressure Converter</h2>
+        <input type="number" id="inputValue" placeholder="Enter value">
+    
+        <select id="fromUnit"></select>
+        <span>to</span>
+        <select id="toUnit"></select>
+    
+        <button onclick="swapUnits()">Swap Unit</button>
+        <button onclick="convert()">Convert</button>
+    
+        <div class="result-box">
+            <p id="result">Result:</p>
+        </div>
+    </div>
+    
+     <!-- Popular Length Unit Conversions Section -->
+<div class="common-conversions">
+    <h2>Popular Unit Conversions</h2>
+    <div class="converter-list">
+        <ul>
+            <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
+            <li><a href="mm_to_inches.html">mm to inches</a></li>
+            <li><a href="meters_to_feet.html">meters to feet</a></li>
+            <li><a href="km_to_miles.html">km to miles</a></li>
+            <li><a href="cm_to_feet.html">cm to feet</a></li>
+            <li><a href="inches_to_feet.html">inches to feet</a></li>
+            <li><a href="meters_to_yards.html">meters to yards</a></li>
+            <li><a href="mm_to_cm.html">mm to cm</a></li>
+            <li><a href="cm_to_m.html">cm to m</a></li>
+            <li><a href="cm_to_km.html">cm to km</a></li>
+        </ul>
+        <ul>
+            <li><a href="mm_to_feet.html">mm to feet</a></li>
+            <li><a href="meters_to_miles.html">meters to miles</a></li>
+            <li><a href="feet_to_miles.html">feet to miles</a></li>
+            <li><a href="yards_to_feet.html">yards to feet</a></li>
+            <li><a href="inches_to_meters.html">inches to meters</a></li>
+            <li><a href="mm_to_m.html">mm to m</a></li>
+            <li><a href="km_to_m.html">km to m</a></li>
+            <li><a href="inches_to_yards.html">inches to yards</a></li>
+            <li><a href="yards_to_miles.html">yards to miles</a></li>
+        </ul>
+    </div>
+</div>
+
+    <script>
+        const conversions = {
+            'Pa': 1,
+            'kPa': 1000,
+            'bar': 100000,
+            'psi': 6894.76,
+            'ksi': 6894760,
+            'atm': 101325,
+            'EPa': 1e18,
+            'PPa': 1e15,
+            'TPa': 1e12,
+            'GPa': 1e9,
+            'MPa': 1e6,
+            'hPa': 100,
+            'daPa': 10,
+            'dPa': 0.1,
+            'cPa': 0.01,
+            'mPa': 0.001,
+            'µPa': 1e-6,
+            'nPa': 1e-9,
+            'pPa': 1e-12,
+            'fPa': 1e-15,
+            'aPa': 1e-18,
+            'N/m²': 1,
+            'N/cm²': 10000,
+            'N/mm²': 1000000,
+            'kN/m²': 1000,
+            'mbar': 100,
+            'µbar': 0.1,
+            'dyne/cm²': 0.1,
+            'kgf/m²': 9.80665,
+            'kgf/cm²': 98066.5,
+            'kgf/mm²': 9806650,
+            'gf/cm²': 98.0665,
+            'tonf (US)/ft²': 95760,
+            'tonf (US)/in²': 13789560,
+            'tonf (UK)/ft²': 107251,
+            'tonf (UK)/in²': 15445300,
+            'kip/in²': 6894760,
+            'lbf/ft²': 47.8803,
+            'lbf/in²': 6894.76,
+            'poundal/ft²': 1.488,
+            'Torr': 133.322,
+            'cmHg': 1333.22,
+            'mmHg': 133.322,
+            'inHg (32°F)': 3386.39,
+            'inHg (60°F)': 3376.85,
+            'cmH₂O (4°C)': 98.0638,
+            'mmH₂O (4°C)': 9.80638,
+            'inH₂O (4°C)': 249.0889,
+            'ftH₂O (4°C)': 2989.07,
+            'inH₂O (60°F)': 248.84,
+            'ftH₂O (60°F)': 2986.08,
+            'at': 98066.5
+        };
+    
+        const unitNames = Object.keys(conversions);
+    
+        window.onload = () => {
+            const fromSelect = document.getElementById("fromUnit");
+            const toSelect = document.getElementById("toUnit");
+            unitNames.forEach(unit => {
+                let opt1 = document.createElement("option");
+                opt1.value = opt1.textContent = unit;
+                let opt2 = document.createElement("option");
+                opt2.value = opt2.textContent = unit;
+                fromSelect.appendChild(opt1);
+                toSelect.appendChild(opt2);
+            });
+            fromSelect.value = 'Pa';
+            toSelect.value = 'kPa';
+        };
+    
+        function swapUnits() {
+            let from = document.getElementById("fromUnit");
+            let to = document.getElementById("toUnit");
+            [from.value, to.value] = [to.value, from.value];
+        }
+    
+        function convert() {
+            let value = parseFloat(document.getElementById("inputValue").value);
+            let fromUnit = document.getElementById("fromUnit").value;
+            let toUnit = document.getElementById("toUnit").value;
+            let resultBox = document.getElementById("result");
+    
+            if (isNaN(value)) {
+                resultBox.innerText = "Please enter a valid number!";
+                return;
+            }
+    
+            let baseValue = value * conversions[fromUnit];
+            let result = baseValue / conversions[toUnit];
+            resultBox.innerText = `Result: ${result.toFixed(6)} ${toUnit}`;
+        }
+    </script>
+    
+</body>
+</html>

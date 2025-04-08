@@ -3,38 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inches to Yards Converter</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-          <h2 class="logo">
-            <a href="index.html">
-              <span class="quick">Quick</span> <span class="converter">Converter</span>
-            </a>
-          </h2>
-          <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-          </ul>
+            <h2 class="logo">
+                <a href="/index.html">
+                    <span class="quick">Quick</span> <span class="converter">Converter</span>
+                </a>
+            </h2>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+            </ul>
         </div>
-      </nav>
-    
+    </nav>
+
     <div class="converter-box">
-        <h2>Inches to Yards Converter</h2>
+        <h2>Currency Converter</h2>
         <input type="number" id="inputValue" placeholder="Enter value">
-        
+
         <select id="fromUnit">
-            <option value="inches">Inches</option>
-            <option value="yards">Yards</option>
-        </select>
-
+        <option value='USD'>USD</option>
+        <option value='EUR'>EUR</option>
+        <option value='INR'>INR</option>
+        <option value='GBP'>GBP</option>
+        <option value='JPY'>JPY</option>
+        <option value='CNY'>CNY</option>
+    </select>
         <span>to</span>
-
-        <select id="toUnit">
-            <option value="yards">Yards</option>
-            <option value="inches">Inches</option>
-        </select>
+        <select id="toUnit"><option value='USD'>USD</option><option value='EUR'>EUR</option><option value='INR'>INR</option><option value='GBP'>GBP</option><option value='JPY'>JPY</option><option value='CNY'>CNY</option></select>
 
         <button onclick="swapUnits()">Swap Unit</button>
         <button onclick="convert()">Convert</button>
@@ -44,40 +43,9 @@
         </div>
     </div>
 
-    <div class="info-box">
-        <h3>Inch</h3>
-        <p><strong>Definition:</strong> An inch (symbol: in) is a unit of length in the imperial and US customary systems, equal to 1/12 of a foot or 2.54 centimeters.</p>
-        <p><strong>History/origin:</strong> Derived from the width of a human thumb. Standardized in the 1950s to exactly 2.54 cm.</p>
-        <p><strong>Current use:</strong> Common in the US and UK for small measurements like screen sizes, paper sizes, etc.</p>
-    
-        <h3>Yard</h3>
-        <p><strong>Definition:</strong> A yard (symbol: yd) is 36 inches or 0.9144 meters.</p>
-        <p><strong>Current use:</strong> Used in field-length measurements in sports and in daily use in the US and UK.</p>
-    </div>
-    
-    <div class="conversion-table">
-        <h3>Inch to Yard Conversion Table</h3>
-        <table border="1">
-            <tr><th>Inch [in]</th><th>Yard [yd]</th></tr>
-            <tr><td>1 in</td><td>0.02777778 yd</td></tr>
-            <tr><td>12 in</td><td>0.333333 yd</td></tr>
-            <tr><td>36 in</td><td>1 yd</td></tr>
-            <tr><td>72 in</td><td>2 yd</td></tr>
-            <tr><td>100 in</td><td>2.777778 yd</td></tr>
-        </table>
-    </div>
-    
-    <div class="conversion-info">
-        <h3>How to Convert Inches to Yards</h3>
-        <p>1 inch = 0.02777778 yd</p>
-        <p>1 yard = 36 inches</p>
-        <p><strong>Example:</strong> convert 50 inches to yards:</p>
-        <p>50 in = 50 × 0.02777778 = 1.388889 yd</p>
-    </div>
-    
-    <!-- Popular Length Unit Conversions Section -->
+     <!-- Popular Length Unit Conversions Section -->
 <div class="common-conversions">
-    <h2>Popular Length Unit Conversions</h2>
+    <h2>Popular Unit Conversions</h2>
     <div class="converter-list">
         <ul>
             <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
@@ -106,6 +74,15 @@
 </div>
 
     <script>
+        const conversions = {
+            'USD': 1,
+            'EUR': 0.9,
+            'INR': 86.23,
+            'GBP': 0.78,
+            'JPY': 151,
+            'CNY': 7.2
+        };
+    
         function swapUnits() {
             let from = document.getElementById("fromUnit");
             let to = document.getElementById("toUnit");
@@ -113,24 +90,21 @@
             from.value = to.value;
             to.value = temp;
         }
-
+    
         function convert() {
             let value = parseFloat(document.getElementById("inputValue").value);
             let fromUnit = document.getElementById("fromUnit").value;
             let toUnit = document.getElementById("toUnit").value;
             let resultBox = document.getElementById("result");
-
+    
             if (isNaN(value)) {
                 resultBox.innerText = "Please enter a valid number!";
                 return;
             }
-
-            let result = value * 0.0277778 ;
-            if (fromUnit === "yards") {
-                result = value / 0.0277778;
-            }
-            resultBox.innerText = `Result: ${result.toFixed(4)} ${toUnit}`;
+    
+            // Correct logic here
+            let result = value * (conversions[toUnit] / conversions[fromUnit]);
+            resultBox.innerText = `Result: ${result.toFixed(6)} ${toUnit}`;
         }
-    </script>
-</body>
+    </script>    
 </html>

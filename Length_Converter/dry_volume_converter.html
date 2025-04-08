@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dry Volume Converter</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2 class="logo">
+                <a href="/index.html">
+                    <span class="quick">Quick</span> <span class="converter">Converter</span>
+                </a>
+            </h2>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="converter-box">
+        <h2>Dry Volume Converter</h2>
+        <input type="number" id="inputValue" placeholder="Enter value">
+    
+        <select id="fromUnit">
+            <option value="bushel">bushel</option>
+            <option value="peck">peck</option>
+            <option value="dry quart">dry quart</option>
+            <option value="dry pint">dry pint</option>
+            <option value="dry gallon">dry gallon</option>
+            <option value="liter">liter</option>
+            <option value="bbl dry (US)">bbl dry (US)</option>
+            <option value="pt dry (US)">pt dry (US)</option>
+            <option value="qt dry (US)">qt dry (US)</option>
+            <option value="pk (US)">pk (US)</option>
+            <option value="pk (UK)">pk (UK)</option>
+            <option value="bu (US)">bu (US)</option>
+            <option value="bu (UK)">bu (UK)</option>
+            <option value="cor">cor</option>
+            <option value="homer">homer</option>
+            <option value="ephah">ephah</option>
+            <option value="seah">seah</option>
+            <option value="omer">omer</option>
+            <option value="cab">cab</option>
+            <option value="log">log</option>
+        </select>
+    
+        <span>to</span>
+    
+        <select id="toUnit">
+            <option value="bushel">bushel</option>
+            <option value="peck">peck</option>
+            <option value="dry quart">dry quart</option>
+            <option value="dry pint">dry pint</option>
+            <option value="dry gallon">dry gallon</option>
+            <option value="liter">liter</option>
+            <option value="bbl dry (US)">bbl dry (US)</option>
+            <option value="pt dry (US)">pt dry (US)</option>
+            <option value="qt dry (US)">qt dry (US)</option>
+            <option value="pk (US)">pk (US)</option>
+            <option value="pk (UK)">pk (UK)</option>
+            <option value="bu (US)">bu (US)</option>
+            <option value="bu (UK)">bu (UK)</option>
+            <option value="cor">cor</option>
+            <option value="homer">homer</option>
+            <option value="ephah">ephah</option>
+            <option value="seah">seah</option>
+            <option value="omer">omer</option>
+            <option value="cab">cab</option>
+            <option value="log">log</option>
+        </select>
+    
+        <button onclick="swapUnits()">Swap Unit</button>
+        <button onclick="convert()">Convert</button>
+    
+        <div class="result-box">
+            <p id="result">Result:</p>
+        </div>
+    </div>
+    
+     <!-- Popular Length Unit Conversions Section -->
+<div class="common-conversions">
+    <h2>Popular Unit Conversions</h2>
+    <div class="converter-list">
+        <ul>
+            <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
+            <li><a href="mm_to_inches.html">mm to inches</a></li>
+            <li><a href="meters_to_feet.html">meters to feet</a></li>
+            <li><a href="km_to_miles.html">km to miles</a></li>
+            <li><a href="cm_to_feet.html">cm to feet</a></li>
+            <li><a href="inches_to_feet.html">inches to feet</a></li>
+            <li><a href="meters_to_yards.html">meters to yards</a></li>
+            <li><a href="mm_to_cm.html">mm to cm</a></li>
+            <li><a href="cm_to_m.html">cm to m</a></li>
+            <li><a href="cm_to_km.html">cm to km</a></li>
+        </ul>
+        <ul>
+            <li><a href="mm_to_feet.html">mm to feet</a></li>
+            <li><a href="meters_to_miles.html">meters to miles</a></li>
+            <li><a href="feet_to_miles.html">feet to miles</a></li>
+            <li><a href="yards_to_feet.html">yards to feet</a></li>
+            <li><a href="inches_to_meters.html">inches to meters</a></li>
+            <li><a href="mm_to_m.html">mm to m</a></li>
+            <li><a href="km_to_m.html">km to m</a></li>
+            <li><a href="inches_to_yards.html">inches to yards</a></li>
+            <li><a href="yards_to_miles.html">yards to miles</a></li>
+        </ul>
+    </div>
+</div>
+
+    <script>
+        const conversions = {
+            'bushel': 35239.1,
+            'peck': 8810.7,
+            'dry quart': 1101.22,
+            'dry pint': 550.61,
+            'dry gallon': 4404.88,
+            'liter': 1000,
+            'bbl dry (US)': 115627.1,
+            'pt dry (US)': 550.6105,
+            'qt dry (US)': 1101.221,
+            'pk (US)': 8810.7,
+            'pk (UK)': 9092.18,
+            'bu (US)': 35239.1,
+            'bu (UK)': 36368.7,
+            'cor': 220000,
+            'homer': 220000,
+            'ephah': 22000,
+            'seah': 7333.33,
+            'omer': 2200,
+            'cab': 733.33,
+            'log': 122.22
+        };
+    
+        function swapUnits() {
+            let from = document.getElementById("fromUnit");
+            let to = document.getElementById("toUnit");
+            let temp = from.value;
+            from.value = to.value;
+            to.value = temp;
+        }
+    
+        function convert() {
+            let value = parseFloat(document.getElementById("inputValue").value);
+            let fromUnit = document.getElementById("fromUnit").value;
+            let toUnit = document.getElementById("toUnit").value;
+            let resultBox = document.getElementById("result");
+    
+            if (isNaN(value)) {
+                resultBox.innerText = "Please enter a valid number!";
+                return;
+            }
+    
+            let baseValue = value * conversions[fromUnit];
+            let result = baseValue / conversions[toUnit];
+            resultBox.innerText = `Result: ${result.toFixed(6)} ${toUnit}`;
+        }
+    </script>
+    
+</html>

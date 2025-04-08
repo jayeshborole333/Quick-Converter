@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pint to ml Converter</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2 class="logo">
+                <a href="/index.html">
+                    <span class="quick">Quick</span> <span class="converter">Converter</span>
+                </a>
+            </h2>
+            <ul class="nav-links">
+                <li><a href="/index.html">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="converter-box">
+        <h2>Pint to ml Converter</h2>
+        <input type="number" id="inputValue" placeholder="Enter value">
+        <select id="fromUnit"><option>pint</option></select>
+        <span>to</span>
+        <select id="toUnit"><option>ml</option></select>
+
+        <button onclick="swapUnits()">Swap Unit</button>
+        <button onclick="convert()">Convert</button>
+
+        <div class="result-box">
+            <p id="result">Result:</p>
+        </div>
+    </div>
+
+    <script>
+        function swapUnits() {
+            let from = document.getElementById("fromUnit");
+            let to = document.getElementById("toUnit");
+            let temp = from.value;
+            from.value = to.value;
+            to.value = temp;
+        }
+
+        function convert() {
+            let value = parseFloat(document.getElementById("inputValue").value);
+            let fromUnit = document.getElementById("fromUnit").value;
+            let toUnit = document.getElementById("toUnit").value;
+            let resultBox = document.getElementById("result");
+
+            if (isNaN(value)) {
+                resultBox.innerText = "Please enter a valid number!";
+                return;
+            }
+
+            // Placeholder: You can replace this with actual logic later
+            let result = value * 1.0;
+            resultBox.innerText = `Result: ${result.toFixed(6)} ${toUnit}`;
+        }
+    </script>
+</body>
+</html>

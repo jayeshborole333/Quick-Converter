@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volume Converter</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2 class="logo">
+                <a href="/index.html">
+                    <span class="quick">Quick</span> <span class="converter">Converter</span>
+                </a>
+            </h2>
+            <ul class="nav-links">
+                <li><a href="/index.html">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="converter-box">
+        <h2>Volume Converter</h2>
+        <input type="number" id="inputValue" placeholder="Enter value">
+
+        <select id="fromUnit"><option value='ml'>ml</option><option value='l'>l</option><option value='m3'>m3</option><option value='cm3'>cm3</option><option value='ft3'>ft3</option><option value='in3'>in3</option></select>
+        <span>to</span>
+        <select id="toUnit"><option value='ml'>ml</option><option value='l'>l</option><option value='m3'>m3</option><option value='cm3'>cm3</option><option value='ft3'>ft3</option><option value='in3'>in3</option></select>
+
+        <button onclick="swapUnits()">Swap Unit</button>
+        <button onclick="convert()">Convert</button>
+
+        <div class="result-box">
+            <p id="result">Result:</p>
+        </div>
+    </div>
+
+    <div class="common-conversions">
+        <h2>Popular Unit Conversions</h2>
+        <div class="converter-list">
+            <ul>
+                <li><a href="liters_to_gallons.html">liters to gallons</a></li>
+                <li><a href="ml_to_cups.html">ml to cups</a></li>
+                <li><a href="tablespoons_to_cups.html">tablespoons to cups</a></li>
+                <li><a href="ml_to_l.html">ml to l</a></li>
+                <li><a href="teaspoon_to_ml.html">teaspoon to ml</a></li>
+                <li><a href="liters_to_quarts.html">liters to quarts</a></li>
+                <li><a href="cups_to_liters.html">cups to liters</a></li>
+                <li><a href="pint_to_ml.html">pint to ml</a></li>
+                <li><a href="cc_to_ml.html">cc to ml</a></li>
+                <li><a href="cc_to_oz.html">cc to oz</a></li>
+                <li><a href="cubic_feet_to_gallon.html">cubic feet to gallon</a></li>
+            </ul>
+            <ul>
+                <li><a href="cubic_feet_to_cubic_yards.html">cubic feet to cubic yards</a></li>
+                <li><a href="cubic_inches_to_gallons.html">cubic inches to gallons</a></li>
+                <li><a href="cubic_inches_to_liters.html">cubic inches to liters</a></li>
+                <li><a href="cups_to_quart.html">cups to quart</a></li>
+                <li><a href="cups_to_gallon.html">cups to gallon</a></li>
+                <li><a href="pint_to_cups.html">pint to cups</a></li>
+                <li><a href="quart_to_gallon.html">quart to gallon</a></li>
+                <li><a href="gallon_to_ml.html">gallon to ml</a></li>
+                <li><a href="liter_to_ounces.html">liter to ounces</a></li>
+                <li><a href="pints_to_liters.html">pints to liters</a></li>
+                <li><a href="pints_to_gallon.html">pints to gallon</a></li>
+            </ul>
+        </div>
+    </div>
+    
+
+    <script>
+        const conversions = {'ml': 1, 'l': 1000, 'm3': 1000000, 'cm3': 1, 'ft3': 28316.8, 'in3': 16.3871};
+
+        function swapUnits() {
+            let from = document.getElementById("fromUnit");
+            let to = document.getElementById("toUnit");
+            let temp = from.value;
+            from.value = to.value;
+            to.value = temp;
+        }
+
+        function convert() {
+            let value = parseFloat(document.getElementById("inputValue").value);
+            let fromUnit = document.getElementById("fromUnit").value;
+            let toUnit = document.getElementById("toUnit").value;
+            let resultBox = document.getElementById("result");
+
+            if (isNaN(value)) {
+                resultBox.innerText = "Please enter a valid number!";
+                return;
+            }
+
+            let baseValue = value * conversions[fromUnit];
+            let result = baseValue / conversions[toUnit];
+            resultBox.innerText = `Result: ${result.toFixed(6)} ${toUnit}`;
+        }
+    </script>
+</body>
+</html>

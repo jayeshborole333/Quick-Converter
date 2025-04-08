@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Length Converter</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+          <h2 class="logo">
+            <a href="/index.html">
+              <span class="quick">Quick</span> <span class="converter">Converter</span>
+            </a>
+          </h2>
+          <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+          </ul>
+        </div>
+      </nav>
+    
+      <div class="converter-box">
+        <h2>Length Converter</h2>
+        <input type="number" id="lengthInputValue" placeholder="Enter value">
+    
+        <select id="lengthFromUnit">
+            <option value="meter">meter [m]</option>
+        <option value="kilometer">kilometer [km]</option>
+        <option value="decimeter">decimeter [dm]</option>
+        <option value="centimeter">centimeter [cm]</option>
+        <option value="millimeter">millimeter [mm]</option>
+        <option value="micrometer">micrometer [µm]</option>
+        <option value="nanometer">nanometer [nm]</option>
+        <option value="mile">mile [mi, mi(Int)]</option>
+        <option value="yard">yard [yd]</option>
+        <option value="foot">foot [ft]</option>
+        <option value="inch">inch [in]</option>
+        <option value="lightyear">light year [ly]</option>
+        <option value="exameter">exameter [Em]</option>
+        <option value="petameter">petameter [Pm]</option>
+        <option value="terameter">terameter [Tm]</option>
+        <option value="gigameter">gigameter [Gm]</option>
+        <option value="megameter">megameter [Mm]</option>
+        <option value="hectometer">hectometer [hm]</option>
+        <option value="dekameter">dekameter [dam]</option>
+        <option value="micron">micron [µ]</option>
+        <option value="picometer">picometer [pm]</option>
+        <option value="femtometer">femtometer [fm]</option>
+        <option value="attometer">attometer [am]</option>
+        <option value="megaparsec">megaparsec [Mpc]</option>
+        <option value="kiloparsec">kiloparsec [kpc]</option>
+        <option value="parsec">parsec [pc]</option>
+        <option value="AU">astronomical unit [AU, UA]</option>
+        <option value="league">league [lea]</option>
+        <option value="nautical_uk">nautical league (UK)</option>
+        <option value="nautical_int">nautical league (int.)</option>
+        <option value="statute_league">league (statute) [st.league]</option>
+        <option value="nm_uk">nautical mile (UK) [NM (UK)]</option>
+        <option value="nm_int">nautical mile (international)</option>
+        <option value="mile_us">mile (statute) [mi, mi (US)]</option>
+        <option value="mile_survey">mile (US survey) [mi]</option>
+        <option value="mile_roman">mile (Roman)</option>
+        <option value="kiloyard">kiloyard [kyd]</option>
+        <option value="furlong">furlong [fur]</option>
+        <option value="furlong_survey">furlong (US survey) [fur]</option>
+        <option value="chain">chain [ch]</option>
+        <option value="chain_survey">chain (US survey) [ch]</option>
+        <option value="rope">rope</option>
+        <option value="rod">rod [rd]</option>
+        <option value="rod_survey">rod (US survey) [rd]</option>
+        <option value="perch">perch</option>
+        <option value="pole">pole</option>
+        <option value="fathom">fathom [fath]</option>
+        <option value="fathom_survey">fathom (US survey) [fath]</option>
+        <option value="ell">ell</option>
+        <option value="foot_survey">foot (US survey) [ft]</option>
+        <option value="link">link [li]</option>
+        <option value="link_survey">link (US survey) [li]</option>
+        <option value="cubit_uk">cubit (UK)</option>
+        <option value="span">span (cloth)</option>
+        <option value="finger_cloth">finger (cloth)</option>
+        <option value="nail">nail (cloth)</option>
+        <option value="inch_survey">inch (US survey) [in]</option>
+        <option value="barleycorn">barleycorn</option>
+        <option value="mil">mil [mil, thou]</option>
+        <option value="microinch">microinch</option>
+        <option value="angstrom">angstrom [A]</option>
+        <option value="au_length">a.u. of length [a.u., b]</option>
+        <option value="x_unit">X-unit [X]</option>
+        <option value="fermi">fermi [F, f]</option>
+        <option value="arpent">arpent</option>
+        <option value="picapoint">picapoint</option>
+        <option value="twip">twip</option>
+        <option value="aln">aln</option>
+        <option value="famn">famn</option>
+        <option value="caliber">caliber [cl]</option>
+        <option value="centiinch">centiinch [cin]</option>
+        <option value="ken">ken</option>
+        <option value="archin">Russian archin</option>
+        <option value="actus">Roman actus</option>
+        <option value="vara_de_tarea">vara de tarea</option>
+        <option value="vara_conuquera">vara conuquera</option>
+        <option value="vara_castellana">vara castellana</option>
+        <option value="cubit_greek">cubit (Greek)</option>
+        <option value="long_reed">long reed</option>
+        <option value="reed">reed</option>
+        <option value="long_cubit">long cubit</option>
+        <option value="hand">hand</option>
+        <option value="breadth">breadth</option>
+        <option value="finger_breadth">fingerbreadth</option>
+        <option value="planck">Planck length</option>
+        <option value="electron_radius">Electron radius (classical)</option>
+        <option value="bohr_radius">Bohr radius [b, a.u.]</option>
+        <option value="earth_eq_radius">Earth's equatorial radius</option>
+        <option value="earth_pol_radius">Earth's polar radius</option>
+        <option value="earth_to_sun">Earth's distance from sun</option>
+        <option value="sun_radius">Sun's radius</option>
+        </select>
+    
+        <span>to</span>
+    
+        <select id="lengthToUnit">
+            <option value="meter">meter [m]</option>
+            <option value="kilometer">kilometer [km]</option>
+            <option value="decimeter">decimeter [dm]</option>
+            <option value="centimeter">centimeter [cm]</option>
+            <option value="millimeter">millimeter [mm]</option>
+            <option value="micrometer">micrometer [µm]</option>
+            <option value="nanometer">nanometer [nm]</option>
+            <option value="mile">mile [mi, mi(Int)]</option>
+            <option value="yard">yard [yd]</option>
+            <option value="foot">foot [ft]</option>
+            <option value="inch">inch [in]</option>
+            <option value="lightyear">light year [ly]</option>
+            <option value="exameter">exameter [Em]</option>
+            <option value="petameter">petameter [Pm]</option>
+            <option value="terameter">terameter [Tm]</option>
+            <option value="gigameter">gigameter [Gm]</option>
+            <option value="megameter">megameter [Mm]</option>
+            <option value="hectometer">hectometer [hm]</option>
+            <option value="dekameter">dekameter [dam]</option>
+            <option value="micron">micron [µ]</option>
+            <option value="picometer">picometer [pm]</option>
+            <option value="femtometer">femtometer [fm]</option>
+            <option value="attometer">attometer [am]</option>
+            <option value="megaparsec">megaparsec [Mpc]</option>
+            <option value="kiloparsec">kiloparsec [kpc]</option>
+            <option value="parsec">parsec [pc]</option>
+            <option value="AU">astronomical unit [AU, UA]</option>
+            <option value="league">league [lea]</option>
+            <option value="nautical_uk">nautical league (UK)</option>
+            <option value="nautical_int">nautical league (int.)</option>
+            <option value="statute_league">league (statute) [st.league]</option>
+            <option value="nm_uk">nautical mile (UK) [NM (UK)]</option>
+            <option value="nm_int">nautical mile (international)</option>
+            <option value="mile_us">mile (statute) [mi, mi (US)]</option>
+            <option value="mile_survey">mile (US survey) [mi]</option>
+            <option value="mile_roman">mile (Roman)</option>
+            <option value="kiloyard">kiloyard [kyd]</option>
+            <option value="furlong">furlong [fur]</option>
+            <option value="furlong_survey">furlong (US survey) [fur]</option>
+            <option value="chain">chain [ch]</option>
+            <option value="chain_survey">chain (US survey) [ch]</option>
+            <option value="rope">rope</option>
+            <option value="rod">rod [rd]</option>
+            <option value="rod_survey">rod (US survey) [rd]</option>
+            <option value="perch">perch</option>
+            <option value="pole">pole</option>
+            <option value="fathom">fathom [fath]</option>
+            <option value="fathom_survey">fathom (US survey) [fath]</option>
+            <option value="ell">ell</option>
+            <option value="foot_survey">foot (US survey) [ft]</option>
+            <option value="link">link [li]</option>
+            <option value="link_survey">link (US survey) [li]</option>
+            <option value="cubit_uk">cubit (UK)</option>
+            <option value="span">span (cloth)</option>
+            <option value="finger_cloth">finger (cloth)</option>
+            <option value="nail">nail (cloth)</option>
+            <option value="inch_survey">inch (US survey) [in]</option>
+            <option value="barleycorn">barleycorn</option>
+            <option value="mil">mil [mil, thou]</option>
+            <option value="microinch">microinch</option>
+            <option value="angstrom">angstrom [A]</option>
+            <option value="au_length">a.u. of length [a.u., b]</option>
+            <option value="x_unit">X-unit [X]</option>
+            <option value="fermi">fermi [F, f]</option>
+            <option value="arpent">arpent</option>
+            <option value="picapoint">picapoint</option>
+            <option value="twip">twip</option>
+            <option value="aln">aln</option>
+            <option value="famn">famn</option>
+            <option value="caliber">caliber [cl]</option>
+            <option value="centiinch">centiinch [cin]</option>
+            <option value="ken">ken</option>
+            <option value="archin">Russian archin</option>
+            <option value="actus">Roman actus</option>
+            <option value="vara_de_tarea">vara de tarea</option>
+            <option value="vara_conuquera">vara conuquera</option>
+            <option value="vara_castellana">vara castellana</option>
+            <option value="cubit_greek">cubit (Greek)</option>
+            <option value="long_reed">long reed</option>
+            <option value="reed">reed</option>
+            <option value="long_cubit">long cubit</option>
+            <option value="hand">hand</option>
+            <option value="breadth">breadth</option>
+            <option value="finger_breadth">fingerbreadth</option>
+            <option value="planck">Planck length</option>
+            <option value="electron_radius">Electron radius (classical)</option>
+            <option value="bohr_radius">Bohr radius [b, a.u.]</option>
+            <option value="earth_eq_radius">Earth's equatorial radius</option>
+            <option value="earth_pol_radius">Earth's polar radius</option>
+            <option value="earth_to_sun">Earth's distance from sun</option>
+            <option value="sun_radius">Sun's radius</option>
+        </select>
+    
+        <button onclick="swapLengthUnits()">Swap Unit</button>
+        <button onclick="convertLength()">Convert</button>
+    
+        <div class="result-box">
+            <p id="lengthResult">Result:</p>
+        </div>
+    </div>    
+    <!-- Popular Length Unit Conversions Section -->
+<div class="common-conversions">
+    <h2>Popular Unit Conversions</h2>
+    <div class="converter-list">
+        <ul>
+            <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
+            <li><a href="mm_to_inches.html">mm to inches</a></li>
+            <li><a href="meters_to_feet.html">meters to feet</a></li>
+            <li><a href="km_to_miles.html">km to miles</a></li>
+            <li><a href="cm_to_feet.html">cm to feet</a></li>
+            <li><a href="inches_to_feet.html">inches to feet</a></li>
+            <li><a href="meters_to_yards.html">meters to yards</a></li>
+            <li><a href="mm_to_cm.html">mm to cm</a></li>
+            <li><a href="cm_to_m.html">cm to m</a></li>
+            <li><a href="cm_to_km.html">cm to km</a></li>
+        </ul>
+        <ul>
+            <li><a href="mm_to_feet.html">mm to feet</a></li>
+            <li><a href="meters_to_miles.html">meters to miles</a></li>
+            <li><a href="feet_to_miles.html">feet to miles</a></li>
+            <li><a href="yards_to_feet.html">yards to feet</a></li>
+            <li><a href="inches_to_meters.html">inches to meters</a></li>
+            <li><a href="mm_to_m.html">mm to m</a></li>
+            <li><a href="km_to_m.html">km to m</a></li>
+            <li><a href="inches_to_yards.html">inches to yards</a></li>
+            <li><a href="yards_to_miles.html">yards to miles</a></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    const units = {
+        "meter": 1,
+        "kilometer": 1000,
+        "decimeter": 0.1,
+        "centimeter": 0.01,
+        "millimeter": 0.001,
+        "micrometer": 1e-6,
+        "nanometer": 1e-9,
+        "mile": 1609.344,
+        "yard": 0.9144,
+        "foot": 0.3048,
+        "inch": 0.0254,
+        "light year": 9.4607e15,
+        "exameter": 1e18,
+        "petameter": 1e15,
+        "terameter": 1e12,
+        "gigameter": 1e9,
+        "megameter": 1e6,
+        "hectometer": 100,
+        "dekameter": 10,
+        "micron": 1e-6,
+        "picometer": 1e-12,
+        "femtometer": 1e-15,
+        "attometer": 1e-18,
+        "megaparsec": 3.0857e22,
+        "kiloparsec": 3.0857e19,
+        "parsec": 3.0857e16,
+        "astronomical unit": 1.495978707e11,
+        "league": 4828.032,
+        "nautical league (UK)": 5556,
+        "nautical league (int.)": 5556,
+        "league (statute)": 4828.032,
+        "nautical mile (UK)": 1853.184,
+        "nautical mile (international)": 1852,
+        "mile (statute)": 1609.344,
+        "mile (US survey)": 1609.347,
+        "mile (Roman)": 1480,
+        "kiloyard": 914.4,
+        "furlong": 201.168,
+        "furlong (US survey)": 201.168,
+        "chain": 20.1168,
+        "chain (US survey)": 20.11684,
+        "rod": 5.0292,
+        "rod (US survey)": 5.0292,
+        "perch": 5.0292,
+        "pole": 5.0292,
+        "fathom": 1.8288,
+        "fathom (US survey)": 1.8288,
+        "ell": 1.143,
+        "foot (US survey)": 0.3048006096,
+        "link": 0.201168,
+        "link (US survey)": 0.2011684,
+        "cubit (UK)": 0.4572,
+        "hand": 0.1016,
+        "span (cloth)": 0.2286,
+        "finger (cloth)": 0.1143,
+        "nail (cloth)": 0.05715,
+        "inch (US survey)": 0.0254000508,
+        "barleycorn": 0.00847,
+        "mil": 0.0000254,
+        "microinch": 2.54e-8,
+        "angstrom": 1e-10,
+        "a.u. of length": 5.29177210903e-11,
+        "X-unit": 1.002e-13,
+        "fermi": 1e-15,
+        "arpent": 58.47,
+        "picapoint": 3.528e-4,
+        "twip": 1.76388888889e-5,
+        "aln": 0.5938,
+        "famn": 1.781,
+        "caliber": 0.000254,
+        "centiinch": 0.000254,
+        "ken": 1.818,
+        "Russian archin": 0.7112,
+        "Roman actus": 35.47872,
+        "vara de tarea": 0.835905,
+        "vara conuquera": 0.835905,
+        "vara castellana": 0.835905,
+        "cubit (Greek)": 0.462,
+        "long reed": 3.6576,
+        "reed": 3.048,
+        "long cubit": 0.5334,
+        "handbreadth": 0.0762,
+        "fingerbreadth": 0.01905,
+        "Planck length": 1.616255e-35,
+        "Electron radius (classical)": 2.8179403262e-15,
+        "Bohr radius": 5.29177210903e-11,
+        "Earth's equatorial radius": 6378137,
+        "Earth's polar radius": 6356752.3,
+        "Earth's distance from sun": 1.496e11,
+        "Sun's radius": 6.96342e8
+    };
+
+    const fromSelect = document.getElementById("fromLength");
+    const toSelect = document.getElementById("toLength");
+
+    for (let key in units) {
+        const option1 = document.createElement("option");
+        option1.value = key;
+        option1.text = key;
+        fromSelect.add(option1);
+
+        const option2 = document.createElement("option");
+        option2.value = key;
+        option2.text = key;
+        toSelect.add(option2);
+    }
+
+    function swapLengthUnits() {
+        let temp = fromSelect.value;
+        fromSelect.value = toSelect.value;
+        toSelect.value = temp;
+    }
+
+    function convertLength() {
+        let value = parseFloat(document.getElementById("lengthInput").value);
+        if (isNaN(value)) {
+            document.getElementById("lengthResult").innerText = "Please enter a valid number!";
+            return;
+        }
+        let from = fromSelect.value;
+        let to = toSelect.value;
+        let inMeters = value * units[from];
+        let result = inMeters / units[to];
+        document.getElementById("lengthResult").innerText = `Result: ${result.toFixed(10)} ${to}`;
+    }
+</script>
+</body>
+</html>

@@ -3,37 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yard to Mile Converter</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Energy Converter</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-          <h2 class="logo">
-            <a href="index.html">
-              <span class="quick">Quick</span> <span class="converter">Converter</span>
-            </a>
-          </h2>
-          <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-          </ul>
+            <h2 class="logo">
+                <a href="/index.html">
+                    <span class="quick">Quick</span> <span class="converter">Converter</span>
+                </a>
+            </h2>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+            </ul>
         </div>
-      </nav>
+    </nav>
 
     <div class="converter-box">
-        <h2>Yard to Mile Converter</h2>
+        <h2>Energy Converter</h2>
         <input type="number" id="inputValue" placeholder="Enter value">
 
         <select id="fromUnit">
-            <option value="yard">Yard</option>
-            <option value="mile">Mile</option>
+            <option value="J">Joule (J)</option>
+            <option value="kJ">Kilojoule (kJ)</option>
+            <option value="cal">Calorie (cal)</option>
+            <option value="kcal">Kilocalorie (kcal)</option>
+            <option value="Wh">Watt-hour (Wh)</option>
+            <option value="kWh">Kilowatt-hour (kWh)</option>
+            <option value="BTU">BTU</option>
         </select>
-
-        <span>to</span>
-
+        <span style="display:block; text-align:center; margin-top: 10px;">to</span>
         <select id="toUnit">
-            <option value="mile">Mile</option>
-            <option value="yard">Yard</option>
+            <option value="J">Joule (J)</option>
+            <option value="kJ">Kilojoule (kJ)</option>
+            <option value="cal">Calorie (cal)</option>
+            <option value="kcal">Kilocalorie (kcal)</option>
+            <option value="Wh">Watt-hour (Wh)</option>
+            <option value="kWh">Kilowatt-hour (kWh)</option>
+            <option value="BTU">BTU</option>
         </select>
 
         <button onclick="swapUnits()">Swap Unit</button>
@@ -44,41 +52,9 @@
         </div>
     </div>
 
-    <div class="info-box">
-        <h3>Yard</h3>
-        <p><strong>Definition:</strong> A yard (symbol: yd) is a unit of length equal to 3 feet or 36 inches. Defined as 0.9144 meters since 1959.</p>
-        <p><strong>History/origin:</strong> English in origin, based on the distance from the tip of the nose to the outstretched thumb. Standardized over time.</p>
-        <p><strong>Current use:</strong> Widely used in the US and UK, especially in sports and land measurement.</p>
-    
-        <h3>Mile</h3>
-        <p><strong>Definition:</strong> A mile (symbol: mi) is a unit of length equal to 5,280 feet or 1,760 yards.</p>
-        <p><strong>History/origin:</strong> Derived from the Roman "mille passus" meaning "thousand paces".</p>
-        <p><strong>Current use:</strong> Used for measuring distances in the UK and US, mainly in road travel.</p>
-    </div>
-    
-    <div class="conversion-table">
-        <h3>Yard to Mile Conversion Table</h3>
-        <table border="1">
-            <tr><th>Yard [yd]</th><th>Mile [mi]</th></tr>
-            <tr><td>100 yd</td><td>0.056818 mi</td></tr>
-            <tr><td>500 yd</td><td>0.284091 mi</td></tr>
-            <tr><td>880 yd</td><td>0.5 mi</td></tr>
-            <tr><td>1760 yd</td><td>1 mi</td></tr>
-            <tr><td>3520 yd</td><td>2 mi</td></tr>
-        </table>
-    </div>
-    
-    <div class="conversion-info">
-        <h3>How to Convert Yards to Miles</h3>
-        <p>1 yard = 0.0005681818 mi</p>
-        <p>1 mile = 1760 yards</p>
-        <p><strong>Example:</strong> convert 880 yd to mi:</p>
-        <p>880 yd = 880 × 0.0005681818 = 0.5 mi</p>
-    </div>
-    
-<!-- Popular Length Unit Conversions Section -->
+     <!-- Popular Length Unit Conversions Section -->
 <div class="common-conversions">
-    <h2>Popular Length Unit Conversions</h2>
+    <h2>Popular Unit Conversions</h2>
     <div class="converter-list">
         <ul>
             <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
@@ -107,6 +83,16 @@
 </div>
 
     <script>
+        const conversions = {
+            'J': 1,
+            'kJ': 1000,
+            'cal': 4.184,
+            'kcal': 4184,
+            'Wh': 3600,
+            'kWh': 3600000,
+            'BTU': 1055.06
+        };
+
         function swapUnits() {
             let from = document.getElementById("fromUnit");
             let to = document.getElementById("toUnit");
@@ -126,16 +112,9 @@
                 return;
             }
 
-            let result;
-            if (fromUnit === "yard" && toUnit === "mile") {
-                result = value * 0.000568182;
-            } else if (fromUnit === "mile" && toUnit === "yard") {
-                result = value / 0.000568182;
-            } else {
-                result = value;
-            }
-
-            resultBox.innerText = `Result: ${result.toFixed(4)} ${toUnit}`;
+            let baseValue = value * conversions[fromUnit];
+            let result = baseValue / conversions[toUnit];
+            resultBox.innerText = `Result: ${result.toFixed(6)} ${toUnit}`;
         }
     </script>
 </body>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2 class="logo">
+                <a href="/index.html">
+                    <span class="quick">Quick</span> <span class="converter">Converter</span>
+                </a>
+            </h2>
+            <ul class="nav-links">
+                <li><a href="/index.html">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="converter-box">
+        <h2>Temperature Converter</h2>
+        <input type="number" id="inputValue" placeholder="Enter value">
+    
+        <select id="fromUnit">
+            <option value="C">Celsius [°C]</option>
+            <option value="F">Fahrenheit [°F]</option>
+            <option value="K">Kelvin [K]</option>
+            <option value="R">Rankine [°R]</option>
+            <option value="Re">Reaumur [°r]</option>
+            <option value="TP">Triple Point of Water</option>
+        </select>
+        <span>to</span>
+        <select id="toUnit">
+            <option value="C">Celsius [°C]</option>
+            <option value="F">Fahrenheit [°F]</option>
+            <option value="K">Kelvin [K]</option>
+            <option value="R">Rankine [°R]</option>
+            <option value="Re">Reaumur [°r]</option>
+            <option value="TP">Triple Point of Water</option>
+        </select>
+    
+        <button onclick="swapUnits()">Swap Unit</button>
+        <button onclick="convert()">Convert</button>
+    
+        <div class="result-box">
+            <p id="result">Result:</p>
+        </div>
+    </div>
+     <!-- Popular Length Unit Conversions Section -->
+<div class="common-conversions">
+    <h2>Popular Unit Conversions</h2>
+    <div class="converter-list">
+        <ul>
+            <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
+            <li><a href="mm_to_inches.html">mm to inches</a></li>
+            <li><a href="meters_to_feet.html">meters to feet</a></li>
+            <li><a href="km_to_miles.html">km to miles</a></li>
+            <li><a href="cm_to_feet.html">cm to feet</a></li>
+            <li><a href="inches_to_feet.html">inches to feet</a></li>
+            <li><a href="meters_to_yards.html">meters to yards</a></li>
+            <li><a href="mm_to_cm.html">mm to cm</a></li>
+            <li><a href="cm_to_m.html">cm to m</a></li>
+            <li><a href="cm_to_km.html">cm to km</a></li>
+        </ul>
+        <ul>
+            <li><a href="mm_to_feet.html">mm to feet</a></li>
+            <li><a href="meters_to_miles.html">meters to miles</a></li>
+            <li><a href="feet_to_miles.html">feet to miles</a></li>
+            <li><a href="yards_to_feet.html">yards to feet</a></li>
+            <li><a href="inches_to_meters.html">inches to meters</a></li>
+            <li><a href="mm_to_m.html">mm to m</a></li>
+            <li><a href="km_to_m.html">km to m</a></li>
+            <li><a href="inches_to_yards.html">inches to yards</a></li>
+            <li><a href="yards_to_miles.html">yards to miles</a></li>
+        </ul>
+    </div>
+</div>
+
+    <script>
+        function swapUnits() {
+            let from = document.getElementById("fromUnit");
+            let to = document.getElementById("toUnit");
+            let temp = from.value;
+            from.value = to.value;
+            to.value = temp;
+        }
+    
+        function toKelvin(value, unit) {
+            switch (unit) {
+                case "C": return value + 273.15;
+                case "F": return (value - 32) * 5/9 + 273.15;
+                case "K": return value;
+                case "R": return value * 5/9;
+                case "Re": return value * 1.25 + 273.15;
+                case "TP": return 273.16;
+                default: return NaN;
+            }
+        }
+    
+        function fromKelvin(kelvin, unit) {
+            switch (unit) {
+                case "C": return kelvin - 273.15;
+                case "F": return (kelvin - 273.15) * 9/5 + 32;
+                case "K": return kelvin;
+                case "R": return kelvin * 9/5;
+                case "Re": return (kelvin - 273.15) * 0.8;
+                case "TP": return kelvin === 273.16 ? 1 : 0; // 1 means yes it is triple point
+                default: return NaN;
+            }
+        }
+    
+        function convert() {
+            let value = parseFloat(document.getElementById("inputValue").value);
+            let from = document.getElementById("fromUnit").value;
+            let to = document.getElementById("toUnit").value;
+            let resultBox = document.getElementById("result");
+    
+            if (isNaN(value)) {
+                resultBox.innerText = "Please enter a valid number!";
+                return;
+            }
+    
+            // Convert to Kelvin first
+            let kelvinValue = toKelvin(value, from);
+    
+            // Convert from Kelvin to desired unit
+            let finalValue = fromKelvin(kelvinValue, to);
+    
+            if (to === "TP") {
+                resultBox.innerText = (kelvinValue === 273.16) ?
+                    "Yes, it's the Triple Point of Water!" :
+                    "No, it's not the Triple Point of Water.";
+            } else {
+                resultBox.innerText = `Result: ${finalValue.toFixed(2)} ${document.querySelector('#toUnit option:checked').text}`;
+            }
+        }
+    </script>
+</body>
+</html>
