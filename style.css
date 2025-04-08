@@ -13,6 +13,8 @@ body {
 
 h1 {
   font-size: 50px;
+  word-break: break-word;
+  max-width: 90vw;
 }
 
 h2 {
@@ -24,7 +26,7 @@ h5 {
   margin: 0;
 }
 
-/* ✅ Navbar Styles */
+/* ✅ Navbar */
 .navbar {
   background-color: #333;
   color: white;
@@ -52,17 +54,17 @@ h5 {
   font-weight: bold;
 }
 
+.logo a:hover {
+  color: #ccc;
+}
+
 .quick {
-  color: #FF5733; 
+  color: #FF5733;
 }
 
 .converter {
   color: white;
 }
-.logo a:hover {
-  color: #ccc;
-}
-
 
 .nav-links {
   list-style: none;
@@ -78,6 +80,10 @@ h5 {
   color: white;
   font-size: 18px;
   transition: color 0.3s;
+}
+
+body {
+  padding-top: 100px;
 }
 
 .nav-links a:hover {
@@ -118,7 +124,7 @@ button {
   border: 1px solid #ccc;
 }
 
-/* ✅ Button Styling */
+/* ✅ Buttons */
 button {
   background-color: #007BFF;
   color: white;
@@ -133,7 +139,7 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* ✅ Result Box */
+/* ✅ Result */
 .result,
 .result-box {
   margin-top: 15px;
@@ -145,15 +151,15 @@ button:hover {
   align-self: center;
 }
 
-/* ✅ Common Conversions Section */
+/* ✅ Common Conversions */
 .common-conversions {
   margin-top: 30px;
   padding: 20px;
-  text-align: center;
   background-color: white;
   border-radius: 10px;
   width: 700px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .common-conversions h2 {
@@ -161,7 +167,6 @@ button:hover {
   font-weight: bold;
   color: #1e4d2b;
   margin-bottom: 15px;
-  text-align: center;
 }
 
 /* ✅ Conversion Links */
@@ -171,6 +176,7 @@ button:hover {
   gap: 30px;
   text-align: left;
   font-size: 20px;
+  flex-wrap: wrap;
 }
 
 .conversion-links ul {
@@ -221,160 +227,7 @@ button:hover {
   text-align: justify;
 }
 
-/* ✅ Fade-in Animation */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ✅ Responsive */
-@media (max-width: 768px) {
-  .converter-box,
-  .conversion {
-    width: 90%;
-    margin: 20px auto;
-  }
-
-  .info-box {
-    width: 90%;
-    padding: 20px;
-  }
-
-  .common-conversions {
-    width: 95%;
-  }
-}
-/* contact section styling */
-.contact-container {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 20px;
-}
-
-.contact-left {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 20px;
-}
-
-.contact-left-title h2 {
-    font-weight: 600;
-    color: #a363aa;
-    font-size: 40px;
-    margin-bottom: 5px;
-}
-
-.contact-left-title hr {
-    border: none;
-    width: 120px;
-    height: 5px;
-    background-color: #a363aa;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; 
-}
-
-.contact-input {
-    width: 400px;
-    max-width: 600px;
-    height: 50px;
-    border: none;
-    outline: none;
-    padding-left: 25px;
-    font-weight: 500;
-    color: #666;
-    border-radius: 50px;
-}
-
-.contact-left textarea {
-    height: 150px; 
-    padding-top: 15px;
-    border-radius: 20px;
-    padding-left: 25px;
-}
-
-.contact-input:focus {
-    border: 2px solid #ff994f;
-}
-
-.contact-input::placeholder {
-    color: #a9a9a9;
-}
-
-.contact-left button {
-    display: flex;
-    align-items: center;
-    padding: 15px 30px;
-    font-size: 16px;
-    color: #fff;
-    gap: 10px;
-    border: none;
-    border-radius: 50px;
-    background: linear-gradient(270deg, #ff994f, #fa6d86);
-    cursor: pointer;
-}
-
-.contact-left button img {
-    height: 15px;
-}
-
-.contact-right img {
-    width: 500px;
-}
-
-@media (max-width: 800px) {
-    .contact-input {
-        width: 80vw;
-    }
-
-    .contact-right {
-        display: none;
-    }
-}
-
-/* Common Converter Two Column List */
-.converter-list {
-    display: flex;
-    justify-content: space-between;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    text-align: left;
-    flex-wrap: wrap;
-    font-size: 20px;
-}
-
-.converter-list ul {
-    list-style-type: disc;
-    margin-right: 30px;
-    margin-left: 30px;
-    padding: 0;
-}
-
-.converter-list a {
-    color: #006400;
-    text-decoration: none;
-}
-
-.converter-list a:hover {
-    text-decoration: underline;
-    color: #ff6600;
-}
-
-/* ✅ Conversion Table Styles */
+/* ✅ Conversion Table */
 .conversion-table {
   margin-top: 30px;
   background-color: #ffffff;
@@ -394,7 +247,6 @@ form {
   margin-bottom: 15px;
 }
 
-/* Table style */
 .conversion-table table {
   width: 100%;
   border-collapse: collapse;
@@ -413,10 +265,11 @@ form {
   color: white;
 }
 
-/* Hover effect */
 .conversion-table tbody tr:hover {
   background-color: #f0f8f5;
 }
+
+/* ✅ Conversion Info */
 .conversion-info {
   background-color: #ffffff;
   border-left: 5px solid #2e7d32;
@@ -446,4 +299,189 @@ form {
 .conversion-info strong {
   font-weight: 600;
   color: #000;
+}
+
+/* ✅ Fade-in Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ✅ Contact Section */
+.contact-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
+}
+
+.contact-left-title h2 {
+  font-weight: 600;
+  color: #a363aa;
+  font-size: 40px;
+  margin-bottom: 5px;
+}
+
+.contact-left-title hr {
+  border: none;
+  width: 120px;
+  height: 5px;
+  background-color: #a363aa;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-input {
+  width: 400px;
+  max-width: 600px;
+  height: 50px;
+  border: none;
+  outline: none;
+  padding-left: 25px;
+  font-weight: 500;
+  color: #666;
+  border-radius: 50px;
+}
+
+.contact-left textarea {
+  height: 150px;
+  padding-top: 15px;
+  border-radius: 20px;
+  padding-left: 25px;
+}
+
+.contact-input:focus {
+  border: 2px solid #ff994f;
+}
+
+.contact-input::placeholder {
+  color: #a9a9a9;
+}
+
+.contact-left button {
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  font-size: 16px;
+  color: #fff;
+  gap: 10px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(270deg, #ff994f, #fa6d86);
+  cursor: pointer;
+}
+
+.contact-left button img {
+  height: 15px;
+}
+
+.contact-right img {
+  width: 500px;
+}
+
+/* ✅ Converter Link Grid */
+.converter-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  text-align: left;
+  font-size: 20px;
+}
+
+.converter-list ul {
+  list-style-type: disc;
+  margin: 0 30px;
+  padding: 0;
+}
+
+.converter-list a {
+  color: #006400;
+  text-decoration: none;
+}
+
+.converter-list a:hover {
+  text-decoration: underline;
+  color: #ff6600;
+}
+
+/* ✅ Mobile Responsive */
+@media (max-width: 768px) {
+  .converter-box,
+  .conversion {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  .info-box,
+  .conversion-info,
+  .conversion-table,
+  .common-conversions {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .conversion-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    padding-left: 10px;
+  }
+
+  .logo a {
+    font-size: 24px;
+  }
+
+  .navbar {
+    height: auto; /* ✅ navbar उंची dynamic केली */
+    padding: 15px 0;
+  }
+
+  body {
+    padding-top: 100px; /* ✅ navbar height नुसार खाली content खाली ढकला */
+  }
+
+  .contact-input {
+    width: 80vw;
+  }
+
+  .contact-right {
+    display: none;
+  }
 }
