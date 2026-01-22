@@ -381,6 +381,7 @@ form {
 .contact-left button {
   display: flex;
   align-items: center;
+  text-align: center;
   padding: 15px 30px;
   font-size: 16px;
   color: #fff;
@@ -494,3 +495,4 @@ form {
   .contact-right {
     display: none;
   }
+
