@@ -368,6 +368,7 @@ form {
   padding-top: 15px;
   border-radius: 20px;
   padding-left: 25px;
+  text-align: center;
 }
 
 .contact-input:focus {
@@ -381,6 +382,7 @@ form {
 .contact-left button {
   display: flex;
   align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 15px 30px;
   font-size: 16px;
@@ -495,4 +497,5 @@ form {
   .contact-right {
     display: none;
   }
+
 
