@@ -4,82 +4,395 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Millimeters to Feet Converter</title>
-    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: #1e3a8a;
+            padding: 15px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .quick {
+            color: #ffffff;
+        }
+
+        .converter {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        .converter-box {
+            width: 90%;
+            max-width: 700px;
+            margin: 40px auto 25px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .converter-box h2 {
+            color: #1e3a8a;
+            margin-bottom: 25px;
+        }
+
+        input,
+        select {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        input {
+            width: 90%;
+            margin-bottom: 15px;
+        }
+
+        select {
+            width: 28%;
+        }
+
+        .converter-box span {
+            font-weight: bold;
+            color: #555;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 15px 5px 5px;
+            border: none;
+            border-radius: 6px;
+            background: #1e3a8a;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #2563eb;
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e0f2fe;
+            border-radius: 8px;
+            color: #075985;
+            font-weight: bold;
+        }
+
+        .info-box,
+        .conversion-table,
+        .conversion-info,
+        .common-conversions {
+            width: 90%;
+            max-width: 1100px;
+            margin: 25px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        h3,
+        .common-conversions h2 {
+            color: #1e3a8a;
+            margin-bottom: 12px;
+        }
+
+        .info-box h3 {
+            margin-top: 20px;
+        }
+
+        .info-box h3:first-child {
+            margin-top: 0;
+        }
+
+        .info-box p,
+        .conversion-info p {
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background: #f1f5f9;
+        }
+
+        .converter-list {
+            display: flex;
+            gap: 50px;
+        }
+
+        .converter-list ul {
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        .converter-list li {
+            margin: 8px 0;
+        }
+
+        .converter-list a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .converter-list a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .nav-container {
+                width: 92%;
+            }
+
+            .converter-box,
+            .info-box,
+            .conversion-table,
+            .conversion-info,
+            .common-conversions {
+                width: 94%;
+                padding: 20px;
+            }
+
+            select {
+                width: 100%;
+                margin: 7px 0;
+            }
+
+            .converter-box span {
+                display: block;
+                margin: 5px;
+            }
+
+            button {
+                width: 100%;
+                margin: 7px 0;
+            }
+
+            .converter-list {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            table {
+                font-size: 13px;
+            }
+
+            th,
+            td {
+                padding: 8px 4px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-          <h2 class="logo">
+
+<nav class="navbar">
+    <div class="nav-container">
+        <h2 class="logo">
             <a href="index.html">
-              <span class="quick">Quick</span> <span class="converter">Converter</span>
+                <span class="quick">Quick</span>
+                <span class="converter">Converter</span>
             </a>
-          </h2>
-          <ul class="nav-links">
+        </h2>
+
+        <ul class="nav-links">
             <li><a href="#">Home</a></li>
-          </ul>
-        </div>
-      </nav>
-    
-    <div class="converter-box">
-        <h2>Millimeters to Feet Converter</h2>
-        <input type="number" id="inputValue" placeholder="Enter value">
-        
-        <select id="fromUnit">
-            <option value="mm">Mm</option>
-            <option value="feet">Feet</option>
-        </select>
-
-        <span>to</span>
-
-        <select id="toUnit">
-            <option value="feet">Feet</option>
-            <option value="mm">Mm</option>
-        </select>
-
-        <button onclick="swapUnits()">Swap Unit</button>
-        <button onclick="convert()">Convert</button>
-
-        <div class="result-box">
-            <p id="result">Result:</p>
-        </div>
+        </ul>
     </div>
+</nav>
 
-    <div class="info-box">
-        <h3>Millimeter</h3>
-        <p><strong>Definition:</strong> A millimeter (mm) is one-thousandth of a meter (0.001 m).</p>
-        <p><strong>History/origin:</strong> Part of the metric system established in France in the 18th century.</p>
-        <p><strong>Current use:</strong> Used globally for measuring small lengths like mechanical parts, tools, and technical dimensions.</p>
-    
-        <h3>Foot</h3>
-        <p><strong>Definition:</strong> A foot (symbol: ft) is a unit of length in the imperial and US customary systems. 1 foot = 0.3048 meters.</p>
-        <p><strong>History/origin:</strong> Based on human foot length. Standardized in 1959.</p>
-        <p><strong>Current use:</strong> Widely used in the US for height, room dimensions, and more. Also used in aviation and some construction globally.</p>
+<div class="converter-box">
+    <h2>Millimeters to Feet Converter</h2>
+
+    <input type="number" id="inputValue" placeholder="Enter value">
+
+    <select id="fromUnit">
+        <option value="mm">Millimeters</option>
+        <option value="feet">Feet</option>
+    </select>
+
+    <span>to</span>
+
+    <select id="toUnit">
+        <option value="feet">Feet</option>
+        <option value="mm">Millimeters</option>
+    </select>
+
+    <button onclick="swapUnits()">Swap Unit</button>
+    <button onclick="convert()">Convert</button>
+
+    <div class="result-box">
+        <p id="result">Result:</p>
     </div>
-    
-    <div class="conversion-table">
-        <h3>Millimeter to Feet Conversion Table</h3>
-        <table border="1">
-            <tr><th>Millimeter [mm]</th><th>Feet [ft]</th></tr>
-            <tr><td>1 mm</td><td>0.00328084 ft</td></tr>
-            <tr><td>10 mm</td><td>0.0328084 ft</td></tr>
-            <tr><td>100 mm</td><td>0.328084 ft</td></tr>
-            <tr><td>500 mm</td><td>1.64042 ft</td></tr>
-            <tr><td>1000 mm</td><td>3.28084 ft</td></tr>
-        </table>
-    </div>
-    
-    <div class="conversion-info">
-        <h3>How to Convert Millimeter to Feet</h3>
-        <p>1 mm = 0.00328084 ft</p>
-        <p>1 ft = 304.8 mm</p>
-        <p><strong>Example:</strong> convert 800 mm to ft:</p>
-        <p>800 mm = 800 × 0.00328084 = 2.62467 ft</p>
-    </div>
-    
-<!-- Popular Length Unit Conversions Section -->
+</div>
+
+<div class="info-box">
+
+    <h3>Millimeter</h3>
+
+    <p>
+        <strong>Definition:</strong>
+        A millimeter (mm) is one-thousandth of a meter (0.001 m).
+    </p>
+
+    <p>
+        <strong>History/origin:</strong>
+        Part of the metric system established in France in the 18th century.
+    </p>
+
+    <p>
+        <strong>Current use:</strong>
+        Used globally for measuring small lengths like mechanical parts,
+        tools, and technical dimensions.
+    </p>
+
+    <h3>Foot</h3>
+
+    <p>
+        <strong>Definition:</strong>
+        A foot (symbol: ft) is a unit of length in the imperial and US
+        customary systems. 1 foot = 0.3048 meters.
+    </p>
+
+    <p>
+        <strong>History/origin:</strong>
+        Based on human foot length. Standardized in 1959.
+    </p>
+
+    <p>
+        <strong>Current use:</strong>
+        Widely used in the US for height, room dimensions, and more.
+        Also used in aviation and some construction globally.
+    </p>
+
+</div>
+
+<div class="conversion-table">
+
+    <h3>Millimeter to Feet Conversion Table</h3>
+
+    <table>
+        <tr>
+            <th>Millimeter [mm]</th>
+            <th>Feet [ft]</th>
+        </tr>
+
+        <tr>
+            <td>1 mm</td>
+            <td>0.00328084 ft</td>
+        </tr>
+
+        <tr>
+            <td>10 mm</td>
+            <td>0.0328084 ft</td>
+        </tr>
+
+        <tr>
+            <td>100 mm</td>
+            <td>0.328084 ft</td>
+        </tr>
+
+        <tr>
+            <td>500 mm</td>
+            <td>1.64042 ft</td>
+        </tr>
+
+        <tr>
+            <td>1000 mm</td>
+            <td>3.28084 ft</td>
+        </tr>
+    </table>
+
+</div>
+
+<div class="conversion-info">
+
+    <h3>How to Convert Millimeter to Feet</h3>
+
+    <p>1 mm = 0.00328084 ft</p>
+
+    <p>1 ft = 304.8 mm</p>
+
+    <p>
+        <strong>Example:</strong>
+        convert 800 mm to ft:
+    </p>
+
+    <p>
+        800 mm = 800 × 0.00328084 = 2.62467 ft
+    </p>
+
+</div>
+
 <div class="common-conversions">
+
     <h2>Popular Length Unit Conversions</h2>
+
     <div class="converter-list">
+
         <ul>
             <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
             <li><a href="mm_to_inches.html">mm to inches</a></li>
@@ -92,6 +405,7 @@
             <li><a href="cm_to_m.html">cm to m</a></li>
             <li><a href="cm_to_km.html">cm to km</a></li>
         </ul>
+
         <ul>
             <li><a href="mm_to_feet.html">mm to feet</a></li>
             <li><a href="meters_to_miles.html">meters to miles</a></li>
@@ -103,34 +417,60 @@
             <li><a href="inches_to_yards.html">inches to yards</a></li>
             <li><a href="yards_to_miles.html">yards to miles</a></li>
         </ul>
+
     </div>
 </div>
-    <script>
-        function swapUnits() {
-            let from = document.getElementById("fromUnit");
-            let to = document.getElementById("toUnit");
-            let temp = from.value;
-            from.value = to.value;
-            to.value = temp;
-        }
 
-        function convert() {
-            let value = parseFloat(document.getElementById("inputValue").value);
-            let fromUnit = document.getElementById("fromUnit").value;
-            let toUnit = document.getElementById("toUnit").value;
-            let resultBox = document.getElementById("result");
+<script>
 
-            if (isNaN(value)) {
-                resultBox.innerText = "Please enter a valid number!";
-                return;
-            }
+function swapUnits() {
 
-            let result = value * 0.00328084 ;
-            if (fromUnit === "feet") {
-                result = value / 0.00328084;
-            }
-            resultBox.innerText = `Result: ${result.toFixed(4)} ${toUnit}`;
-        }
-    </script>
+    let from = document.getElementById("fromUnit");
+    let to = document.getElementById("toUnit");
+
+    let temp = from.value;
+
+    from.value = to.value;
+    to.value = temp;
+}
+
+function convert() {
+
+    let value = parseFloat(
+        document.getElementById("inputValue").value
+    );
+
+    let fromUnit = document.getElementById("fromUnit").value;
+    let toUnit = document.getElementById("toUnit").value;
+
+    let resultBox = document.getElementById("result");
+
+    if (isNaN(value)) {
+
+        resultBox.innerText = "Please enter a valid number!";
+        return;
+    }
+
+    let result;
+
+    if (fromUnit === "mm" && toUnit === "feet") {
+
+        result = value * 0.00328084;
+
+    } else if (fromUnit === "feet" && toUnit === "mm") {
+
+        result = value / 0.00328084;
+
+    } else {
+
+        result = value;
+    }
+
+    resultBox.innerText =
+        `Result: ${result.toFixed(4)} ${toUnit}`;
+}
+
+</script>
+
 </body>
 </html>
