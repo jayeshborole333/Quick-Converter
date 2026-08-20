@@ -1,146 +1,1721 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CM to Inches Converter</title>
-    <link rel="stylesheet" href="style.css">
+
+    <meta
+        name="description"
+        content="CM to Inches Converter - Quickly convert centimeters to inches and inches to centimeters."
+    >
+
+    <title>CM to Inches Converter | Quick Converter</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- =====================================================
+         INTERNAL CSS
+    ====================================================== -->
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #f5f7fb;
+            color: #202124;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 72px;
+
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid #e8eaf0;
+
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            height: 100%;
+
+            margin: auto;
+            padding: 0 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            margin: 0;
+        }
+
+        .logo a {
+            font-size: 28px;
+            font-weight: 800;
+            color: #222;
+        }
+
+        .quick {
+            color: #ff5733;
+        }
+
+        .converter {
+            color: #222;
+        }
+
+        .nav-links {
+            list-style: none;
+
+            display: flex;
+            align-items: center;
+
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #444;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff5733;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .page-hero {
+            min-height: 500px;
+
+            padding: 145px 20px 90px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #ffe9e3,
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    #e2f0ff,
+                    transparent 35%
+                ),
+                #f8faff;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+
+            padding: 8px 18px;
+            margin-bottom: 20px;
+
+            border-radius: 50px;
+
+            background: white;
+
+            color: #ff5733;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+        }
+
+        .page-hero h1 {
+            font-size: clamp(42px, 7vw, 72px);
+
+            line-height: 1.1;
+
+            font-weight: 800;
+
+            color: #171717;
+
+            margin-bottom: 20px;
+        }
+
+        .page-hero h1 span {
+            color: #ff5733;
+        }
+
+        .page-hero p {
+            max-width: 650px;
+
+            margin: auto auto 30px;
+
+            color: #666;
+
+            font-size: 17px;
+        }
+
+        .hero-button {
+            display: inline-block;
+
+            padding: 14px 28px;
+
+            border-radius: 50px;
+
+            background: linear-gradient(
+                135deg,
+                #ff5733,
+                #ff7b54
+            );
+
+            color: white;
+
+            font-weight: 600;
+
+            box-shadow:
+                0 10px 25px rgba(255, 87, 51, 0.3);
+
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 30px rgba(255, 87, 51, 0.4);
+        }
+
+
+        /* =====================================================
+           CONVERTER SECTION
+        ===================================================== */
+
+        .converter-section {
+            max-width: 1000px;
+
+            margin: auto;
+
+            padding: 90px 20px;
+        }
+
+        .section-heading {
+            text-align: center;
+
+            margin-bottom: 40px;
+        }
+
+        .section-label {
+            display: inline-block;
+
+            color: #ff5733;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 8px;
+        }
+
+        .section-heading h2 {
+            font-size: 36px;
+
+            color: #222;
+
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: #777;
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           CONVERTER BOX
+        ===================================================== */
+
+        .converter-box {
+            width: min(600px, 100%);
+
+            margin: auto;
+
+            padding: 30px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            border: 1px solid #ececf1;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.08);
+        }
+
+        .converter-header {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 25px;
+        }
+
+        .converter-icon {
+            width: 55px;
+            height: 55px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            flex-shrink: 0;
+
+            border-radius: 15px;
+
+            background: #fff1ed;
+
+            font-size: 26px;
+        }
+
+        .converter-header h2 {
+            color: #222;
+
+            font-size: 23px;
+
+            margin-bottom: 2px;
+        }
+
+        .converter-header p {
+            color: #888;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           LABEL
+        ===================================================== */
+
+        .converter-box > label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #444;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           INPUT
+        ===================================================== */
+
+        #inputValue {
+            width: 100%;
+
+            padding: 16px;
+
+            margin-bottom: 20px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 12px;
+
+            outline: none;
+
+            background: #fafafa;
+
+            color: #222;
+
+            font-size: 16px;
+
+            transition: 0.3s;
+        }
+
+        #inputValue:focus {
+            border-color: #ff5733;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 4px rgba(255, 87, 51, 0.08);
+        }
+
+
+        /* =====================================================
+           UNIT ROW
+        ===================================================== */
+
+        .unit-row {
+            display: grid;
+
+            grid-template-columns: 1fr 45px 1fr;
+
+            align-items: end;
+
+            gap: 12px;
+
+            margin-bottom: 20px;
+        }
+
+        .unit-group label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #444;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+        .unit-group select {
+            width: 100%;
+
+            padding: 14px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 12px;
+
+            background: #fafafa;
+
+            color: #333;
+
+            outline: none;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .unit-group select:focus {
+            border-color: #ff5733;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 4px rgba(255, 87, 51, 0.08);
+        }
+
+        .unit-arrow {
+            height: 48px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            color: #ff5733;
+
+            font-size: 22px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        .converter-buttons {
+            display: grid;
+
+            grid-template-columns: 1fr 1.5fr;
+
+            gap: 12px;
+
+            margin-top: 5px;
+        }
+
+        .converter-buttons button {
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .swap-btn {
+            background: #f1f3f6;
+
+            color: #444;
+        }
+
+        .swap-btn:hover {
+            background: #e5e7eb;
+
+            transform: translateY(-2px);
+        }
+
+        .convert-btn {
+            background: linear-gradient(
+                135deg,
+                #ff5733,
+                #ff7a59
+            );
+
+            color: white;
+
+            box-shadow:
+                0 8px 20px rgba(255, 87, 51, 0.25);
+        }
+
+        .convert-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 25px rgba(255, 87, 51, 0.35);
+        }
+
+
+        /* =====================================================
+           RESULT
+        ===================================================== */
+
+        .result-box {
+            margin-top: 22px;
+
+            padding: 20px;
+
+            border-radius: 16px;
+
+            background: #f6f8fb;
+
+            border: 1px solid #e9ebef;
+        }
+
+        .result-box p {
+            color: #222;
+
+            font-size: 18px;
+
+            font-weight: 600;
+
+            word-break: break-word;
+        }
+
+        .result-label {
+            margin-bottom: 8px;
+
+            color: #888;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =====================================================
+           INFORMATION
+        ===================================================== */
+
+        .info-box {
+            width: min(1000px, 94%);
+
+            margin: 0 auto 50px;
+
+            padding: 40px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            border: 1px solid #ececf1;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.06);
+        }
+
+        .info-box h3 {
+            margin-top: 25px;
+
+            margin-bottom: 10px;
+
+            color: #222;
+
+            font-size: 22px;
+        }
+
+        .info-box h3:first-child {
+            margin-top: 0;
+        }
+
+        .info-box p {
+            margin-bottom: 12px;
+
+            color: #666;
+
+            font-size: 14px;
+        }
+
+        .info-box strong {
+            color: #333;
+        }
+
+
+        /* =====================================================
+           CONVERSION TABLE
+        ===================================================== */
+
+        .conversion-table {
+            width: min(1000px, 94%);
+
+            margin: 0 auto 50px;
+
+            padding: 40px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            border: 1px solid #ececf1;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.06);
+        }
+
+        .conversion-table h3 {
+            margin-bottom: 25px;
+
+            color: #222;
+
+            text-align: center;
+
+            font-size: 24px;
+        }
+
+        .conversion-table table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            overflow: hidden;
+
+            border-radius: 12px;
+
+            font-size: 14px;
+        }
+
+        .conversion-table th {
+            padding: 15px;
+
+            background: #ff5733;
+
+            color: white;
+
+            font-weight: 600;
+
+            text-align: left;
+        }
+
+        .conversion-table td {
+            padding: 13px 15px;
+
+            border-bottom: 1px solid #eee;
+
+            color: #555;
+        }
+
+        .conversion-table tbody tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        .conversion-table tbody tr:hover {
+            background: #fff1ed;
+        }
+
+
+        /* =====================================================
+           CONVERSION INFO
+        ===================================================== */
+
+        .conversion-info {
+            width: min(1000px, 94%);
+
+            margin: 0 auto 50px;
+
+            padding: 35px 40px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff7f4,
+                    #f4f8ff
+                );
+
+            border-radius: 24px;
+
+            border: 1px solid #ececf1;
+        }
+
+        .conversion-info h3 {
+            margin-bottom: 20px;
+
+            color: #222;
+
+            font-size: 24px;
+        }
+
+        .conversion-info p {
+            margin: 10px 0;
+
+            color: #555;
+        }
+
+        .conversion-info p:first-of-type,
+        .conversion-info p:nth-of-type(2) {
+            display: inline-block;
+
+            margin-right: 20px;
+
+            padding: 10px 15px;
+
+            border-radius: 10px;
+
+            background: white;
+
+            color: #ff5733;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           COMMON CONVERSIONS
+        ===================================================== */
+
+        .common-conversions {
+            width: min(1100px, 94%);
+
+            margin: 0 auto 70px;
+
+            padding: 45px 35px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            border: 1px solid #ececf1;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.06);
+        }
+
+        .common-conversions h2 {
+            margin-bottom: 25px;
+
+            color: #222;
+
+            text-align: center;
+
+            font-size: 28px;
+        }
+
+        .converter-list {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 30px;
+        }
+
+        .converter-list ul {
+            list-style: none;
+        }
+
+        .converter-list li {
+            margin: 10px 0;
+        }
+
+        .converter-list a {
+            display: block;
+
+            padding: 10px 14px;
+
+            border-radius: 10px;
+
+            color: #2457a6;
+
+            background: #f8f9fc;
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+            transition: 0.3s;
+        }
+
+        .converter-list a::before {
+            content: "→ ";
+
+            color: #ff5733;
+
+            font-weight: 700;
+        }
+
+        .converter-list a:hover {
+            color: #ff5733;
+
+            background: #fff1ed;
+
+            transform: translateX(4px);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+            padding: 50px 20px;
+
+            background: #202124;
+
+            color: white;
+
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+
+            margin: auto;
+        }
+
+        .footer h2 {
+            margin-bottom: 8px;
+
+            font-size: 28px;
+        }
+
+        .footer p {
+            color: #aaa;
+
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 25px;
+
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: #ddd;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff5733;
+        }
+
+        .footer-line {
+            height: 1px;
+
+            margin: 20px 0;
+
+            background: #3a3a3a;
+        }
+
+        .copyright {
+            color: #777 !important;
+
+            font-size: 12px !important;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                height: 64px;
+            }
+
+            .nav-container {
+                padding: 0 15px;
+            }
+
+            .logo a {
+                font-size: 22px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .page-hero {
+                min-height: 470px;
+
+                padding: 120px 20px 70px;
+            }
+
+            .page-hero h1 {
+                font-size: 43px;
+            }
+
+            .page-hero p {
+                font-size: 15px;
+            }
+
+            .converter-section {
+                padding: 60px 15px;
+            }
+
+            .section-heading h2 {
+                font-size: 30px;
+            }
+
+            .converter-box {
+                padding: 22px;
+
+                border-radius: 20px;
+            }
+
+            .converter-header h2 {
+                font-size: 20px;
+            }
+
+            .unit-row {
+                grid-template-columns: 1fr;
+
+                gap: 10px;
+            }
+
+            .unit-arrow {
+                height: 30px;
+
+                transform: rotate(90deg);
+            }
+
+            .converter-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .info-box,
+            .conversion-table,
+            .conversion-info {
+                width: calc(100% - 30px);
+
+                padding: 25px 20px;
+
+                border-radius: 20px;
+            }
+
+            .conversion-table {
+                overflow: hidden;
+            }
+
+            .conversion-table table {
+                font-size: 13px;
+            }
+
+            .conversion-table th,
+            .conversion-table td {
+                padding: 11px 10px;
+            }
+
+            .common-conversions {
+                width: calc(100% - 30px);
+
+                padding: 30px 20px;
+            }
+
+            .converter-list {
+                grid-template-columns: 1fr;
+
+                gap: 0;
+            }
+
+            .conversion-info p:first-of-type,
+            .conversion-info p:nth-of-type(2) {
+                display: block;
+
+                margin-right: 0;
+            }
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 450px) {
+
+            .page-hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-button {
+                width: 100%;
+            }
+
+            .converter-box {
+                padding: 18px;
+            }
+
+            .converter-header {
+                align-items: flex-start;
+            }
+
+            .converter-icon {
+                width: 48px;
+                height: 48px;
+
+                font-size: 22px;
+            }
+
+            .info-box h3,
+            .conversion-table h3,
+            .conversion-info h3 {
+                font-size: 20px;
+            }
+
+            .common-conversions h2 {
+                font-size: 23px;
+            }
+        }
+
+    </style>
+
 </head>
+
+
 <body>
 
-    <nav class="navbar">
-        <div class="nav-container">
-          <h2 class="logo">
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <h2 class="logo">
+
             <a href="index.html">
-              <span class="quick">Quick</span> <span class="converter">Converter</span>
+
+                <span class="quick">Quick</span>
+                <span class="converter">Converter</span>
+
             </a>
-          </h2>
-          <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-          </ul>
+
+        </h2>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<header class="page-hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            📏 Length Converter
         </div>
-      </nav>
+
+        <h1>
+            CM
+            <span>to</span>
+            Inches
+        </h1>
+
+        <p>
+            Convert centimeters to inches or inches to centimeters
+            quickly and accurately.
+        </p>
+
+        <a href="#converter" class="hero-button">
+            Start Converting ↓
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     CONVERTER
+===================================================== -->
+
+<main>
+
+<section class="converter-section" id="converter">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            QUICK CONVERTER
+        </span>
+
+        <h2>
+            CM ↔ Inches Converter
+        </h2>
+
+        <p>
+            Enter a value and select the units you want to convert.
+        </p>
+
+    </div>
+
 
     <div class="converter-box">
-        <h2>CM to Inches Converter</h2>
 
-        <input type="number" id="inputValue" placeholder="Enter value">
+        <div class="converter-header">
 
-        <select id="fromUnit">
-            <option value="cm">Centimeter</option>
-            <option value="inch">Inches</option>
-        </select>
+            <div class="converter-icon">
+                📏
+            </div>
 
-        <span>to</span>
+            <div>
 
-        <select id="toUnit">
-            <option value="inch">Inches</option>
-            <option value="cm">Centimeter</option>
-        </select>
+                <h2>
+                    Centimeter ↔ Inch
+                </h2>
 
-        <button onclick="swapUnits()">Swap Unit</button>
-        <button onclick="convert()">Convert</button>
+                <p>
+                    Fast and accurate length conversion
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <label for="inputValue">
+            Enter Length
+        </label>
+
+        <input
+            type="number"
+            id="inputValue"
+            placeholder="Enter value"
+            step="any"
+            autocomplete="off"
+        >
+
+
+        <div class="unit-row">
+
+            <div class="unit-group">
+
+                <label for="fromUnit">
+                    From
+                </label>
+
+                <select id="fromUnit">
+
+                    <option value="cm">
+                        Centimeter (cm)
+                    </option>
+
+                    <option value="inch">
+                        Inches (in)
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="unit-arrow">
+                →
+            </div>
+
+
+            <div class="unit-group">
+
+                <label for="toUnit">
+                    To
+                </label>
+
+                <select id="toUnit">
+
+                    <option value="inch">
+                        Inches (in)
+                    </option>
+
+                    <option value="cm">
+                        Centimeter (cm)
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="converter-buttons">
+
+            <button
+                type="button"
+                class="swap-btn"
+                onclick="swapUnits()"
+            >
+                🔄 Swap
+            </button>
+
+            <button
+                type="button"
+                class="convert-btn"
+                onclick="convert()"
+            >
+                Convert Length
+            </button>
+
+        </div>
+
 
         <div class="result-box">
-            <p id="result">Result:</p>
+
+            <div class="result-label">
+                Conversion Result
+            </div>
+
+            <p id="result">
+                Result will appear here
+            </p>
+
         </div>
+
     </div>
 
-    <div class="info-box">
-        <h3>Centimeter</h3>
-        <p><strong>Definition:</strong> A centimeter (symbol: cm) is a unit of length in the International System of Units (SI), the current form of the metric system. It is defined as 1/100 meters.</p>
-        <p><strong>History/origin:</strong> A centimeter is based on the SI unit meter, and as the prefix "centi" indicates, is equal to one hundredth of a meter.</p>
-        <p><strong>Current use:</strong> The centimeter is widely used worldwide in countries that follow the metric system, particularly to measure height, small objects, or distances.</p>
+</section>
 
-        <h3>Inch</h3>
-        <p><strong>Definition:</strong> An inch (symbol: in) is a unit of length in the imperial and US customary systems of measurement. An inch is exactly equal to 25.4 millimeters.</p>
-        <p><strong>History/origin:</strong> The word "inch" comes from the Latin "uncia" meaning one-twelfth of a Roman foot.</p>
-        <p><strong>Current use:</strong> Inches are mostly used in the US, UK, and Canada, especially for measuring height, screen sizes, and in construction industries.</p>
+
+<!-- =====================================================
+     INFORMATION
+===================================================== -->
+
+<section class="info-box">
+
+    <h3>
+        Centimeter
+    </h3>
+
+    <p>
+        <strong>Definition:</strong>
+        A centimeter (symbol: cm) is a unit of length in the
+        International System of Units (SI). It is equal to
+        one hundredth of a meter.
+    </p>
+
+    <p>
+        <strong>History/origin:</strong>
+        The centimeter is based on the SI unit meter, with the
+        prefix "centi" indicating one hundredth.
+    </p>
+
+    <p>
+        <strong>Current use:</strong>
+        Centimeters are widely used worldwide to measure height,
+        small objects, distances, and everyday measurements.
+    </p>
+
+
+    <h3>
+        Inch
+    </h3>
+
+    <p>
+        <strong>Definition:</strong>
+        An inch (symbol: in) is a unit of length in the imperial
+        and US customary systems. One inch is exactly equal to
+        25.4 millimeters.
+    </p>
+
+    <p>
+        <strong>History/origin:</strong>
+        The word "inch" comes from the Latin "uncia", meaning
+        one-twelfth of a Roman foot.
+    </p>
+
+    <p>
+        <strong>Current use:</strong>
+        Inches are commonly used in the US, UK, and Canada,
+        especially for height, screen sizes, and construction.
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     CONVERSION TABLE
+===================================================== -->
+
+<section class="conversion-table">
+
+    <h3>
+        Centimeter to Inch Conversion Table
+    </h3>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Centimeter [cm]</th>
+                <th>Inch [in]</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>1 cm</td>
+                <td>0.3937 in</td>
+            </tr>
+
+            <tr>
+                <td>2 cm</td>
+                <td>0.7874 in</td>
+            </tr>
+
+            <tr>
+                <td>5 cm</td>
+                <td>1.9685 in</td>
+            </tr>
+
+            <tr>
+                <td>10 cm</td>
+                <td>3.9370 in</td>
+            </tr>
+
+            <tr>
+                <td>20 cm</td>
+                <td>7.8740 in</td>
+            </tr>
+
+            <tr>
+                <td>50 cm</td>
+                <td>19.6850 in</td>
+            </tr>
+
+            <tr>
+                <td>100 cm</td>
+                <td>39.3701 in</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+
+<!-- =====================================================
+     CONVERSION INFO
+===================================================== -->
+
+<section class="conversion-info">
+
+    <h3>
+        How to Convert Centimeter to Inch
+    </h3>
+
+    <p>
+        1 cm = 0.3937 in
+    </p>
+
+    <p>
+        1 in = 2.54 cm
+    </p>
+
+    <p>
+        <strong>Example:</strong>
+        15 cm = 15 × 0.3937 = 5.9055 in
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     COMMON CONVERSIONS
+===================================================== -->
+
+<section class="common-conversions">
+
+    <h2>
+        Popular Length Unit Conversions
+    </h2>
+
+    <div class="converter-list">
+
+        <ul>
+
+            <li>
+                <a href="Centemeter_to_Inches.html">
+                    cm to inches
+                </a>
+            </li>
+
+            <li>
+                <a href="mm_to_inches.html">
+                    mm to inches
+                </a>
+            </li>
+
+            <li>
+                <a href="meters_to_feet.html">
+                    meters to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="km_to_miles.html">
+                    km to miles
+                </a>
+            </li>
+
+            <li>
+                <a href="cm_to_feet.html">
+                    cm to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="inches_to_feet.html">
+                    inches to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="meters_to_yards.html">
+                    meters to yards
+                </a>
+            </li>
+
+            <li>
+                <a href="mm_to_cm.html">
+                    mm to cm
+                </a>
+            </li>
+
+            <li>
+                <a href="cm_to_m.html">
+                    cm to m
+                </a>
+            </li>
+
+            <li>
+                <a href="cm_to_km.html">
+                    cm to km
+                </a>
+            </li>
+
+        </ul>
+
+
+        <ul>
+
+            <li>
+                <a href="mm_to_feet.html">
+                    mm to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="meters_to_miles.html">
+                    meters to miles
+                </a>
+            </li>
+
+            <li>
+                <a href="feet_to_miles.html">
+                    feet to miles
+                </a>
+            </li>
+
+            <li>
+                <a href="yards_to_feet.html">
+                    yards to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="inches_to_meters.html">
+                    inches to meters
+                </a>
+            </li>
+
+            <li>
+                <a href="mm_to_m.html">
+                    mm to m
+                </a>
+            </li>
+
+            <li>
+                <a href="km_to_m.html">
+                    km to m
+                </a>
+            </li>
+
+            <li>
+                <a href="inches_to_yards.html">
+                    inches to yards
+                </a>
+            </li>
+
+            <li>
+                <a href="yards_to_miles.html">
+                    yards to miles
+                </a>
+            </li>
+
+        </ul>
+
     </div>
 
-    <div class="conversion-table">
-        <h3>Centimeter to Inch Conversion Table</h3>
-        <table border="1">
-            <tr><th>Centimeter [cm]</th><th>Inch [in]</th></tr>
-            <tr><td>1 cm</td><td>0.3937 in</td></tr>
-            <tr><td>2 cm</td><td>0.7874 in</td></tr>
-            <tr><td>5 cm</td><td>1.9685 in</td></tr>
-            <tr><td>10 cm</td><td>3.9370 in</td></tr>
-            <tr><td>20 cm</td><td>7.8740 in</td></tr>
-            <tr><td>50 cm</td><td>19.6850 in</td></tr>
-            <tr><td>100 cm</td><td>39.3701 in</td></tr>
-        </table>
-    </div>
+</section>
 
-    <div class="conversion-info">
-        <h3>How to Convert Centimeter to Inch</h3>
-        <p>1 cm = 0.3937 in</p>
-        <p>1 in = 2.54 cm</p>
-        <p><strong>Example:</strong> 15 cm = 15 × 0.3937 = 5.9055 in</p>
-    </div>
 
-    <div class="common-conversions">
-        <h2>Popular Length Unit Conversions</h2>
-        <div class="converter-list">
-            <ul>
-                <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
-                <li><a href="mm_to_inches.html">mm to inches</a></li>
-                <li><a href="meters_to_feet.html">meters to feet</a></li>
-                <li><a href="km_to_miles.html">km to miles</a></li>
-                <li><a href="cm_to_feet.html">cm to feet</a></li>
-                <li><a href="inches_to_feet.html">inches to feet</a></li>
-                <li><a href="meters_to_yards.html">meters to yards</a></li>
-                <li><a href="mm_to_cm.html">mm to cm</a></li>
-                <li><a href="cm_to_m.html">cm to m</a></li>
-                <li><a href="cm_to_km.html">cm to km</a></li>
-            </ul>
-            <ul>
-                <li><a href="mm_to_feet.html">mm to feet</a></li>
-                <li><a href="meters_to_miles.html">meters to miles</a></li>
-                <li><a href="feet_to_miles.html">feet to miles</a></li>
-                <li><a href="yards_to_feet.html">yards to feet</a></li>
-                <li><a href="inches_to_meters.html">inches to meters</a></li>
-                <li><a href="mm_to_m.html">mm to m</a></li>
-                <li><a href="km_to_m.html">km to m</a></li>
-                <li><a href="inches_to_yards.html">inches to yards</a></li>
-                <li><a href="yards_to_miles.html">yards to miles</a></li>
-            </ul>
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <h2>
+            <span class="quick">Quick</span>
+            Converter
+        </h2>
+
+        <p>
+            Fast, simple and accurate unit conversion.
+        </p>
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="#converter">
+                Converter
+            </a>
+
+            <a href="#info">
+                Information
+            </a>
+
         </div>
+
+        <div class="footer-line"></div>
+
+        <p class="copyright">
+            © 2026 Quick Converter. All rights reserved.
+        </p>
+
     </div>
 
-    <script>
-        function swapUnits() {
-            let from = document.getElementById("fromUnit");
-            let to = document.getElementById("toUnit");
+</footer>
 
-            let temp = from.value;
-            from.value = to.value;
-            to.value = temp;
-        }
 
-        function convert() {
-            let value = parseFloat(document.getElementById("inputValue").value);
-            let fromUnit = document.getElementById("fromUnit").value;
-            let toUnit = document.getElementById("toUnit").value;
-            let resultBox = document.getElementById("result");
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
-            if (isNaN(value)) {
-                resultBox.innerText = "Please enter a valid number!";
-                return;
-            }
+<script>
 
-            let result;
-            if (fromUnit === "cm" && toUnit === "inch") {
-                result = value / 2.54;
-            } else if (fromUnit === "inch" && toUnit === "cm") {
-                result = value * 2.54;
-            } else {
-                result = value;
-            }
+function swapUnits() {
 
-            resultBox.innerText = `Result: ${result.toFixed(2)} ${toUnit}`;
-        }
-    </script>
+    const from =
+        document.getElementById("fromUnit");
+
+    const to =
+        document.getElementById("toUnit");
+
+    const temp = from.value;
+
+    from.value = to.value;
+
+    to.value = temp;
+
+}
+
+
+function convert() {
+
+    const value =
+        parseFloat(
+            document.getElementById("inputValue").value
+        );
+
+    const fromUnit =
+        document.getElementById("fromUnit").value;
+
+    const toUnit =
+        document.getElementById("toUnit").value;
+
+    const resultBox =
+        document.getElementById("result");
+
+
+    if (isNaN(value)) {
+
+        resultBox.innerText =
+            "Please enter a valid number.";
+
+        return;
+
+    }
+
+
+    let result;
+
+
+    if (
+        fromUnit === "cm" &&
+        toUnit === "inch"
+    ) {
+
+        result = value / 2.54;
+
+    }
+
+    else if (
+        fromUnit === "inch" &&
+        toUnit === "cm"
+    ) {
+
+        result = value * 2.54;
+
+    }
+
+    else {
+
+        result = value;
+
+    }
+
+
+    const unit =
+        toUnit === "cm"
+            ? "cm"
+            : "in";
+
+
+    resultBox.innerText =
+        `${result.toFixed(4)} ${unit}`;
+
+}
+
+</script>
+
 
 </body>
 </html>
