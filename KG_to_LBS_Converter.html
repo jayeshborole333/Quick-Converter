@@ -1,143 +1,2533 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KG to LBS Converter</title>
-    <link rel="stylesheet" href="./style.css">
+
+    <meta
+        name="description"
+        content="KG to LBS Converter - Quickly convert kilograms to pounds and pounds to kilograms."
+    >
+
+    <title>KG to LBS Converter | Quick Converter</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #f5f7fb;
+            color: #202124;
+            line-height: 1.6;
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+
+
+        button,
+        input,
+        select {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 72px;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid #e8eaf0;
+
+            z-index: 1000;
+        }
+
+
+        .nav-container {
+            max-width: 1200px;
+            height: 100%;
+
+            margin: auto;
+            padding: 0 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .logo {
+            margin: 0;
+        }
+
+
+        .logo a {
+            font-size: 28px;
+            font-weight: 800;
+            color: #222;
+        }
+
+
+        .quick {
+            color: #ff5733;
+        }
+
+
+        .converter {
+            color: #222;
+        }
+
+
+        .nav-links {
+            list-style: none;
+
+            display: flex;
+            align-items: center;
+
+            gap: 28px;
+        }
+
+
+        .nav-links a {
+            color: #444;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+
+        .nav-links a:hover {
+            color: #ff5733;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .page-hero {
+            min-height: 480px;
+
+            padding: 145px 20px 90px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #fff0e9,
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    #e5f1ff,
+                    transparent 35%
+                ),
+                #f8faff;
+        }
+
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+
+        .hero-badge {
+            display: inline-block;
+
+            padding: 8px 18px;
+
+            margin-bottom: 20px;
+
+            border-radius: 50px;
+
+            background: white;
+
+            color: #ff5733;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.06);
+        }
+
+
+        .page-hero h1 {
+            font-size: clamp(45px, 7vw, 75px);
+
+            line-height: 1.1;
+
+            font-weight: 800;
+
+            color: #171717;
+
+            margin-bottom: 22px;
+        }
+
+
+        .page-hero h1 span {
+            color: #ff5733;
+        }
+
+
+        .page-hero p {
+            max-width: 650px;
+
+            margin: auto auto 30px;
+
+            color: #666;
+
+            font-size: 17px;
+        }
+
+
+        .hero-button {
+            display: inline-block;
+
+            padding: 14px 28px;
+
+            border-radius: 50px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff5733,
+                    #ff7b54
+                );
+
+            color: white;
+
+            font-weight: 600;
+
+            box-shadow:
+                0 10px 25px rgba(255, 87, 51, 0.3);
+
+            transition: 0.3s;
+        }
+
+
+        .hero-button:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 30px rgba(255, 87, 51, 0.4);
+        }
+
+
+        /* =====================================================
+           SECTION
+        ===================================================== */
+
+        .converter-section,
+        .information-section,
+        .table-section,
+        .example-section,
+        .how-section,
+        .popular-section {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 80px 20px;
+        }
+
+
+        .section-heading {
+            text-align: center;
+
+            margin-bottom: 40px;
+        }
+
+
+        .section-label {
+            display: inline-block;
+
+            color: #ff5733;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .section-heading h2 {
+            font-size: 36px;
+
+            color: #222;
+
+            margin-bottom: 8px;
+        }
+
+
+        .section-heading p {
+            color: #777;
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           CONVERTER
+        ===================================================== */
+
+        .converter-box {
+            width: min(620px, 100%);
+
+            margin: auto;
+
+            padding: 32px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            border: 1px solid #ececf1;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.08);
+
+            animation: cardIn 0.5s ease;
+        }
+
+
+        @keyframes cardIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        .converter-box h2 {
+            text-align: center;
+
+            color: #222;
+
+            font-size: 25px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .converter-box > input {
+            width: 100%;
+
+            padding: 16px 18px;
+
+            margin-bottom: 18px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 12px;
+
+            outline: none;
+
+            background: #fafafa;
+
+            font-size: 16px;
+
+            transition: 0.3s;
+        }
+
+
+        .converter-box > input:focus {
+            border-color: #ff5733;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 4px rgba(255, 87, 51, 0.08);
+        }
+
+
+        .unit-row {
+            display: grid;
+
+            grid-template-columns: 1fr 45px 1fr;
+
+            align-items: end;
+
+            gap: 12px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .unit-group {
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .unit-group label {
+            font-size: 13px;
+
+            font-weight: 600;
+
+            color: #555;
+
+            margin-bottom: 7px;
+        }
+
+
+        .unit-group select {
+            width: 100%;
+
+            padding: 14px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 12px;
+
+            background: #fafafa;
+
+            outline: none;
+
+            cursor: pointer;
+
+            font-size: 14px;
+        }
+
+
+        .unit-group select:focus {
+            border-color: #ff5733;
+        }
+
+
+        .unit-arrow {
+            height: 46px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            color: #ff5733;
+
+            font-size: 22px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        .converter-box button {
+            border: none;
+
+            padding: 14px 18px;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+
+        .converter-box button:first-of-type {
+            width: 32%;
+
+            background: #f1f3f6;
+
+            color: #444;
+
+            margin-right: 2%;
+        }
+
+
+        .converter-box button:first-of-type:hover {
+            background: #e5e8ed;
+
+            transform: translateY(-2px);
+        }
+
+
+        .converter-box button:nth-of-type(2) {
+            width: 66%;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff5733,
+                    #ff7a59
+                );
+
+            box-shadow:
+                0 8px 20px rgba(255, 87, 51, 0.25);
+        }
+
+
+        .converter-box button:nth-of-type(2):hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 25px rgba(255, 87, 51, 0.35);
+        }
+
+
+        /* =====================================================
+           RESULT
+        ===================================================== */
+
+        .result-box {
+            margin-top: 22px;
+
+            padding: 22px;
+
+            border-radius: 16px;
+
+            background: #f6f8fb;
+
+            border: 1px solid #e9ebef;
+
+            text-align: center;
+        }
+
+
+        .result-box p {
+            color: #222;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            word-break: break-word;
+        }
+
+
+        /* =====================================================
+           INFO
+        ===================================================== */
+
+        .info-box {
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding: 40px 35px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.06);
+        }
+
+
+        .info-box h3 {
+            color: #222;
+
+            font-size: 23px;
+
+            margin-bottom: 12px;
+
+            padding-left: 14px;
+
+            border-left: 4px solid #ff5733;
+        }
+
+
+        .info-box p {
+            color: #666;
+
+            font-size: 14px;
+
+            margin-bottom: 14px;
+        }
+
+
+        .info-box h3:nth-of-type(2) {
+            margin-top: 35px;
+        }
+
+
+        /* =====================================================
+           INFORMATION CARDS
+        ===================================================== */
+
+        .info-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 22px;
+        }
+
+
+        .info-card {
+            padding: 30px;
+
+            background: white;
+
+            border: 1px solid #ececf1;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.05);
+
+            transition: 0.3s;
+        }
+
+
+        .info-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .info-card-icon {
+            width: 52px;
+            height: 52px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 15px;
+
+            border-radius: 14px;
+
+            background: #fff1ed;
+
+            font-size: 24px;
+        }
+
+
+        .info-card h3 {
+            font-size: 21px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .info-card > p {
+            color: #777;
+
+            font-size: 14px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .info-detail {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 12px 0;
+
+            border-top: 1px solid #eee;
+
+            font-size: 13px;
+        }
+
+
+        .info-detail strong {
+            color: #444;
+        }
+
+
+        .info-detail span {
+            color: #ff5733;
+
+            font-weight: 600;
+
+            text-align: right;
+        }
+
+
+        /* =====================================================
+           TABLE
+        ===================================================== */
+
+        .table-card {
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.06);
+        }
+
+
+        .table-wrapper {
+            width: 100%;
+
+            overflow-x: auto;
+        }
+
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 450px;
+        }
+
+
+        th {
+            background: #ff5733;
+
+            color: white;
+
+            padding: 14px;
+
+            font-size: 14px;
+
+            text-align: left;
+        }
+
+
+        td {
+            padding: 13px 14px;
+
+            border-bottom: 1px solid #eee;
+
+            color: #555;
+
+            font-size: 14px;
+        }
+
+
+        tbody tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+
+        tbody tr:hover {
+            background: #fff4f0;
+        }
+
+
+        /* =====================================================
+           CONVERSION INFO
+        ===================================================== */
+
+        .conversion-info {
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding: 40px 35px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff7f4,
+                    #f3f7ff
+                );
+
+            border-radius: 24px;
+        }
+
+
+        .conversion-info h3 {
+            font-size: 25px;
+
+            margin-bottom: 18px;
+
+            color: #222;
+        }
+
+
+        .conversion-info p {
+            margin: 10px 0;
+
+            color: #555;
+        }
+
+
+        .conversion-info p:first-of-type {
+            display: inline-block;
+
+            padding: 12px 18px;
+
+            border-radius: 10px;
+
+            background: white;
+
+            color: #ff5733;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           EXAMPLE
+        ===================================================== */
+
+        .example-card {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 22px;
+
+            padding: 32px;
+
+            background: white;
+
+            border-radius: 22px;
+
+            border: 1px solid #ececf1;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.06);
+        }
+
+
+        .example-icon {
+            width: 55px;
+            height: 55px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background: #fff1ed;
+
+            font-size: 25px;
+        }
+
+
+        .example-card h2 {
+            font-size: 24px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .example-card p {
+            color: #666;
+
+            font-size: 14px;
+
+            margin: 8px 0;
+        }
+
+
+        .example-formula {
+            display: inline-block;
+
+            padding: 13px 18px;
+
+            margin: 10px 0;
+
+            background: #f6f8fb;
+
+            border-radius: 10px;
+
+            color: #333;
+
+            font-weight: 600;
+        }
+
+
+        .example-formula strong,
+        .example-result strong {
+            color: #ff5733;
+        }
+
+
+        /* =====================================================
+           HOW IT WORKS
+        ===================================================== */
+
+        .steps {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .step {
+            padding: 30px;
+
+            background: white;
+
+            border-radius: 20px;
+
+            text-align: center;
+
+            border: 1px solid #ececf1;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.05);
+        }
+
+
+        .step-number {
+            width: 55px;
+            height: 55px;
+
+            margin: 0 auto 15px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #fff1ed;
+
+            color: #ff5733;
+
+            font-weight: 800;
+
+            font-size: 18px;
+        }
+
+
+        .step h3 {
+            margin-bottom: 8px;
+
+            font-size: 18px;
+        }
+
+
+        .step p {
+            color: #777;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           POPULAR CONVERSIONS
+        ===================================================== */
+
+        .popular-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .popular-card {
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            padding: 20px;
+
+            background: white;
+
+            border: 1px solid #ececf1;
+
+            border-radius: 18px;
+
+            color: #222;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.05);
+
+            transition: 0.3s;
+        }
+
+
+        .popular-card:hover {
+            transform: translateY(-5px);
+
+            border-color: #ffb09e;
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .popular-card > span {
+            width: 45px;
+            height: 45px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: #fff1ed;
+
+            border-radius: 12px;
+
+            font-size: 22px;
+        }
+
+
+        .popular-card h3 {
+            font-size: 15px;
+
+            margin-bottom: 2px;
+        }
+
+
+        .popular-card p {
+            font-size: 12px;
+
+            color: #888;
+        }
+
+
+        .popular-card b {
+            margin-left: auto;
+
+            color: #ff5733;
+
+            font-size: 20px;
+        }
+
+
+        /* =====================================================
+           COMMON CONVERSIONS
+        ===================================================== */
+
+        .common-conversions {
+            width: min(1100px, 94%);
+
+            margin: 50px auto;
+
+            padding: 45px 35px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.06);
+        }
+
+
+        .common-conversions h2 {
+            text-align: center;
+
+            margin-bottom: 30px;
+
+            font-size: 28px;
+        }
+
+
+        .converter-list {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 30px;
+        }
+
+
+        .converter-list ul {
+            list-style: none;
+        }
+
+
+        .converter-list li {
+            margin: 10px 0;
+        }
+
+
+        .converter-list a {
+            color: #2457a6;
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+            transition: 0.3s;
+        }
+
+
+        .converter-list a::before {
+            content: "→ ";
+
+            color: #ff5733;
+        }
+
+
+        .converter-list a:hover {
+            color: #ff5733;
+
+            padding-left: 5px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+            background: #202124;
+
+            color: white;
+
+            padding: 50px 20px;
+
+            text-align: center;
+
+            margin-top: 40px;
+        }
+
+
+        .footer-content {
+            max-width: 800px;
+
+            margin: auto;
+        }
+
+
+        .footer h2 {
+            font-size: 28px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .footer p {
+            color: #aaa;
+
+            font-size: 14px;
+        }
+
+
+        .footer-links {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 25px;
+
+            margin: 20px 0;
+        }
+
+
+        .footer-links a {
+            color: #ddd;
+
+            font-size: 14px;
+        }
+
+
+        .footer-links a:hover {
+            color: #ff5733;
+        }
+
+
+        .footer-line {
+            height: 1px;
+
+            background: #3a3a3a;
+
+            margin: 20px 0;
+        }
+
+
+        .copyright {
+            font-size: 12px !important;
+
+            color: #777 !important;
+        }
+
+
+        /* =====================================================
+           BACK TO TOP
+        ===================================================== */
+
+        .back-to-top {
+            position: fixed;
+
+            right: 25px;
+            bottom: 25px;
+
+            width: 45px;
+            height: 45px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #ff5733;
+
+            color: white;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            box-shadow:
+                0 8px 20px rgba(255, 87, 51, 0.3);
+
+            z-index: 999;
+        }
+
+
+        .back-to-top.show {
+            display: flex;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                height: 65px;
+            }
+
+
+            .nav-container {
+                padding: 0 15px;
+            }
+
+
+            .logo a {
+                font-size: 22px;
+            }
+
+
+            .nav-links {
+                gap: 10px;
+            }
+
+
+            .nav-links li:not(:first-child) {
+                display: none;
+            }
+
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+
+            .page-hero {
+                min-height: 500px;
+
+                padding: 125px 20px 70px;
+            }
+
+
+            .page-hero h1 {
+                font-size: 43px;
+            }
+
+
+            .page-hero p {
+                font-size: 15px;
+            }
+
+
+            .converter-section,
+            .information-section,
+            .table-section,
+            .example-section,
+            .how-section,
+            .popular-section {
+                padding: 60px 15px;
+            }
+
+
+            .section-heading h2 {
+                font-size: 29px;
+            }
+
+
+            .converter-box {
+                padding: 22px;
+
+                border-radius: 18px;
+            }
+
+
+            .converter-box h2 {
+                font-size: 21px;
+            }
+
+
+            .unit-row {
+                grid-template-columns: 1fr;
+
+                gap: 10px;
+            }
+
+
+            .unit-arrow {
+                height: 30px;
+
+                transform: rotate(90deg);
+            }
+
+
+            .converter-box button:first-of-type,
+            .converter-box button:nth-of-type(2) {
+                width: 100%;
+
+                margin: 0 0 10px;
+            }
+
+
+            .info-box {
+                width: 94%;
+
+                padding: 28px 20px;
+            }
+
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .table-card {
+                padding: 15px;
+            }
+
+
+            .conversion-info {
+                width: 94%;
+
+                padding: 30px 22px;
+            }
+
+
+            .example-card {
+                flex-direction: column;
+
+                padding: 25px;
+            }
+
+
+            .example-card h2 {
+                font-size: 21px;
+            }
+
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+
+            .popular-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .converter-list {
+                grid-template-columns: 1fr;
+            }
+
+
+            .common-conversions {
+                padding: 30px 20px;
+            }
+
+
+            .common-conversions h2 {
+                font-size: 23px;
+            }
+
+
+            .footer-links {
+                flex-wrap: wrap;
+
+                gap: 15px;
+            }
+
+        }
+
+
+        @media (max-width: 450px) {
+
+            .page-hero h1 {
+                font-size: 37px;
+            }
+
+
+            .hero-button {
+                width: 100%;
+            }
+
+
+            .converter-box {
+                padding: 18px;
+            }
+
+
+            .result-box p {
+                font-size: 17px;
+            }
+
+
+            .info-card {
+                padding: 22px;
+            }
+
+
+            .back-to-top {
+                right: 15px;
+
+                bottom: 15px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
+
 <body>
 
-    <nav class="navbar">
-        <div class="nav-container">
-          <h2 class="logo">
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <div class="logo">
+
             <a href="index.html">
-              <span class="quick">Quick</span> <span class="converter">Converter</span>
+
+                <span class="quick">Quick</span>
+                <span class="converter">Converter</span>
+
             </a>
-          </h2>
-          <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-          </ul>
+
         </div>
-      </nav>
+
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="#converter">Converter</a>
+            </li>
+
+            <li>
+                <a href="#information">Info</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<header class="page-hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            ⚖️ Weight Converter
+        </div>
+
+
+        <h1>
+            Kilograms
+            <span>to</span>
+            Pounds
+        </h1>
+
+
+        <p>
+            Convert kilograms to pounds or pounds to kilograms
+            quickly and accurately.
+        </p>
+
+
+        <a href="#converter" class="hero-button">
+            Start Converting ↓
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     CONVERTER
+===================================================== -->
+
+<main>
+
+<section class="converter-section" id="converter">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            QUICK CONVERTER
+        </span>
+
+        <h2>
+            KG ↔ LBS Converter
+        </h2>
+
+        <p>
+            Enter a value and select the units you want to convert.
+        </p>
+
+    </div>
+
 
     <div class="converter-box">
-        <h2>KG to LBS Converter</h2>
 
-        <input type="number" id="inputValue" placeholder="Enter value">
-        
-        <select id="fromUnit">
-            <option value="kg">Kilograms</option>
-            <option value="lbs">Pounds (LBS)</option>
-        </select>
+        <h2>
+            Kilogram ↔ Pound
+        </h2>
 
-        <span>to</span>
 
-        <select id="toUnit">
-            <option value="lbs">Pounds (LBS)</option>
-            <option value="kg">Kilograms</option>
-        </select>
+        <input
+            type="number"
+            id="inputValue"
+            placeholder="Enter value"
+            step="any"
+            autocomplete="off"
+        >
 
-        <button onclick="swapUnits()">Swap Unit</button>
-        <button onclick="convert()">Convert</button>
+
+        <div class="unit-row">
+
+            <div class="unit-group">
+
+                <label for="fromUnit">
+                    From
+                </label>
+
+                <select id="fromUnit">
+
+                    <option value="kg">
+                        Kilograms (kg)
+                    </option>
+
+                    <option value="lbs">
+                        Pounds (lb)
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="unit-arrow">
+                →
+            </div>
+
+
+            <div class="unit-group">
+
+                <label for="toUnit">
+                    To
+                </label>
+
+                <select id="toUnit">
+
+                    <option value="lbs">
+                        Pounds (lb)
+                    </option>
+
+                    <option value="kg">
+                        Kilograms (kg)
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            onclick="swapUnits()"
+        >
+            🔄 Swap Unit
+        </button>
+
+
+        <button
+            type="button"
+            onclick="convert()"
+        >
+            Convert Weight
+        </button>
+
 
         <div class="result-box">
-            <p id="result">Result:</p>
+
+            <p id="result">
+                Result will appear here
+            </p>
+
         </div>
+
     </div>
-    <div class="info-box">
-        <h3>Kilogram</h3>
-        <p><strong>Definition:</strong> A kilogram (kg) is the base unit of mass in the International System of Units (SI), equal to 1000 grams.</p>
-        <p><strong>History/origin:</strong> The kilogram was established in 1795 and originally defined as the mass of one liter of water at 4°C.</p>
-        <p><strong>Current use:</strong> The kilogram is the standard unit for mass globally, used in science, commerce, and daily life outside of the U.S.</p>
-      
-        <h3>Pound</h3>
-        <p><strong>Definition:</strong> A pound (lb) is a unit of mass in the imperial system, defined as exactly 0.45359237 kilograms.</p>
-        <p><strong>History/origin:</strong> The pound dates back to Roman libra, standardized differently across regions before being fixed internationally in 1959.</p>
-        <p><strong>Current use:</strong> Primarily used in the U.S. and UK to measure body weight, groceries, and packages.</p>
-      </div>
-      
-      <div class="conversion-table">
-        <h3>Kilogram to Pound Conversion Table</h3>
-        <table border="1">
-          <tr><th>Kilogram [kg]</th><th>Pound [lb]</th></tr>
-          <tr><td>1 kg</td><td>2.2046 lb</td></tr>
-          <tr><td>2 kg</td><td>4.4092 lb</td></tr>
-          <tr><td>5 kg</td><td>11.0231 lb</td></tr>
-          <tr><td>10 kg</td><td>22.0462 lb</td></tr>
-          <tr><td>20 kg</td><td>44.0925 lb</td></tr>
-          <tr><td>50 kg</td><td>110.231 lb</td></tr>
-        </table>
-      </div>
-      
-      <div class="conversion-info">
-        <h3>How to Convert Kilogram to Pound</h3>
-        <p>1 kg = 2.2046 lb</p>
-        <p><strong>Example:</strong> convert 70 kg to lb:<br>70 × 2.2046 = 154.322 lb</p>
-      </div>
-      
-<!-- Popular Length Unit Conversions Section -->
+
+</section>
+
+
+
+<!-- =====================================================
+     INFORMATION
+===================================================== -->
+
+<section
+    class="information-section"
+    id="information"
+>
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            WEIGHT GUIDE
+        </span>
+
+        <h2>
+            Kilogram & Pound
+        </h2>
+
+        <p>
+            Learn more about both units of weight.
+        </p>
+
+    </div>
+
+
+    <div class="info-grid">
+
+
+        <article class="info-card">
+
+            <div class="info-card-icon">
+                ⚖️
+            </div>
+
+            <h3>
+                Kilogram (kg)
+            </h3>
+
+            <p>
+                A kilogram is the base unit of mass in the
+                International System of Units (SI).
+            </p>
+
+
+            <div class="info-detail">
+
+                <strong>
+                    1 Kilogram
+                </strong>
+
+                <span>
+                    1000 grams
+                </span>
+
+            </div>
+
+
+            <div class="info-detail">
+
+                <strong>
+                    In Pounds
+                </strong>
+
+                <span>
+                    2.20462 lb
+                </span>
+
+            </div>
+
+
+            <div class="info-detail">
+
+                <strong>
+                    Common Use
+                </strong>
+
+                <span>
+                    Global measurement
+                </span>
+
+            </div>
+
+        </article>
+
+
+
+        <article class="info-card">
+
+            <div class="info-card-icon">
+                🇺🇸
+            </div>
+
+            <h3>
+                Pound (lb)
+            </h3>
+
+            <p>
+                A pound is a unit of mass commonly used in the
+                imperial and US customary systems.
+            </p>
+
+
+            <div class="info-detail">
+
+                <strong>
+                    1 Pound
+                </strong>
+
+                <span>
+                    0.453592 kg
+                </span>
+
+            </div>
+
+
+            <div class="info-detail">
+
+                <strong>
+                    In Kilograms
+                </strong>
+
+                <span>
+                    0.453592 kg
+                </span>
+
+            </div>
+
+
+            <div class="info-detail">
+
+                <strong>
+                    Common Use
+                </strong>
+
+                <span>
+                    US & UK
+                </span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONVERSION TABLE
+===================================================== -->
+
+<section class="table-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            QUICK REFERENCE
+        </span>
+
+        <h2>
+            Kilogram to Pound Table
+        </h2>
+
+    </div>
+
+
+    <div class="table-card">
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Kilogram (kg)
+                        </th>
+
+                        <th>
+                            Pound (lb)
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+                        <td>1 kg</td>
+                        <td>2.2046 lb</td>
+                    </tr>
+
+                    <tr>
+                        <td>2 kg</td>
+                        <td>4.4092 lb</td>
+                    </tr>
+
+                    <tr>
+                        <td>5 kg</td>
+                        <td>11.0231 lb</td>
+                    </tr>
+
+                    <tr>
+                        <td>10 kg</td>
+                        <td>22.0462 lb</td>
+                    </tr>
+
+                    <tr>
+                        <td>20 kg</td>
+                        <td>44.0925 lb</td>
+                    </tr>
+
+                    <tr>
+                        <td>30 kg</td>
+                        <td>66.1387 lb</td>
+                    </tr>
+
+                    <tr>
+                        <td>40 kg</td>
+                        <td>88.1849 lb</td>
+                    </tr>
+
+                    <tr>
+                        <td>50 kg</td>
+                        <td>110.2311 lb</td>
+                    </tr>
+
+                    <tr>
+                        <td>70 kg</td>
+                        <td>154.3236 lb</td>
+                    </tr>
+
+                    <tr>
+                        <td>100 kg</td>
+                        <td>220.4623 lb</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONVERSION INFO
+===================================================== -->
+
+<section class="example-section">
+
+    <div class="example-card">
+
+        <div class="example-icon">
+            🧮
+        </div>
+
+
+        <div>
+
+            <span class="section-label">
+                CONVERSION FORMULA
+            </span>
+
+
+            <h2>
+                How to Convert KG to LBS
+            </h2>
+
+
+            <p>
+                To convert kilograms to pounds, multiply the
+                kilogram value by 2.20462.
+            </p>
+
+
+            <div class="example-formula">
+
+                kg × 2.20462 = <strong>lb</strong>
+
+            </div>
+
+
+            <p>
+                <strong>Example:</strong>
+            </p>
+
+
+            <div class="example-formula">
+
+                70 × 2.20462 =
+                <strong>154.32 lb</strong>
+
+            </div>
+
+
+            <p class="example-result">
+                Therefore,
+                <strong>70 kg = 154.32 lb</strong>.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     HOW IT WORKS
+===================================================== -->
+
+<section class="how-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            SIMPLE PROCESS
+        </span>
+
+        <h2>
+            How It Works
+        </h2>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <h3>
+                Enter Value
+            </h3>
+
+            <p>
+                Enter the weight value you want to convert.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <h3>
+                Select Units
+            </h3>
+
+            <p>
+                Choose kilograms or pounds as your source
+                and target unit.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <h3>
+                Get Result
+            </h3>
+
+            <p>
+                Click convert and get your accurate result
+                instantly.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     POPULAR CONVERSIONS
+===================================================== -->
+
+<section class="popular-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            EXPLORE MORE
+        </span>
+
+        <h2>
+            Popular Conversions
+        </h2>
+
+    </div>
+
+
+    <div class="popular-grid">
+
+
+        <a
+            href="Centemeter_to_Inches.html"
+            class="popular-card"
+        >
+
+            <span>📏</span>
+
+            <div>
+
+                <h3>
+                    cm to inches
+                </h3>
+
+                <p>
+                    Centimeters → Inches
+                </p>
+
+            </div>
+
+            <b>→</b>
+
+        </a>
+
+
+        <a
+            href="meters_to_feet.html"
+            class="popular-card"
+        >
+
+            <span>📐</span>
+
+            <div>
+
+                <h3>
+                    meters to feet
+                </h3>
+
+                <p>
+                    Meters → Feet
+                </p>
+
+            </div>
+
+            <b>→</b>
+
+        </a>
+
+
+        <a
+            href="km_to_miles.html"
+            class="popular-card"
+        >
+
+            <span>🛣️</span>
+
+            <div>
+
+                <h3>
+                    km to miles
+                </h3>
+
+                <p>
+                    Kilometers → Miles
+                </p>
+
+            </div>
+
+            <b>→</b>
+
+        </a>
+
+
+        <a
+            href="mm_to_inches.html"
+            class="popular-card"
+        >
+
+            <span>📏</span>
+
+            <div>
+
+                <h3>
+                    mm to inches
+                </h3>
+
+                <p>
+                    Millimeters → Inches
+                </p>
+
+            </div>
+
+            <b>→</b>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     COMMON CONVERSIONS
+===================================================== -->
+
 <div class="common-conversions">
-    <h2>Popular Length Unit Conversions</h2>
+
+    <h2>
+        Popular Length Unit Conversions
+    </h2>
+
+
     <div class="converter-list">
+
         <ul>
-            <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
-            <li><a href="mm_to_inches.html">mm to inches</a></li>
-            <li><a href="meters_to_feet.html">meters to feet</a></li>
-            <li><a href="km_to_miles.html">km to miles</a></li>
-            <li><a href="cm_to_feet.html">cm to feet</a></li>
-            <li><a href="inches_to_feet.html">inches to feet</a></li>
-            <li><a href="meters_to_yards.html">meters to yards</a></li>
-            <li><a href="mm_to_cm.html">mm to cm</a></li>
-            <li><a href="cm_to_m.html">cm to m</a></li>
-            <li><a href="cm_to_km.html">cm to km</a></li>
+
+            <li>
+                <a href="Centemeter_to_Inches.html">
+                    cm to inches
+                </a>
+            </li>
+
+            <li>
+                <a href="mm_to_inches.html">
+                    mm to inches
+                </a>
+            </li>
+
+            <li>
+                <a href="meters_to_feet.html">
+                    meters to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="km_to_miles.html">
+                    km to miles
+                </a>
+            </li>
+
+            <li>
+                <a href="cm_to_feet.html">
+                    cm to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="inches_to_feet.html">
+                    inches to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="meters_to_yards.html">
+                    meters to yards
+                </a>
+            </li>
+
+            <li>
+                <a href="mm_to_cm.html">
+                    mm to cm
+                </a>
+            </li>
+
         </ul>
+
+
         <ul>
-            <li><a href="mm_to_feet.html">mm to feet</a></li>
-            <li><a href="meters_to_miles.html">meters to miles</a></li>
-            <li><a href="feet_to_miles.html">feet to miles</a></li>
-            <li><a href="yards_to_feet.html">yards to feet</a></li>
-            <li><a href="inches_to_meters.html">inches to meters</a></li>
-            <li><a href="mm_to_m.html">mm to m</a></li>
-            <li><a href="km_to_m.html">km to m</a></li>
-            <li><a href="inches_to_yards.html">inches to yards</a></li>
-            <li><a href="yards_to_miles.html">yards to miles</a></li>
+
+            <li>
+                <a href="cm_to_m.html">
+                    cm to m
+                </a>
+            </li>
+
+            <li>
+                <a href="cm_to_km.html">
+                    cm to km
+                </a>
+            </li>
+
+            <li>
+                <a href="mm_to_feet.html">
+                    mm to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="meters_to_miles.html">
+                    meters to miles
+                </a>
+            </li>
+
+            <li>
+                <a href="feet_to_miles.html">
+                    feet to miles
+                </a>
+            </li>
+
+            <li>
+                <a href="yards_to_feet.html">
+                    yards to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="inches_to_meters.html">
+                    inches to meters
+                </a>
+            </li>
+
+            <li>
+                <a href="km_to_m.html">
+                    km to m
+                </a>
+            </li>
+
         </ul>
+
     </div>
+
 </div>
-    <script>
-        function swapUnits() {
-            let from = document.getElementById("fromUnit");
-            let to = document.getElementById("toUnit");
 
-            let temp = from.value;
-            from.value = to.value;
-            to.value = temp;
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <h2>
+            <span class="quick">Quick</span>
+            <span style="color:white;">Converter</span>
+        </h2>
+
+
+        <p>
+            Fast, simple and accurate unit conversion.
+        </p>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="#converter">
+                Converter
+            </a>
+
+            <a href="#information">
+                Information
+            </a>
+
+        </div>
+
+
+        <div class="footer-line"></div>
+
+
+        <p class="copyright">
+            © 2026 Quick Converter. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
+<button
+    class="back-to-top"
+    id="backToTop"
+    onclick="scrollToTop()"
+    aria-label="Back to top"
+>
+    ↑
+</button>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+function swapUnits() {
+
+    const from =
+        document.getElementById("fromUnit");
+
+    const to =
+        document.getElementById("toUnit");
+
+
+    const temp = from.value;
+
+    from.value = to.value;
+
+    to.value = temp;
+
+}
+
+
+
+function convert() {
+
+    const value =
+        parseFloat(
+            document.getElementById("inputValue").value
+        );
+
+
+    const fromUnit =
+        document.getElementById("fromUnit").value;
+
+
+    const toUnit =
+        document.getElementById("toUnit").value;
+
+
+    const resultBox =
+        document.getElementById("result");
+
+
+    if (isNaN(value)) {
+
+        resultBox.innerText =
+            "Please enter a valid number.";
+
+        return;
+
+    }
+
+
+    let result;
+
+
+    if (
+        fromUnit === "kg" &&
+        toUnit === "lbs"
+    ) {
+
+        result =
+            value * 2.20462;
+
+    }
+
+
+    else if (
+        fromUnit === "lbs" &&
+        toUnit === "kg"
+    ) {
+
+        result =
+            value / 2.20462;
+
+    }
+
+
+    else {
+
+        result = value;
+
+    }
+
+
+    const unit =
+        toUnit === "kg"
+            ? "kg"
+            : "lb";
+
+
+    resultBox.innerText =
+        `${result.toFixed(2)} ${unit}`;
+
+}
+
+
+
+window.addEventListener(
+    "scroll",
+    function() {
+
+        const button =
+            document.getElementById("backToTop");
+
+
+        if (window.scrollY > 400) {
+
+            button.classList.add("show");
+
         }
 
-        function convert() {
-            let value = parseFloat(document.getElementById("inputValue").value);
-            let fromUnit = document.getElementById("fromUnit").value;
-            let toUnit = document.getElementById("toUnit").value;
-            let resultBox = document.getElementById("result");
+        else {
 
-            if (isNaN(value)) {
-                resultBox.innerText = "Please enter a valid number!";
-                return;
-            }
+            button.classList.remove("show");
 
-            let result;
-            if (fromUnit === "kg" && toUnit === "lbs") {
-                result = value * 2.20462;
-            } else if (fromUnit === "lbs" && toUnit === "kg") {
-                result = value / 2.20462;
-            } else {
-                result = value; // Same units
-            }
-
-            resultBox.innerText = `Result: ${result.toFixed(2)} ${toUnit}`;
         }
-    </script>
+
+    }
+);
+
+
+
+function scrollToTop() {
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+</script>
+
 
 </body>
+
 </html>
