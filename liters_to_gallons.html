@@ -1,410 +1,1672 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liters to Gallons Converter</title>
+
+    <meta
+        name="description"
+        content="Liters to Gallons Converter - Quickly convert liters to US gallons and gallons to liters with our accurate and easy-to-use converter."
+    >
+
+    <title>Liters to Gallons Converter | Quick Converter</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
     <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            color: #333;
+            font-family: 'Poppins', sans-serif;
+            background: #f5f7fb;
+            color: #202124;
             line-height: 1.6;
         }
 
+        a {
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
         .navbar {
-            background: #1e3a8a;
-            padding: 15px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 72px;
+
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid #e8eaf0;
+
+            z-index: 1000;
         }
 
         .nav-container {
-            width: 90%;
-            max-width: 1100px;
+            max-width: 1200px;
+            height: 100%;
+
             margin: auto;
+            padding: 0 25px;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
+        .logo {
+            margin: 0;
+        }
+
         .logo a {
-            text-decoration: none;
-            font-size: 24px;
+            font-size: 28px;
+            font-weight: 800;
+            color: #222;
         }
 
         .quick {
-            color: #ffffff;
+            color: #ff5733;
         }
 
         .converter {
-            color: #38bdf8;
+            color: #222;
         }
 
         .nav-links {
             list-style: none;
+
+            display: flex;
+            align-items: center;
+
+            gap: 30px;
         }
 
         .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
+            color: #444;
+            font-size: 15px;
+            font-weight: 600;
+
+            transition: 0.3s;
         }
 
         .nav-links a:hover {
-            color: #38bdf8;
+            color: #ff5733;
         }
 
-        .converter-box {
-            width: 90%;
-            max-width: 700px;
-            margin: 40px auto 25px;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .page-hero {
+            min-height: 460px;
+
+            padding: 140px 20px 80px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
             text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #ffe9e3,
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    #e2f0ff,
+                    transparent 35%
+                ),
+                #f8faff;
         }
 
-        .converter-box h2 {
-            color: #1e3a8a;
-            margin-bottom: 25px;
+        .hero-content {
+            max-width: 850px;
         }
 
-        input,
-        select {
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 16px;
-            margin: 5px;
+        .hero-badge {
+            display: inline-block;
+
+            padding: 8px 18px;
+            margin-bottom: 20px;
+
+            border-radius: 50px;
+
+            background: #fff;
+            color: #ff5733;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.06);
         }
 
-        input {
-            width: 90%;
-            margin-bottom: 15px;
+        .page-hero h1 {
+            font-size: clamp(42px, 7vw, 72px);
+
+            line-height: 1.1;
+            font-weight: 800;
+
+            color: #171717;
+
+            margin-bottom: 20px;
         }
 
-        select {
-            width: 28%;
+        .page-hero h1 span {
+            color: #ff5733;
         }
 
-        .converter-box span {
-            font-weight: bold;
-            color: #555;
+        .page-hero p {
+            max-width: 680px;
+
+            margin: auto auto 30px;
+
+            font-size: 17px;
+            color: #666;
         }
 
-        button {
-            padding: 12px 20px;
-            margin: 15px 5px 5px;
-            border: none;
-            border-radius: 6px;
-            background: #1e3a8a;
+        .hero-button {
+            display: inline-block;
+
+            padding: 14px 28px;
+
+            border-radius: 50px;
+
+            background: linear-gradient(
+                135deg,
+                #ff5733,
+                #ff7b54
+            );
+
             color: white;
-            cursor: pointer;
-            font-size: 15px;
+
+            font-weight: 600;
+
+            box-shadow:
+                0 10px 25px rgba(255, 87, 51, 0.3);
+
+            transition: 0.3s;
         }
 
-        button:hover {
-            background: #2563eb;
+        .hero-button:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 30px rgba(255, 87, 51, 0.4);
         }
 
-        .result-box {
-            margin-top: 20px;
-            padding: 15px;
-            background: #e0f2fe;
-            border-radius: 8px;
-            color: #075985;
-            font-weight: bold;
-        }
 
-        .info-box,
-        .conversion-table,
-        .conversion-info,
-        .common-conversions {
-            width: 90%;
+        /* =====================================================
+           CONVERTER SECTION
+        ===================================================== */
+
+        .converter-section {
             max-width: 1100px;
-            margin: 25px auto;
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+
+            margin: auto;
+
+            padding: 80px 20px;
         }
 
-        h3,
-        .common-conversions h2 {
-            color: #1e3a8a;
-            margin-bottom: 12px;
+        .section-heading {
+            text-align: center;
+
+            margin-bottom: 40px;
         }
 
-        .info-box h3 {
-            margin-top: 20px;
+        .section-label {
+            display: inline-block;
+
+            color: #ff5733;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 8px;
         }
 
-        .info-box h3:first-child {
-            margin-top: 0;
-        }
+        .section-heading h2 {
+            font-size: 38px;
 
-        .info-box p,
-        .conversion-info p {
+            color: #222;
+
             margin-bottom: 10px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
+        .section-heading p {
+            color: #777;
+            font-size: 15px;
         }
 
-        th {
-            background: #1e3a8a;
-            color: white;
+
+        /* =====================================================
+           CONVERTER BOX
+        ===================================================== */
+
+        .converter-box {
+            width: min(600px, 100%);
+
+            margin: auto;
+
+            padding: 30px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            border: 1px solid #ececf1;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.08);
+
+            animation: cardIn 0.4s ease;
         }
 
-        th,
-        td {
-            padding: 12px;
+        @keyframes cardIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        .converter-box h2 {
+            font-size: 25px;
+
+            color: #222;
+
+            margin-bottom: 25px;
+
             text-align: center;
-            border: 1px solid #ddd;
         }
 
-        tr:nth-child(even) {
-            background: #f1f5f9;
+
+        /* =====================================================
+           INPUT
+        ===================================================== */
+
+        .converter-box > input {
+            width: 100%;
+
+            padding: 16px;
+
+            margin-bottom: 15px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 12px;
+
+            outline: none;
+
+            background: #fff;
+
+            font-size: 16px;
+
+            transition: 0.3s;
+        }
+
+        .converter-box > input:focus {
+            border-color: #ff5733;
+
+            box-shadow:
+                0 0 0 4px rgba(255, 87, 51, 0.08);
+        }
+
+
+        /* =====================================================
+           UNIT ROW
+        ===================================================== */
+
+        .unit-row {
+            display: grid;
+
+            grid-template-columns: 1fr 40px 1fr;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 18px;
+        }
+
+        .unit-group label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            color: #555;
+        }
+
+        .unit-group select {
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 12px;
+
+            background: #fafafa;
+
+            outline: none;
+
+            cursor: pointer;
+
+            color: #333;
+        }
+
+        .unit-group select:focus {
+            border-color: #ff5733;
+        }
+
+        .unit-arrow {
+            margin-top: 25px;
+
+            text-align: center;
+
+            color: #ff5733;
+
+            font-size: 22px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        .converter-buttons {
+            display: grid;
+
+            grid-template-columns: 1fr 1.5fr;
+
+            gap: 12px;
+
+            margin-top: 10px;
+        }
+
+        .converter-buttons button {
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .swap-btn {
+            background: #f1f3f6;
+
+            color: #444;
+        }
+
+        .swap-btn:hover {
+            background: #e5e7eb;
+
+            transform: translateY(-2px);
+        }
+
+        .convert-btn {
+            background: linear-gradient(
+                135deg,
+                #ff5733,
+                #ff7a59
+            );
+
+            color: white;
+
+            box-shadow:
+                0 8px 20px rgba(255, 87, 51, 0.25);
+        }
+
+        .convert-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 25px rgba(255, 87, 51, 0.35);
+        }
+
+
+        /* =====================================================
+           RESULT
+        ===================================================== */
+
+        .result-box {
+            margin-top: 20px;
+
+            padding: 20px;
+
+            border-radius: 16px;
+
+            background: #f6f8fb;
+
+            border: 1px solid #e9ebef;
+        }
+
+        .result-box p {
+            color: #222;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            word-break: break-word;
+        }
+
+
+        /* =====================================================
+           INFO BOX
+        ===================================================== */
+
+        .info-box {
+            width: min(1100px, 94%);
+
+            margin: 20px auto 50px;
+
+            padding: 40px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            border: 1px solid #ececf1;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.06);
+        }
+
+        .info-box h3 {
+            font-size: 23px;
+
+            color: #222;
+
+            margin-bottom: 12px;
+
+            padding-left: 14px;
+
+            border-left: 4px solid #ff5733;
+        }
+
+        .info-box p {
+            color: #666;
+
+            font-size: 14px;
+
+            margin-bottom: 15px;
+        }
+
+        .info-box h3:not(:first-child) {
+            margin-top: 30px;
+        }
+
+        .info-box strong {
+            color: #333;
+        }
+
+
+        /* =====================================================
+           CONVERSION TABLE
+        ===================================================== */
+
+        .conversion-table {
+            width: min(900px, 94%);
+
+            margin: 50px auto;
+
+            padding: 35px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.06);
+        }
+
+        .conversion-table h3 {
+            text-align: center;
+
+            font-size: 25px;
+
+            color: #222;
+
+            margin-bottom: 25px;
+        }
+
+        .conversion-table table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            overflow: hidden;
+
+            border-radius: 12px;
+        }
+
+        .conversion-table th {
+            padding: 14px;
+
+            background: #ff5733;
+
+            color: white;
+
+            font-size: 14px;
+
+            text-align: center;
+        }
+
+        .conversion-table td {
+            padding: 13px;
+
+            border-bottom: 1px solid #eee;
+
+            text-align: center;
+
+            font-size: 14px;
+
+            color: #555;
+        }
+
+        .conversion-table tr:nth-child(even) td {
+            background: #fafafa;
+        }
+
+        .conversion-table tr:hover td {
+            background: #fff4f0;
+        }
+
+
+        /* =====================================================
+           CONVERSION INFO
+        ===================================================== */
+
+        .conversion-info {
+            width: min(900px, 94%);
+
+            margin: 50px auto;
+
+            padding: 35px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff7f4,
+                    #f3f7ff
+                );
+
+            border-radius: 24px;
+
+            border: 1px solid #ececf1;
+
+            text-align: center;
+        }
+
+        .conversion-info h3 {
+            font-size: 26px;
+
+            margin-bottom: 20px;
+
+            color: #222;
+        }
+
+        .conversion-info p {
+            color: #555;
+
+            margin: 10px 0;
+
+            font-size: 15px;
+        }
+
+        .conversion-info p:first-of-type {
+            display: inline-block;
+
+            padding: 10px 20px;
+
+            background: white;
+
+            border-radius: 10px;
+
+            color: #ff5733;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           COMMON CONVERSIONS
+        ===================================================== */
+
+        .common-conversions {
+            width: min(1100px, 94%);
+
+            margin: 60px auto;
+
+            padding: 45px 35px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.06);
+        }
+
+        .common-conversions h2 {
+            text-align: center;
+
+            font-size: 30px;
+
+            color: #222;
+
+            margin-bottom: 30px;
         }
 
         .converter-list {
-            display: flex;
-            gap: 50px;
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 30px;
         }
 
         .converter-list ul {
-            flex: 1;
-            padding-left: 20px;
+            list-style: none;
         }
 
         .converter-list li {
-            margin: 8px 0;
+            margin: 10px 0;
+
+            padding-bottom: 8px;
+
+            border-bottom: 1px solid #f0f0f0;
         }
 
         .converter-list a {
-            color: #2563eb;
-            text-decoration: none;
+            color: #2457a6;
+
+            font-size: 15px;
+
+            font-weight: 500;
+
+            transition: 0.3s;
+        }
+
+        .converter-list a::before {
+            content: "→ ";
+
+            color: #ff5733;
+
+            font-weight: 700;
         }
 
         .converter-list a:hover {
-            text-decoration: underline;
+            color: #ff5733;
+
+            padding-left: 5px;
         }
 
-        @media (max-width: 600px) {
-            .nav-container {
-                width: 92%;
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+            margin-top: 70px;
+
+            background: #202124;
+
+            color: white;
+
+            padding: 45px 20px;
+
+            text-align: center;
+        }
+
+        .footer h2 {
+            font-size: 28px;
+
+            margin-bottom: 8px;
+        }
+
+        .footer p {
+            color: #aaa;
+
+            font-size: 14px;
+        }
+
+        .footer-line {
+            width: min(700px, 90%);
+
+            height: 1px;
+
+            background: #3a3a3a;
+
+            margin: 20px auto;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                height: 65px;
             }
 
-            .converter-box,
+            .nav-container {
+                padding: 0 15px;
+            }
+
+            .logo a {
+                font-size: 22px;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .page-hero {
+                min-height: 430px;
+
+                padding: 120px 20px 70px;
+            }
+
+            .page-hero h1 {
+                font-size: 43px;
+            }
+
+            .page-hero p {
+                font-size: 15px;
+            }
+
+            .converter-section {
+                padding: 60px 15px;
+            }
+
+            .section-heading h2 {
+                font-size: 30px;
+            }
+
+            .converter-box {
+                padding: 22px;
+
+                border-radius: 18px;
+            }
+
+            .converter-box h2 {
+                font-size: 21px;
+            }
+
+            .unit-row {
+                grid-template-columns: 1fr;
+
+                gap: 8px;
+            }
+
+            .unit-arrow {
+                margin: 0;
+
+                transform: rotate(90deg);
+            }
+
+            .converter-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .info-box {
+                padding: 25px 20px;
+            }
+
+            .conversion-table {
+                padding: 25px 15px;
+            }
+
+            .conversion-table h3 {
+                font-size: 21px;
+            }
+
+            .conversion-table table {
+                min-width: 500px;
+            }
+
+            .conversion-table {
+                overflow-x: auto;
+            }
+
+            .conversion-info {
+                padding: 25px 20px;
+            }
+
+            .conversion-info h3 {
+                font-size: 22px;
+            }
+
+            .common-conversions {
+                padding: 30px 20px;
+            }
+
+            .common-conversions h2 {
+                font-size: 25px;
+            }
+
+            .converter-list {
+                grid-template-columns: 1fr;
+
+                gap: 0;
+            }
+
+        }
+
+
+        @media (max-width: 450px) {
+
+            .page-hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-button {
+                width: 100%;
+            }
+
+            .converter-box {
+                width: 100%;
+            }
+
             .info-box,
             .conversion-table,
             .conversion-info,
             .common-conversions {
                 width: 94%;
-                padding: 20px;
             }
 
-            select {
-                width: 100%;
-                margin: 7px 0;
-            }
-
-            .converter-box span {
-                display: block;
-                margin: 5px;
-            }
-
-            button {
-                width: 100%;
-                margin: 7px 0;
-            }
-
-            .converter-list {
-                flex-direction: column;
-                gap: 0;
-            }
-
-            table {
-                font-size: 13px;
-            }
-
-            th,
-            td {
-                padding: 8px 4px;
-            }
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
 <nav class="navbar">
+
     <div class="nav-container">
+
         <h2 class="logo">
+
             <a href="index.html">
-                <span class="quick">Quick</span>
-                <span class="converter">Converter</span>
+
+                <span class="quick">
+                    Quick
+                </span>
+
+                <span class="converter">
+                    Converter
+                </span>
+
             </a>
+
         </h2>
 
+
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
         </ul>
+
     </div>
+
 </nav>
 
-<div class="converter-box">
-    <h2>Liters to Gallons Converter</h2>
 
-    <input type="number" id="inputValue" placeholder="Enter value">
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-    <select id="fromUnit">
-        <option value="liters">Liters</option>
-        <option value="gallons">Gallons</option>
-    </select>
+<header class="page-hero">
 
-    <span>to</span>
+    <div class="hero-content">
 
-    <select id="toUnit">
-        <option value="gallons">Gallons</option>
-        <option value="liters">Liters</option>
-    </select>
+        <div class="hero-badge">
+            🧪 Volume Converter
+        </div>
 
-    <button onclick="swapUnits()">Swap Unit</button>
-    <button onclick="convert()">Convert</button>
 
-    <div class="result-box">
-        <p id="result">Result:</p>
+        <h1>
+
+            Liters
+
+            <span>
+                to
+            </span>
+
+            Gallons
+
+        </h1>
+
+
+        <p>
+
+            Quickly convert liters to US gallons or gallons to
+            liters with our simple and accurate volume converter.
+
+        </p>
+
+
+        <a
+            href="#converter"
+            class="hero-button"
+        >
+            Start Converting ↓
+        </a>
+
     </div>
-</div>
 
-<div class="info-box">
-    <h3>Liter</h3>
+</header>
 
-    <p><strong>Definition:</strong> A liter (symbol: L) is a unit of volume accepted for use with the International System of Units (SI), but not a SI unit itself. It is equal to 1 cubic decimeter (1 dm³), or 1,000 cubic centimeters (cm³).</p>
 
-    <p><strong>History/origin:</strong> The liter was introduced in France in 1795 as part of the metric system and originally defined as one cubic decimeter.</p>
+<!-- =====================================================
+     CONVERTER
+===================================================== -->
 
-    <p><strong>Current use:</strong> The liter is used worldwide to measure liquid volumes, especially in food and beverage packaging, fuel consumption, and scientific research.</p>
+<main>
 
-    <h3>Gallon (US)</h3>
+<section
+    class="converter-section"
+    id="converter"
+>
 
-    <p><strong>Definition:</strong> A US gallon (symbol: gal) is a unit of volume in the US customary system. It is exactly 3.785411784 liters.</p>
+    <div class="section-heading">
 
-    <p><strong>History/origin:</strong> The US gallon originates from the English wine gallon used in the 1700s.</p>
+        <span class="section-label">
+            QUICK CONVERTER
+        </span>
 
-    <p><strong>Current use:</strong> The US gallon is used mainly in the United States to measure fuel, beverages, and containers.</p>
-</div>
 
-<div class="conversion-table">
-    <h3>Liter to Gallon Conversion Table</h3>
+        <h2>
+            Liters ↔ Gallons
+        </h2>
 
-    <table>
-        <tr>
-            <th>Liter [L]</th>
-            <th>Gallon [gal]</th>
-        </tr>
-        <tr><td>0.1 L</td><td>0.02642 gal</td></tr>
-        <tr><td>1 L</td><td>0.26417 gal</td></tr>
-        <tr><td>2 L</td><td>0.52834 gal</td></tr>
-        <tr><td>5 L</td><td>1.32086 gal</td></tr>
-        <tr><td>10 L</td><td>2.64172 gal</td></tr>
-        <tr><td>20 L</td><td>5.28344 gal</td></tr>
-        <tr><td>50 L</td><td>13.2086 gal</td></tr>
-        <tr><td>100 L</td><td>26.4172 gal</td></tr>
-    </table>
-</div>
 
-<div class="conversion-info">
-    <h3>How to Convert Liter to Gallon</h3>
+        <p>
+            Enter a value and select the units you want to convert.
+        </p>
 
-    <p>1 L = 0.26417 gal</p>
-    <p>1 gal = 3.78541 L</p>
+    </div>
+
+
+    <div class="converter-box">
+
+        <h2>
+            🧪 Liters to Gallons Converter
+        </h2>
+
+
+        <input
+            type="number"
+            id="inputValue"
+            placeholder="Enter value"
+            step="any"
+            autocomplete="off"
+        >
+
+
+        <div class="unit-row">
+
+            <div class="unit-group">
+
+                <label for="fromUnit">
+                    From
+                </label>
+
+
+                <select id="fromUnit">
+
+                    <option value="liters">
+                        Liters
+                    </option>
+
+                    <option value="gallons">
+                        US Gallons
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="unit-arrow">
+                →
+            </div>
+
+
+            <div class="unit-group">
+
+                <label for="toUnit">
+                    To
+                </label>
+
+
+                <select id="toUnit">
+
+                    <option value="gallons">
+                        US Gallons
+                    </option>
+
+                    <option value="liters">
+                        Liters
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="converter-buttons">
+
+            <button
+                type="button"
+                class="swap-btn"
+                onclick="swapUnits()"
+            >
+                🔄 Swap Unit
+            </button>
+
+
+            <button
+                type="button"
+                class="convert-btn"
+                onclick="convert()"
+            >
+                Convert
+            </button>
+
+        </div>
+
+
+        <div class="result-box">
+
+            <p id="result">
+                Result will appear here
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     INFORMATION
+===================================================== -->
+
+<section class="info-box">
+
+    <h3>
+        Liter
+    </h3>
+
 
     <p>
-        <strong>Example:</strong> convert 5 L to gal:
-        <br>
-        5 × 0.26417 = 1.32085 gal
-    </p>
-</div>
 
-<div class="common-conversions">
-    <h2>Popular Length Unit Conversions</h2>
+        <strong>Definition:</strong>
+
+        A liter (symbol: L) is a unit of volume accepted for
+        use with the International System of Units (SI), but
+        it is not an SI base unit. One liter is equal to one
+        cubic decimeter (1 dm³), or 1,000 cubic centimeters.
+
+    </p>
+
+
+    <p>
+
+        <strong>History/origin:</strong>
+
+        The liter was introduced in France in 1795 as part
+        of the metric system and was originally defined as
+        one cubic decimeter.
+
+    </p>
+
+
+    <p>
+
+        <strong>Current use:</strong>
+
+        Liters are used worldwide to measure liquid volumes,
+        especially for beverages, fuel, cooking, containers,
+        scientific measurements, and everyday quantities.
+
+    </p>
+
+
+    <h3>
+        Gallon (US)
+    </h3>
+
+
+    <p>
+
+        <strong>Definition:</strong>
+
+        A US gallon (symbol: gal) is a unit of volume in the
+        US customary system. One US gallon is exactly equal
+        to 3.785411784 liters.
+
+    </p>
+
+
+    <p>
+
+        <strong>History/origin:</strong>
+
+        The US gallon has historical roots in English units
+        of volume and became standardized as part of the
+        United States customary measurement system.
+
+    </p>
+
+
+    <p>
+
+        <strong>Current use:</strong>
+
+        The US gallon is primarily used in the United States
+        for measuring fuel, beverages, liquid containers,
+        and other volumes.
+
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     CONVERSION TABLE
+===================================================== -->
+
+<section class="conversion-table">
+
+    <h3>
+        Liter to Gallon Conversion Table
+    </h3>
+
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>
+                    Liter [L]
+                </th>
+
+                <th>
+                    US Gallon [gal]
+                </th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+            <tr>
+                <td>0.1 L</td>
+                <td>0.026417 gal</td>
+            </tr>
+
+            <tr>
+                <td>0.5 L</td>
+                <td>0.132086 gal</td>
+            </tr>
+
+            <tr>
+                <td>1 L</td>
+                <td>0.264172 gal</td>
+            </tr>
+
+            <tr>
+                <td>2 L</td>
+                <td>0.528344 gal</td>
+            </tr>
+
+            <tr>
+                <td>3 L</td>
+                <td>0.792516 gal</td>
+            </tr>
+
+            <tr>
+                <td>5 L</td>
+                <td>1.320860 gal</td>
+            </tr>
+
+            <tr>
+                <td>10 L</td>
+                <td>2.641720 gal</td>
+            </tr>
+
+            <tr>
+                <td>20 L</td>
+                <td>5.283440 gal</td>
+            </tr>
+
+            <tr>
+                <td>50 L</td>
+                <td>13.208600 gal</td>
+            </tr>
+
+            <tr>
+                <td>100 L</td>
+                <td>26.417200 gal</td>
+            </tr>
+
+            <tr>
+                <td>1000 L</td>
+                <td>264.172000 gal</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+
+<!-- =====================================================
+     CONVERSION INFO
+===================================================== -->
+
+<section class="conversion-info">
+
+    <h3>
+        How to Convert Liter to Gallon
+    </h3>
+
+
+    <p>
+        1 L = 0.264172 gal
+    </p>
+
+
+    <p>
+        1 gal = 3.785411784 L
+    </p>
+
+
+    <p>
+
+        <strong>
+            Example:
+        </strong>
+
+        Convert 5 L to gallons:
+
+        <br>
+
+        5 × 0.264172 = 1.32086 gal
+
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     COMMON CONVERSIONS
+===================================================== -->
+
+<section class="common-conversions">
+
+    <h2>
+        Popular Length Unit Conversions
+    </h2>
+
 
     <div class="converter-list">
-        <ul>
-            <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
-            <li><a href="mm_to_inches.html">mm to inches</a></li>
-            <li><a href="meters_to_feet.html">meters to feet</a></li>
-            <li><a href="km_to_miles.html">km to miles</a></li>
-            <li><a href="cm_to_feet.html">cm to feet</a></li>
-            <li><a href="inches_to_feet.html">inches to feet</a></li>
-            <li><a href="meters_to_yards.html">meters to yards</a></li>
-            <li><a href="mm_to_cm.html">mm to cm</a></li>
-            <li><a href="cm_to_m.html">cm to m</a></li>
-            <li><a href="cm_to_km.html">cm to km</a></li>
-        </ul>
 
         <ul>
-            <li><a href="mm_to_feet.html">mm to feet</a></li>
-            <li><a href="meters_to_miles.html">meters to miles</a></li>
-            <li><a href="feet_to_miles.html">feet to miles</a></li>
-            <li><a href="yards_to_feet.html">yards to feet</a></li>
-            <li><a href="inches_to_meters.html">inches to meters</a></li>
-            <li><a href="mm_to_m.html">mm to m</a></li>
-            <li><a href="km_to_m.html">km to m</a></li>
-            <li><a href="inches_to_yards.html">inches to yards</a></li>
-            <li><a href="yards_to_miles.html">yards to miles</a></li>
+
+            <li>
+                <a href="Centemeter_to_Inches.html">
+                    cm to inches
+                </a>
+            </li>
+
+            <li>
+                <a href="mm_to_inches.html">
+                    mm to inches
+                </a>
+            </li>
+
+            <li>
+                <a href="meters_to_feet.html">
+                    meters to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="km_to_miles.html">
+                    km to miles
+                </a>
+            </li>
+
+            <li>
+                <a href="cm_to_feet.html">
+                    cm to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="inches_to_feet.html">
+                    inches to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="meters_to_yards.html">
+                    meters to yards
+                </a>
+            </li>
+
+            <li>
+                <a href="mm_to_cm.html">
+                    mm to cm
+                </a>
+            </li>
+
+            <li>
+                <a href="cm_to_m.html">
+                    cm to m
+                </a>
+            </li>
+
+            <li>
+                <a href="cm_to_km.html">
+                    cm to km
+                </a>
+            </li>
+
         </ul>
+
+
+        <ul>
+
+            <li>
+                <a href="mm_to_feet.html">
+                    mm to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="meters_to_miles.html">
+                    meters to miles
+                </a>
+            </li>
+
+            <li>
+                <a href="feet_to_miles.html">
+                    feet to miles
+                </a>
+            </li>
+
+            <li>
+                <a href="yards_to_feet.html">
+                    yards to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="inches_to_meters.html">
+                    inches to meters
+                </a>
+            </li>
+
+            <li>
+                <a href="mm_to_m.html">
+                    mm to m
+                </a>
+            </li>
+
+            <li>
+                <a href="km_to_m.html">
+                    km to m
+                </a>
+            </li>
+
+            <li>
+                <a href="inches_to_yards.html">
+                    inches to yards
+                </a>
+            </li>
+
+            <li>
+                <a href="yards_to_miles.html">
+                    yards to miles
+                </a>
+            </li>
+
+        </ul>
+
     </div>
-</div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <h2>
+
+        <span class="quick">
+            Quick
+        </span>
+
+        Converter
+
+    </h2>
+
+
+    <p>
+        Fast, simple and accurate unit conversion.
+    </p>
+
+
+    <div class="footer-line"></div>
+
+
+    <p>
+        © 2026 Quick Converter. All rights reserved.
+    </p>
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script>
-function swapUnits() {
-    let from = document.getElementById("fromUnit");
-    let to = document.getElementById("toUnit");
 
-    let temp = from.value;
-    from.value = to.value;
-    to.value = temp;
-}
+    function swapUnits() {
 
-function convert() {
-    let value = parseFloat(document.getElementById("inputValue").value);
-    let fromUnit = document.getElementById("fromUnit").value;
-    let toUnit = document.getElementById("toUnit").value;
-    let resultBox = document.getElementById("result");
+        const from =
+            document.getElementById("fromUnit");
 
-    if (isNaN(value)) {
-        resultBox.innerText = "Please enter a valid number!";
-        return;
+        const to =
+            document.getElementById("toUnit");
+
+
+        const temp = from.value;
+
+        from.value = to.value;
+
+        to.value = temp;
+
     }
 
-    let result;
 
-    if (fromUnit === "liters" && toUnit === "gallons") {
-        result = value * 0.264172;
-    } else if (fromUnit === "gallons" && toUnit === "liters") {
-        result = value / 0.264172;
-    } else {
-        result = value;
+    function convert() {
+
+        const value =
+            parseFloat(
+                document.getElementById("inputValue").value
+            );
+
+
+        const fromUnit =
+            document.getElementById("fromUnit").value;
+
+
+        const toUnit =
+            document.getElementById("toUnit").value;
+
+
+        const resultBox =
+            document.getElementById("result");
+
+
+        if (isNaN(value)) {
+
+            resultBox.innerText =
+                "Please enter a valid number!";
+
+            return;
+
+        }
+
+
+        let result;
+
+
+        /*
+         * 1 US gallon = 3.785411784 liters
+         * 1 liter = 0.2641720524 US gallons
+         */
+
+
+        if (
+            fromUnit === "liters" &&
+            toUnit === "gallons"
+        ) {
+
+            result =
+                value * 0.2641720524;
+
+        }
+
+
+        else if (
+            fromUnit === "gallons" &&
+            toUnit === "liters"
+        ) {
+
+            result =
+                value * 3.785411784;
+
+        }
+
+
+        else {
+
+            result = value;
+
+        }
+
+
+        const unit =
+            toUnit === "gallons"
+                ? "gal"
+                : "L";
+
+
+        resultBox.innerText =
+            `Result: ${result.toFixed(2)} ${unit}`;
+
     }
 
-    resultBox.innerText =
-        `Result: ${result.toFixed(2)} ${toUnit}`;
-}
 </script>
 
+
 </body>
+
 </html>
