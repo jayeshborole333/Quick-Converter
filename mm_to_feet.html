@@ -1,476 +1,2616 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Millimeters to Feet Converter</title>
+
+    <meta
+        name="description"
+        content="MM to Feet Converter - Quickly convert millimeters to feet and feet to millimeters."
+    >
+
+    <title>MM to Feet Converter | Quick Converter</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
 
     <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            color: #333;
+            font-family: "Poppins", sans-serif;
+            background: #f5f7fb;
+            color: #202124;
             line-height: 1.6;
         }
 
-        .navbar {
-            background: #1e3a8a;
-            padding: 15px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+
+        a {
+            text-decoration: none;
         }
 
+
+        button,
+        input,
+        select {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 72px;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid #e8eaf0;
+
+            z-index: 1000;
+        }
+
+
         .nav-container {
-            width: 90%;
-            max-width: 1100px;
+            max-width: 1200px;
+            height: 100%;
+
             margin: auto;
+            padding: 0 25px;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo a {
-            text-decoration: none;
-            font-size: 24px;
+
+        .logo {
+            margin: 0;
         }
+
+
+        .logo a {
+            font-size: 28px;
+            font-weight: 800;
+            color: #222;
+        }
+
 
         .quick {
-            color: #ffffff;
+            color: #ff5733;
         }
 
+
         .converter {
-            color: #38bdf8;
+            color: #222;
         }
+
 
         .nav-links {
             list-style: none;
+
+            display: flex;
+            align-items: center;
+
+            gap: 28px;
         }
+
 
         .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
+            color: #444;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: 0.3s;
         }
+
 
         .nav-links a:hover {
-            color: #38bdf8;
+            color: #ff5733;
         }
 
-        .converter-box {
-            width: 90%;
-            max-width: 700px;
-            margin: 40px auto 25px;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .page-hero {
+            min-height: 480px;
+
+            padding: 145px 20px 90px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
             text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #fff0e9,
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    #e5f1ff,
+                    transparent 35%
+                ),
+                #f8faff;
         }
 
-        .converter-box h2 {
-            color: #1e3a8a;
-            margin-bottom: 25px;
+
+        .hero-content {
+            max-width: 850px;
         }
 
-        input,
-        select {
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 16px;
-            margin: 5px;
+
+        .hero-badge {
+            display: inline-block;
+
+            padding: 8px 18px;
+
+            margin-bottom: 20px;
+
+            border-radius: 50px;
+
+            background: white;
+
+            color: #ff5733;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.06);
         }
 
-        input {
-            width: 90%;
-            margin-bottom: 15px;
+
+        .page-hero h1 {
+            font-size: clamp(45px, 7vw, 75px);
+
+            line-height: 1.1;
+
+            font-weight: 800;
+
+            color: #171717;
+
+            margin-bottom: 22px;
         }
 
-        select {
-            width: 28%;
+
+        .page-hero h1 span {
+            color: #ff5733;
         }
 
-        .converter-box span {
-            font-weight: bold;
-            color: #555;
+
+        .page-hero p {
+            max-width: 650px;
+
+            margin: auto auto 30px;
+
+            color: #666;
+
+            font-size: 17px;
         }
 
-        button {
-            padding: 12px 20px;
-            margin: 15px 5px 5px;
-            border: none;
-            border-radius: 6px;
-            background: #1e3a8a;
+
+        .hero-button {
+            display: inline-block;
+
+            padding: 14px 28px;
+
+            border-radius: 50px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff5733,
+                    #ff7b54
+                );
+
             color: white;
-            cursor: pointer;
+
+            font-weight: 600;
+
+            box-shadow:
+                0 10px 25px rgba(255, 87, 51, 0.3);
+
+            transition: 0.3s;
+        }
+
+
+        .hero-button:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 30px rgba(255, 87, 51, 0.4);
+        }
+
+
+        /* =====================================================
+           SECTION
+        ===================================================== */
+
+        .converter-section,
+        .information-section,
+        .table-section,
+        .example-section,
+        .how-section,
+        .popular-section {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 80px 20px;
+        }
+
+
+        .section-heading {
+            text-align: center;
+
+            margin-bottom: 40px;
+        }
+
+
+        .section-label {
+            display: inline-block;
+
+            color: #ff5733;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .section-heading h2 {
+            font-size: 36px;
+
+            color: #222;
+
+            margin-bottom: 8px;
+        }
+
+
+        .section-heading p {
+            color: #777;
+
             font-size: 15px;
         }
 
-        button:hover {
-            background: #2563eb;
+
+        /* =====================================================
+           CONVERTER
+        ===================================================== */
+
+        .converter-box {
+
+            width: min(620px, 100%);
+
+            margin: auto;
+
+            padding: 32px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            border: 1px solid #ececf1;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.08);
+
+            animation: cardIn 0.5s ease;
         }
+
+
+        @keyframes cardIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        .converter-box h2 {
+
+            text-align: center;
+
+            color: #222;
+
+            font-size: 25px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .converter-box > input {
+
+            width: 100%;
+
+            padding: 16px 18px;
+
+            margin-bottom: 18px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 12px;
+
+            outline: none;
+
+            background: #fafafa;
+
+            font-size: 16px;
+
+            transition: 0.3s;
+        }
+
+
+        .converter-box > input:focus {
+
+            border-color: #ff5733;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 4px rgba(255, 87, 51, 0.08);
+        }
+
+
+        /* =====================================================
+           UNIT ROW
+        ===================================================== */
+
+        .unit-row {
+
+            display: grid;
+
+            grid-template-columns: 1fr 45px 1fr;
+
+            align-items: end;
+
+            gap: 12px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .unit-group {
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .unit-group label {
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            color: #555;
+
+            margin-bottom: 7px;
+        }
+
+
+        .unit-group select {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 12px;
+
+            background: #fafafa;
+
+            outline: none;
+
+            cursor: pointer;
+
+            font-size: 14px;
+        }
+
+
+        .unit-group select:focus {
+
+            border-color: #ff5733;
+        }
+
+
+        .unit-arrow {
+
+            height: 46px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            color: #ff5733;
+
+            font-size: 22px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        .converter-box button {
+
+            border: none;
+
+            padding: 14px 18px;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+
+        .converter-box button:first-of-type {
+
+            width: 32%;
+
+            background: #f1f3f6;
+
+            color: #444;
+
+            margin-right: 2%;
+        }
+
+
+        .converter-box button:first-of-type:hover {
+
+            background: #e5e8ed;
+
+            transform: translateY(-2px);
+        }
+
+
+        .converter-box button:nth-of-type(2) {
+
+            width: 66%;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff5733,
+                    #ff7a59
+                );
+
+            box-shadow:
+                0 8px 20px rgba(255, 87, 51, 0.25);
+        }
+
+
+        .converter-box button:nth-of-type(2):hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 25px rgba(255, 87, 51, 0.35);
+        }
+
+
+        /* =====================================================
+           RESULT
+        ===================================================== */
 
         .result-box {
-            margin-top: 20px;
-            padding: 15px;
-            background: #e0f2fe;
-            border-radius: 8px;
-            color: #075985;
-            font-weight: bold;
+
+            margin-top: 22px;
+
+            padding: 22px;
+
+            border-radius: 16px;
+
+            background: #f6f8fb;
+
+            border: 1px solid #e9ebef;
+
+            text-align: center;
         }
 
-        .info-box,
-        .conversion-table,
-        .conversion-info,
-        .common-conversions {
-            width: 90%;
-            max-width: 1100px;
-            margin: 25px auto;
+
+        .result-box p {
+
+            color: #222;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            word-break: break-word;
+        }
+
+
+        /* =====================================================
+           INFORMATION
+        ===================================================== */
+
+        .info-grid {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 22px;
+        }
+
+
+        .info-card {
+
+            padding: 30px;
+
             background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+
+            border: 1px solid #ececf1;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.05);
+
+            transition: 0.3s;
         }
 
-        h3,
-        .common-conversions h2 {
-            color: #1e3a8a;
-            margin-bottom: 12px;
+
+        .info-card:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.08);
         }
 
-        .info-box h3 {
-            margin-top: 20px;
+
+        .info-card-icon {
+
+            width: 52px;
+            height: 52px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 15px;
+
+            border-radius: 14px;
+
+            background: #fff1ed;
+
+            font-size: 24px;
         }
 
-        .info-box h3:first-child {
-            margin-top: 0;
-        }
 
-        .info-box p,
-        .conversion-info p {
+        .info-card h3 {
+
+            font-size: 21px;
+
             margin-bottom: 10px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
+
+        .info-card > p {
+
+            color: #777;
+
+            font-size: 14px;
+
+            margin-bottom: 20px;
         }
+
+
+        .info-detail {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 12px 0;
+
+            border-top: 1px solid #eee;
+
+            font-size: 13px;
+        }
+
+
+        .info-detail strong {
+
+            color: #444;
+        }
+
+
+        .info-detail span {
+
+            color: #ff5733;
+
+            font-weight: 600;
+
+            text-align: right;
+        }
+
+
+        /* =====================================================
+           TABLE
+        ===================================================== */
+
+        .table-card {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.06);
+        }
+
+
+        .table-wrapper {
+
+            width: 100%;
+
+            overflow-x: auto;
+        }
+
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 450px;
+        }
+
 
         th {
-            background: #1e3a8a;
+
+            background: #ff5733;
+
             color: white;
+
+            padding: 14px;
+
+            font-size: 14px;
+
+            text-align: left;
         }
 
-        th,
+
         td {
-            padding: 12px;
-            text-align: center;
-            border: 1px solid #ddd;
+
+            padding: 13px 14px;
+
+            border-bottom: 1px solid #eee;
+
+            color: #555;
+
+            font-size: 14px;
         }
 
-        tr:nth-child(even) {
-            background: #f1f5f9;
+
+        tbody tr:nth-child(even) {
+
+            background: #fafafa;
         }
 
-        .converter-list {
+
+        tbody tr:hover {
+
+            background: #fff4f0;
+        }
+
+
+        /* =====================================================
+           EXAMPLE
+        ===================================================== */
+
+        .example-card {
+
             display: flex;
-            gap: 50px;
+
+            align-items: flex-start;
+
+            gap: 22px;
+
+            padding: 32px;
+
+            background: white;
+
+            border-radius: 22px;
+
+            border: 1px solid #ececf1;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.06);
         }
 
-        .converter-list ul {
-            flex: 1;
-            padding-left: 20px;
+
+        .example-icon {
+
+            width: 55px;
+            height: 55px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background: #fff1ed;
+
+            font-size: 25px;
         }
 
-        .converter-list li {
+
+        .example-card h2 {
+
+            font-size: 24px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .example-card p {
+
+            color: #666;
+
+            font-size: 14px;
+
             margin: 8px 0;
         }
 
-        .converter-list a {
-            color: #2563eb;
-            text-decoration: none;
+
+        .example-formula {
+
+            display: inline-block;
+
+            padding: 13px 18px;
+
+            margin: 10px 0;
+
+            background: #f6f8fb;
+
+            border-radius: 10px;
+
+            color: #333;
+
+            font-weight: 600;
         }
+
+
+        .example-formula strong,
+        .example-result strong {
+
+            color: #ff5733;
+        }
+
+
+        /* =====================================================
+           HOW IT WORKS
+        ===================================================== */
+
+        .steps {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .step {
+
+            padding: 30px;
+
+            background: white;
+
+            border-radius: 20px;
+
+            text-align: center;
+
+            border: 1px solid #ececf1;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.05);
+        }
+
+
+        .step-number {
+
+            width: 55px;
+            height: 55px;
+
+            margin: 0 auto 15px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #fff1ed;
+
+            color: #ff5733;
+
+            font-weight: 800;
+
+            font-size: 18px;
+        }
+
+
+        .step h3 {
+
+            margin-bottom: 8px;
+
+            font-size: 18px;
+        }
+
+
+        .step p {
+
+            color: #777;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           POPULAR CONVERSIONS
+        ===================================================== */
+
+        .popular-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .popular-card {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            padding: 20px;
+
+            background: white;
+
+            border: 1px solid #ececf1;
+
+            border-radius: 18px;
+
+            color: #222;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.05);
+
+            transition: 0.3s;
+        }
+
+
+        .popular-card:hover {
+
+            transform: translateY(-5px);
+
+            border-color: #ffb09e;
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .popular-card > span {
+
+            width: 45px;
+            height: 45px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: #fff1ed;
+
+            border-radius: 12px;
+
+            font-size: 22px;
+        }
+
+
+        .popular-card h3 {
+
+            font-size: 15px;
+
+            margin-bottom: 2px;
+        }
+
+
+        .popular-card p {
+
+            font-size: 12px;
+
+            color: #888;
+        }
+
+
+        .popular-card b {
+
+            margin-left: auto;
+
+            color: #ff5733;
+
+            font-size: 20px;
+        }
+
+
+        /* =====================================================
+           COMMON CONVERSIONS
+        ===================================================== */
+
+        .common-conversions {
+
+            width: min(1100px, 94%);
+
+            margin: 50px auto;
+
+            padding: 45px 35px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.06);
+        }
+
+
+        .common-conversions h2 {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+
+            font-size: 28px;
+        }
+
+
+        .converter-list {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 30px;
+        }
+
+
+        .converter-list ul {
+
+            list-style: none;
+        }
+
+
+        .converter-list li {
+
+            margin: 10px 0;
+        }
+
+
+        .converter-list a {
+
+            color: #2457a6;
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+            transition: 0.3s;
+        }
+
+
+        .converter-list a::before {
+
+            content: "→ ";
+
+            color: #ff5733;
+        }
+
 
         .converter-list a:hover {
-            text-decoration: underline;
+
+            color: #ff5733;
+
+            padding-left: 5px;
         }
 
-        @media (max-width: 600px) {
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+
+            background: #202124;
+
+            color: white;
+
+            padding: 50px 20px;
+
+            text-align: center;
+
+            margin-top: 40px;
+        }
+
+
+        .footer-content {
+
+            max-width: 800px;
+
+            margin: auto;
+        }
+
+
+        .footer h2 {
+
+            font-size: 28px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .footer p {
+
+            color: #aaa;
+
+            font-size: 14px;
+        }
+
+
+        .footer-links {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 25px;
+
+            margin: 20px 0;
+        }
+
+
+        .footer-links a {
+
+            color: #ddd;
+
+            font-size: 14px;
+        }
+
+
+        .footer-links a:hover {
+
+            color: #ff5733;
+        }
+
+
+        .footer-line {
+
+            height: 1px;
+
+            background: #3a3a3a;
+
+            margin: 20px 0;
+        }
+
+
+        .copyright {
+
+            font-size: 12px !important;
+
+            color: #777 !important;
+        }
+
+
+        /* =====================================================
+           BACK TO TOP
+        ===================================================== */
+
+        .back-to-top {
+
+            position: fixed;
+
+            right: 25px;
+            bottom: 25px;
+
+            width: 45px;
+            height: 45px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #ff5733;
+
+            color: white;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            box-shadow:
+                0 8px 20px rgba(255, 87, 51, 0.3);
+
+            z-index: 999;
+        }
+
+
+        .back-to-top.show {
+
+            display: flex;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                height: 65px;
+            }
+
+
             .nav-container {
-                width: 92%;
+                padding: 0 15px;
             }
 
-            .converter-box,
-            .info-box,
-            .conversion-table,
-            .conversion-info,
-            .common-conversions {
-                width: 94%;
-                padding: 20px;
+
+            .logo a {
+                font-size: 22px;
             }
 
-            select {
-                width: 100%;
-                margin: 7px 0;
+
+            .nav-links {
+                gap: 10px;
             }
 
-            .converter-box span {
-                display: block;
-                margin: 5px;
+
+            .nav-links li:not(:first-child) {
+                display: none;
             }
 
-            button {
-                width: 100%;
-                margin: 7px 0;
-            }
 
-            .converter-list {
-                flex-direction: column;
-                gap: 0;
-            }
-
-            table {
+            .nav-links a {
                 font-size: 13px;
             }
 
-            th,
-            td {
-                padding: 8px 4px;
+
+            .page-hero {
+
+                min-height: 500px;
+
+                padding: 125px 20px 70px;
             }
+
+
+            .page-hero h1 {
+
+                font-size: 43px;
+            }
+
+
+            .page-hero p {
+
+                font-size: 15px;
+            }
+
+
+            .converter-section,
+            .information-section,
+            .table-section,
+            .example-section,
+            .how-section,
+            .popular-section {
+
+                padding: 60px 15px;
+            }
+
+
+            .section-heading h2 {
+
+                font-size: 29px;
+            }
+
+
+            .converter-box {
+
+                padding: 22px;
+
+                border-radius: 18px;
+            }
+
+
+            .converter-box h2 {
+
+                font-size: 21px;
+            }
+
+
+            .unit-row {
+
+                grid-template-columns: 1fr;
+
+                gap: 10px;
+            }
+
+
+            .unit-arrow {
+
+                height: 30px;
+
+                transform: rotate(90deg);
+            }
+
+
+            .converter-box button:first-of-type,
+            .converter-box button:nth-of-type(2) {
+
+                width: 100%;
+
+                margin: 0 0 10px;
+            }
+
+
+            .info-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .table-card {
+
+                padding: 15px;
+            }
+
+
+            .example-card {
+
+                flex-direction: column;
+
+                padding: 25px;
+            }
+
+
+            .example-card h2 {
+
+                font-size: 21px;
+            }
+
+
+            .steps {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .popular-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .converter-list {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .common-conversions {
+
+                padding: 30px 20px;
+            }
+
+
+            .common-conversions h2 {
+
+                font-size: 23px;
+            }
+
+
+            .footer-links {
+
+                flex-wrap: wrap;
+
+                gap: 15px;
+            }
+
         }
+
+
+        @media (max-width: 450px) {
+
+            .page-hero h1 {
+
+                font-size: 37px;
+            }
+
+
+            .hero-button {
+
+                width: 100%;
+            }
+
+
+            .converter-box {
+
+                padding: 18px;
+            }
+
+
+            .result-box p {
+
+                font-size: 17px;
+            }
+
+
+            .back-to-top {
+
+                right: 15px;
+
+                bottom: 15px;
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
 <nav class="navbar">
+
     <div class="nav-container">
-        <h2 class="logo">
+
+        <div class="logo">
+
             <a href="index.html">
+
                 <span class="quick">Quick</span>
                 <span class="converter">Converter</span>
+
             </a>
-        </h2>
+
+        </div>
+
 
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="#converter">
+                    Converter
+                </a>
+            </li>
+
+            <li>
+                <a href="#information">
+                    Info
+                </a>
+            </li>
+
         </ul>
+
     </div>
+
 </nav>
 
-<div class="converter-box">
-    <h2>Millimeters to Feet Converter</h2>
 
-    <input type="number" id="inputValue" placeholder="Enter value">
 
-    <select id="fromUnit">
-        <option value="mm">Millimeters</option>
-        <option value="feet">Feet</option>
-    </select>
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-    <span>to</span>
+<header class="page-hero">
 
-    <select id="toUnit">
-        <option value="feet">Feet</option>
-        <option value="mm">Millimeters</option>
-    </select>
+    <div class="hero-content">
 
-    <button onclick="swapUnits()">Swap Unit</button>
-    <button onclick="convert()">Convert</button>
+        <div class="hero-badge">
+            📏 Length Converter
+        </div>
 
-    <div class="result-box">
-        <p id="result">Result:</p>
+
+        <h1>
+
+            Millimeters
+
+            <span>to</span>
+
+            Feet
+
+        </h1>
+
+
+        <p>
+
+            Convert millimeters to feet or feet to millimeters
+            quickly and accurately.
+
+        </p>
+
+
+        <a
+            href="#converter"
+            class="hero-button"
+        >
+            Start Converting ↓
+        </a>
+
     </div>
-</div>
 
-<div class="info-box">
+</header>
 
-    <h3>Millimeter</h3>
 
-    <p>
-        <strong>Definition:</strong>
-        A millimeter (mm) is one-thousandth of a meter (0.001 m).
-    </p>
 
-    <p>
-        <strong>History/origin:</strong>
-        Part of the metric system established in France in the 18th century.
-    </p>
+<!-- =====================================================
+     CONVERTER
+===================================================== -->
 
-    <p>
-        <strong>Current use:</strong>
-        Used globally for measuring small lengths like mechanical parts,
-        tools, and technical dimensions.
-    </p>
+<main>
 
-    <h3>Foot</h3>
+<section
+    class="converter-section"
+    id="converter"
+>
 
-    <p>
-        <strong>Definition:</strong>
-        A foot (symbol: ft) is a unit of length in the imperial and US
-        customary systems. 1 foot = 0.3048 meters.
-    </p>
+    <div class="section-heading">
 
-    <p>
-        <strong>History/origin:</strong>
-        Based on human foot length. Standardized in 1959.
-    </p>
+        <span class="section-label">
+            QUICK CONVERTER
+        </span>
 
-    <p>
-        <strong>Current use:</strong>
-        Widely used in the US for height, room dimensions, and more.
-        Also used in aviation and some construction globally.
-    </p>
 
-</div>
+        <h2>
+            MM ↔ Feet Converter
+        </h2>
 
-<div class="conversion-table">
 
-    <h3>Millimeter to Feet Conversion Table</h3>
+        <p>
+            Enter a value and select the units you want to convert.
+        </p>
 
-    <table>
-        <tr>
-            <th>Millimeter [mm]</th>
-            <th>Feet [ft]</th>
-        </tr>
+    </div>
 
-        <tr>
-            <td>1 mm</td>
-            <td>0.00328084 ft</td>
-        </tr>
 
-        <tr>
-            <td>10 mm</td>
-            <td>0.0328084 ft</td>
-        </tr>
+    <div class="converter-box">
 
-        <tr>
-            <td>100 mm</td>
-            <td>0.328084 ft</td>
-        </tr>
+        <h2>
+            Millimeter ↔ Foot
+        </h2>
 
-        <tr>
-            <td>500 mm</td>
-            <td>1.64042 ft</td>
-        </tr>
 
-        <tr>
-            <td>1000 mm</td>
-            <td>3.28084 ft</td>
-        </tr>
-    </table>
+        <input
+            type="number"
+            id="inputValue"
+            placeholder="Enter value"
+            step="any"
+            autocomplete="off"
+        >
 
-</div>
 
-<div class="conversion-info">
+        <div class="unit-row">
 
-    <h3>How to Convert Millimeter to Feet</h3>
+            <div class="unit-group">
 
-    <p>1 mm = 0.00328084 ft</p>
+                <label for="fromUnit">
+                    From
+                </label>
 
-    <p>1 ft = 304.8 mm</p>
 
-    <p>
-        <strong>Example:</strong>
-        convert 800 mm to ft:
-    </p>
+                <select id="fromUnit">
 
-    <p>
-        800 mm = 800 × 0.00328084 = 2.62467 ft
-    </p>
+                    <option value="mm">
+                        Millimeters (mm)
+                    </option>
 
-</div>
+                    <option value="feet">
+                        Feet (ft)
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="unit-arrow">
+                →
+            </div>
+
+
+            <div class="unit-group">
+
+                <label for="toUnit">
+                    To
+                </label>
+
+
+                <select id="toUnit">
+
+                    <option value="feet">
+                        Feet (ft)
+                    </option>
+
+                    <option value="mm">
+                        Millimeters (mm)
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            onclick="swapUnits()"
+        >
+            🔄 Swap Unit
+        </button>
+
+
+        <button
+            type="button"
+            onclick="convert()"
+        >
+            Convert Length
+        </button>
+
+
+        <div class="result-box">
+
+            <p id="result">
+                Result will appear here
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     INFORMATION
+===================================================== -->
+
+<section
+    class="information-section"
+    id="information"
+>
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            LENGTH GUIDE
+        </span>
+
+
+        <h2>
+            Millimeter & Foot
+        </h2>
+
+
+        <p>
+            Learn more about both units of length.
+        </p>
+
+    </div>
+
+
+    <div class="info-grid">
+
+
+        <article class="info-card">
+
+            <div class="info-card-icon">
+                📏
+            </div>
+
+
+            <h3>
+                Millimeter (mm)
+            </h3>
+
+
+            <p>
+                A millimeter is a metric unit of length equal
+                to one-thousandth of a meter.
+            </p>
+
+
+            <div class="info-detail">
+
+                <strong>
+                    1 Millimeter
+                </strong>
+
+                <span>
+                    0.001 meter
+                </span>
+
+            </div>
+
+
+            <div class="info-detail">
+
+                <strong>
+                    In Feet
+                </strong>
+
+                <span>
+                    0.00328084 ft
+                </span>
+
+            </div>
+
+
+            <div class="info-detail">
+
+                <strong>
+                    Common Use
+                </strong>
+
+                <span>
+                    Small measurements
+                </span>
+
+            </div>
+
+        </article>
+
+
+
+        <article class="info-card">
+
+            <div class="info-card-icon">
+                📐
+            </div>
+
+
+            <h3>
+                Foot (ft)
+            </h3>
+
+
+            <p>
+                A foot is a unit of length used mainly in the
+                US customary and imperial systems.
+            </p>
+
+
+            <div class="info-detail">
+
+                <strong>
+                    1 Foot
+                </strong>
+
+                <span>
+                    304.8 mm
+                </span>
+
+            </div>
+
+
+            <div class="info-detail">
+
+                <strong>
+                    In Meters
+                </strong>
+
+                <span>
+                    0.3048 m
+                </span>
+
+            </div>
+
+
+            <div class="info-detail">
+
+                <strong>
+                    Common Use
+                </strong>
+
+                <span>
+                    US & construction
+                </span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONVERSION TABLE
+===================================================== -->
+
+<section class="table-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            QUICK REFERENCE
+        </span>
+
+
+        <h2>
+            Millimeter to Feet Table
+        </h2>
+
+    </div>
+
+
+    <div class="table-card">
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Millimeter (mm)
+                        </th>
+
+                        <th>
+                            Foot (ft)
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+                        <td>1 mm</td>
+                        <td>0.00328084 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>10 mm</td>
+                        <td>0.0328084 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>50 mm</td>
+                        <td>0.164042 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>100 mm</td>
+                        <td>0.328084 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>250 mm</td>
+                        <td>0.82021 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>500 mm</td>
+                        <td>1.64042 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>1000 mm</td>
+                        <td>3.28084 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>1500 mm</td>
+                        <td>4.92126 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>2000 mm</td>
+                        <td>6.56168 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>3000 mm</td>
+                        <td>9.84252 ft</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONVERSION INFO / EXAMPLE
+===================================================== -->
+
+<section class="example-section">
+
+    <div class="example-card">
+
+        <div class="example-icon">
+            🧮
+        </div>
+
+
+        <div>
+
+            <span class="section-label">
+                CONVERSION FORMULA
+            </span>
+
+
+            <h2>
+                How to Convert MM to Feet
+            </h2>
+
+
+            <p>
+                To convert millimeters to feet, multiply the
+                millimeter value by 0.00328084.
+            </p>
+
+
+            <div class="example-formula">
+
+                mm × 0.00328084 =
+                <strong>ft</strong>
+
+            </div>
+
+
+            <p>
+                <strong>Example:</strong>
+            </p>
+
+
+            <div class="example-formula">
+
+                800 × 0.00328084 =
+                <strong>2.62467 ft</strong>
+
+            </div>
+
+
+            <p class="example-result">
+
+                Therefore,
+
+                <strong>
+                    800 mm = 2.62467 ft
+                </strong>.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     HOW IT WORKS
+===================================================== -->
+
+<section class="how-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            SIMPLE PROCESS
+        </span>
+
+
+        <h2>
+            How It Works
+        </h2>
+
+    </div>
+
+
+    <div class="steps">
+
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+
+            <h3>
+                Enter Value
+            </h3>
+
+
+            <p>
+                Enter the length value you want to convert.
+            </p>
+
+        </div>
+
+
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+
+            <h3>
+                Select Units
+            </h3>
+
+
+            <p>
+                Choose millimeters or feet as your source
+                and target unit.
+            </p>
+
+        </div>
+
+
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+
+            <h3>
+                Get Result
+            </h3>
+
+
+            <p>
+                Click convert and get your accurate result
+                instantly.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     POPULAR CONVERSIONS
+===================================================== -->
+
+<section class="popular-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            EXPLORE MORE
+        </span>
+
+
+        <h2>
+            Popular Conversions
+        </h2>
+
+    </div>
+
+
+    <div class="popular-grid">
+
+
+        <a
+            href="mm_to_cm.html"
+            class="popular-card"
+        >
+
+            <span>📏</span>
+
+
+            <div>
+
+                <h3>
+                    mm to cm
+                </h3>
+
+
+                <p>
+                    Millimeters → Centimeters
+                </p>
+
+            </div>
+
+
+            <b>→</b>
+
+        </a>
+
+
+
+        <a
+            href="mm_to_inches.html"
+            class="popular-card"
+        >
+
+            <span>📐</span>
+
+
+            <div>
+
+                <h3>
+                    mm to inches
+                </h3>
+
+
+                <p>
+                    Millimeters → Inches
+                </p>
+
+            </div>
+
+
+            <b>→</b>
+
+        </a>
+
+
+
+        <a
+            href="meters_to_feet.html"
+            class="popular-card"
+        >
+
+            <span>📏</span>
+
+
+            <div>
+
+                <h3>
+                    meters to feet
+                </h3>
+
+
+                <p>
+                    Meters → Feet
+                </p>
+
+            </div>
+
+
+            <b>→</b>
+
+        </a>
+
+
+
+        <a
+            href="cm_to_feet.html"
+            class="popular-card"
+        >
+
+            <span>📐</span>
+
+
+            <div>
+
+                <h3>
+                    cm to feet
+                </h3>
+
+
+                <p>
+                    Centimeters → Feet
+                </p>
+
+            </div>
+
+
+            <b>→</b>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     COMMON CONVERSIONS
+===================================================== -->
 
 <div class="common-conversions">
 
-    <h2>Popular Length Unit Conversions</h2>
+    <h2>
+        Popular Length Unit Conversions
+    </h2>
+
 
     <div class="converter-list">
 
         <ul>
-            <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
-            <li><a href="mm_to_inches.html">mm to inches</a></li>
-            <li><a href="meters_to_feet.html">meters to feet</a></li>
-            <li><a href="km_to_miles.html">km to miles</a></li>
-            <li><a href="cm_to_feet.html">cm to feet</a></li>
-            <li><a href="inches_to_feet.html">inches to feet</a></li>
-            <li><a href="meters_to_yards.html">meters to yards</a></li>
-            <li><a href="mm_to_cm.html">mm to cm</a></li>
-            <li><a href="cm_to_m.html">cm to m</a></li>
-            <li><a href="cm_to_km.html">cm to km</a></li>
+
+            <li>
+                <a href="Centemeter_to_Inches.html">
+                    cm to inches
+                </a>
+            </li>
+
+
+            <li>
+                <a href="mm_to_inches.html">
+                    mm to inches
+                </a>
+            </li>
+
+
+            <li>
+                <a href="meters_to_feet.html">
+                    meters to feet
+                </a>
+            </li>
+
+
+            <li>
+                <a href="km_to_miles.html">
+                    km to miles
+                </a>
+            </li>
+
+
+            <li>
+                <a href="cm_to_feet.html">
+                    cm to feet
+                </a>
+            </li>
+
+
+            <li>
+                <a href="inches_to_feet.html">
+                    inches to feet
+                </a>
+            </li>
+
+
+            <li>
+                <a href="meters_to_yards.html">
+                    meters to yards
+                </a>
+            </li>
+
+
+            <li>
+                <a href="mm_to_cm.html">
+                    mm to cm
+                </a>
+            </li>
+
         </ul>
 
+
         <ul>
-            <li><a href="mm_to_feet.html">mm to feet</a></li>
-            <li><a href="meters_to_miles.html">meters to miles</a></li>
-            <li><a href="feet_to_miles.html">feet to miles</a></li>
-            <li><a href="yards_to_feet.html">yards to feet</a></li>
-            <li><a href="inches_to_meters.html">inches to meters</a></li>
-            <li><a href="mm_to_m.html">mm to m</a></li>
-            <li><a href="km_to_m.html">km to m</a></li>
-            <li><a href="inches_to_yards.html">inches to yards</a></li>
-            <li><a href="yards_to_miles.html">yards to miles</a></li>
+
+            <li>
+                <a href="cm_to_m.html">
+                    cm to m
+                </a>
+            </li>
+
+
+            <li>
+                <a href="cm_to_km.html">
+                    cm to km
+                </a>
+            </li>
+
+
+            <li>
+                <a href="mm_to_feet.html">
+                    mm to feet
+                </a>
+            </li>
+
+
+            <li>
+                <a href="meters_to_miles.html">
+                    meters to miles
+                </a>
+            </li>
+
+
+            <li>
+                <a href="feet_to_miles.html">
+                    feet to miles
+                </a>
+            </li>
+
+
+            <li>
+                <a href="yards_to_feet.html">
+                    yards to feet
+                </a>
+            </li>
+
+
+            <li>
+                <a href="inches_to_meters.html">
+                    inches to meters
+                </a>
+            </li>
+
+
+            <li>
+                <a href="km_to_m.html">
+                    km to m
+                </a>
+            </li>
+
         </ul>
 
     </div>
+
 </div>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <h2>
+
+            <span class="quick">
+                Quick
+            </span>
+
+            <span style="color:white;">
+                Converter
+            </span>
+
+        </h2>
+
+
+        <p>
+            Fast, simple and accurate unit conversion.
+        </p>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+
+            <a href="#converter">
+                Converter
+            </a>
+
+
+            <a href="#information">
+                Information
+            </a>
+
+        </div>
+
+
+        <div class="footer-line"></div>
+
+
+        <p class="copyright">
+            © 2026 Quick Converter. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
+<button
+    class="back-to-top"
+    id="backToTop"
+    onclick="scrollToTop()"
+    aria-label="Back to top"
+>
+    ↑
+</button>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script>
 
+
 function swapUnits() {
 
-    let from = document.getElementById("fromUnit");
-    let to = document.getElementById("toUnit");
+    const from =
+        document.getElementById("fromUnit");
 
-    let temp = from.value;
 
-    from.value = to.value;
-    to.value = temp;
+    const to =
+        document.getElementById("toUnit");
+
+
+    const temp =
+        from.value;
+
+
+    from.value =
+        to.value;
+
+
+    to.value =
+        temp;
+
 }
+
+
 
 function convert() {
 
-    let value = parseFloat(
-        document.getElementById("inputValue").value
-    );
+    const value =
+        parseFloat(
+            document.getElementById("inputValue").value
+        );
 
-    let fromUnit = document.getElementById("fromUnit").value;
-    let toUnit = document.getElementById("toUnit").value;
 
-    let resultBox = document.getElementById("result");
+    const fromUnit =
+        document.getElementById("fromUnit").value;
+
+
+    const toUnit =
+        document.getElementById("toUnit").value;
+
+
+    const resultBox =
+        document.getElementById("result");
+
 
     if (isNaN(value)) {
 
-        resultBox.innerText = "Please enter a valid number!";
+        resultBox.innerText =
+            "Please enter a valid number.";
+
         return;
+
     }
+
 
     let result;
 
-    if (fromUnit === "mm" && toUnit === "feet") {
 
-        result = value * 0.00328084;
+    /* MM TO FEET */
 
-    } else if (fromUnit === "feet" && toUnit === "mm") {
+    if (
+        fromUnit === "mm" &&
+        toUnit === "feet"
+    ) {
 
-        result = value / 0.00328084;
+        result =
+            value * 0.00328084;
 
-    } else {
-
-        result = value;
     }
 
+
+    /* FEET TO MM */
+
+    else if (
+        fromUnit === "feet" &&
+        toUnit === "mm"
+    ) {
+
+        result =
+            value / 0.00328084;
+
+    }
+
+
+    /* SAME UNIT */
+
+    else {
+
+        result =
+            value;
+
+    }
+
+
+    const unit =
+        toUnit === "mm"
+            ? "mm"
+            : "ft";
+
+
     resultBox.innerText =
-        `Result: ${result.toFixed(4)} ${toUnit}`;
+        `${result.toFixed(4)} ${unit}`;
+
+}
+
+
+
+/* =====================================================
+   BACK TO TOP
+===================================================== */
+
+window.addEventListener(
+    "scroll",
+    function() {
+
+        const button =
+            document.getElementById("backToTop");
+
+
+        if (window.scrollY > 400) {
+
+            button.classList.add("show");
+
+        }
+
+        else {
+
+            button.classList.remove("show");
+
+        }
+
+    }
+);
+
+
+
+function scrollToTop() {
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
 }
 
 </script>
 
+
 </body>
+
 </html>
