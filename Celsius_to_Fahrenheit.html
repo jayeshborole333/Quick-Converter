@@ -1,148 +1,1084 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Celsius to Fahrenheit Converter</title>
+
+    <meta
+        name="description"
+        content="Celsius to Fahrenheit Converter - Quickly convert Celsius to Fahrenheit and Fahrenheit to Celsius."
+    >
+
+    <title>Celsius to Fahrenheit Converter | Quick Converter</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
     <link rel="stylesheet" href="style.css">
 </head>
+
+
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-          <h2 class="logo">
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <div class="logo">
+
             <a href="index.html">
-              <span class="quick">Quick</span> <span class="converter">Converter</span>
+
+                <span class="quick">Quick</span>
+                <span class="converter">Converter</span>
+
             </a>
-          </h2>
-          <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-          </ul>
+
         </div>
-      </nav>
+
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="#converter">Converter</a>
+            </li>
+
+            <li>
+                <a href="#information">Info</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<header class="page-hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            🌡️ Temperature Converter
+        </div>
+
+        <h1>
+            Celsius
+            <span>to</span>
+            Fahrenheit
+        </h1>
+
+        <p>
+            Convert Celsius to Fahrenheit or Fahrenheit to Celsius
+            quickly and accurately.
+        </p>
+
+        <a href="#converter" class="hero-button">
+            Start Converting ↓
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     CONVERTER
+===================================================== -->
+
+<main>
+
+
+<section class="converter-section" id="converter">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            QUICK CONVERTER
+        </span>
+
+        <h2>
+            Temperature Converter
+        </h2>
+
+        <p>
+            Enter a value and select the units you want to convert.
+        </p>
+
+    </div>
+
 
     <div class="converter-box">
-        <h2>Celsius to Fahrenheit Converter</h2>
-        <input type="number" id="inputValue" placeholder="Enter value">
-        
-        <select id="fromUnit">
-            <option value="celsius">Celsius</option>
-            <option value="fahrenheit">Fahrenheit</option>
-        </select>
 
-        <span>to</span>
+        <div class="converter-header">
 
-        <select id="toUnit">
-            <option value="fahrenheit">Fahrenheit</option>
-            <option value="celsius">Celsius</option>
-        </select>
+            <div class="converter-icon">
+                🌡️
+            </div>
 
-        <button onclick="swapUnits()">Swap Unit</button>
-        <button onclick="convert()">Convert</button>
+            <div>
+
+                <h2>
+                    Celsius ↔ Fahrenheit
+                </h2>
+
+                <p>
+                    Fast and accurate temperature conversion
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- INPUT -->
+
+        <label for="inputValue">
+            Enter Temperature
+        </label>
+
+        <input
+            type="number"
+            id="inputValue"
+            placeholder="Enter value"
+            step="any"
+            autocomplete="off"
+        >
+
+
+        <!-- UNIT ROW -->
+
+        <div class="unit-row">
+
+            <div class="unit-group">
+
+                <label for="fromUnit">
+                    From
+                </label>
+
+                <select id="fromUnit">
+
+                    <option value="celsius">
+                        Celsius (°C)
+                    </option>
+
+                    <option value="fahrenheit">
+                        Fahrenheit (°F)
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="unit-arrow">
+                →
+            </div>
+
+
+            <div class="unit-group">
+
+                <label for="toUnit">
+                    To
+                </label>
+
+                <select id="toUnit">
+
+                    <option value="fahrenheit">
+                        Fahrenheit (°F)
+                    </option>
+
+                    <option value="celsius">
+                        Celsius (°C)
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- BUTTONS -->
+
+        <div class="converter-buttons">
+
+            <button
+                type="button"
+                class="swap-btn"
+                onclick="swapUnits()"
+            >
+                🔄 Swap
+            </button>
+
+
+            <button
+                type="button"
+                class="convert-btn"
+                onclick="convert()"
+            >
+                Convert Temperature
+            </button>
+
+        </div>
+
+
+        <!-- RESULT -->
 
         <div class="result-box">
-            <p id="result">Result:</p>
+
+            <div class="result-label">
+                Conversion Result
+            </div>
+
+
+            <p id="result">
+                Result will appear here
+            </p>
+
+
+            <div class="result-actions">
+
+                <button
+                    type="button"
+                    onclick="copyResult()"
+                >
+                    📋 Copy Result
+                </button>
+
+                <button
+                    type="button"
+                    onclick="clearConverter()"
+                >
+                    🧹 Clear
+                </button>
+
+            </div>
+
         </div>
+
     </div>
 
-    <div class="info-box">
-        <h3>Celsius</h3>
-        <p><strong>Definition:</strong> Celsius (°C) is a metric temperature scale where 0°C is water's freezing point and 100°C is boiling point at 1 atm pressure.</p>
-        <p><strong>History/origin:</strong> Introduced in 1742 by Anders Celsius, this scale was originally reversed. It was later inverted to the current format.</p>
-        <p><strong>Current use:</strong> Widely used globally for daily temperature measurement, weather, cooking, and science, except in a few countries like the US.</p>
-      
-        <h3>Fahrenheit</h3>
-        <p><strong>Definition:</strong> Fahrenheit (°F) is a temperature scale where water freezes at 32°F and boils at 212°F under standard atmospheric pressure.</p>
-        <p><strong>History/origin:</strong> Invented by Daniel Fahrenheit in 1724, it used a mercury thermometer based on ice-salt and human body temperature.</p>
-        <p><strong>Current use:</strong> Primarily used in the US for weather forecasts, ovens, and thermostats; less common elsewhere.</p>
-      </div>
-      
-      <div class="conversion-table">
-        <h3>Celsius to Fahrenheit Conversion Table</h3>
-        <table border="1">
-          <tr><th>Celsius [°C]</th><th>Fahrenheit [°F]</th></tr>
-          <tr><td>0.01 °C</td><td>32.018 °F</td></tr>
-          <tr><td>0.1 °C</td><td>32.18 °F</td></tr>
-          <tr><td>1 °C</td><td>33.8 °F</td></tr>
-          <tr><td>2 °C</td><td>35.6 °F</td></tr>
-          <tr><td>3 °C</td><td>37.4 °F</td></tr>
-          <tr><td>5 °C</td><td>41 °F</td></tr>
-          <tr><td>10 °C</td><td>50 °F</td></tr>
-          <tr><td>20 °C</td><td>68 °F</td></tr>
-          <tr><td>50 °C</td><td>122 °F</td></tr>
-          <tr><td>100 °C</td><td>212 °F</td></tr>
-          <tr><td>1000 °C</td><td>1832 °F</td></tr>
-        </table>
-      </div>
-      
-      <div class="conversion-info">
-        <h3>How to Convert Celsius to Fahrenheit</h3>
-        <p>F = (9/5) × C + 32</p>
-        <p>C = (5/9) × (F − 32)</p>
-        <p><strong>Example:</strong> convert 15 °C to °F:<br>15 × 9/5 + 32 = 59 °F</p>
-      </div>
-      
+</section>
 
-    <!-- Popular Length Unit Conversions Section -->
-<div class="common-conversions">
-    <h2>Popular Length Unit Conversions</h2>
-    <div class="converter-list">
-        <ul>
-            <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
-            <li><a href="mm_to_inches.html">mm to inches</a></li>
-            <li><a href="meters_to_feet.html">meters to feet</a></li>
-            <li><a href="km_to_miles.html">km to miles</a></li>
-            <li><a href="cm_to_feet.html">cm to feet</a></li>
-            <li><a href="inches_to_feet.html">inches to feet</a></li>
-            <li><a href="meters_to_yards.html">meters to yards</a></li>
-            <li><a href="mm_to_cm.html">mm to cm</a></li>
-            <li><a href="cm_to_m.html">cm to m</a></li>
-            <li><a href="cm_to_km.html">cm to km</a></li>
-        </ul>
-        <ul>
-            <li><a href="mm_to_feet.html">mm to feet</a></li>
-            <li><a href="meters_to_miles.html">meters to miles</a></li>
-            <li><a href="feet_to_miles.html">feet to miles</a></li>
-            <li><a href="yards_to_feet.html">yards to feet</a></li>
-            <li><a href="inches_to_meters.html">inches to meters</a></li>
-            <li><a href="mm_to_m.html">mm to m</a></li>
-            <li><a href="km_to_m.html">km to m</a></li>
-            <li><a href="inches_to_yards.html">inches to yards</a></li>
-            <li><a href="yards_to_miles.html">yards to miles</a></li>
-        </ul>
+
+
+<!-- =====================================================
+     FORMULA
+===================================================== -->
+
+<section class="formula-section">
+
+    <div class="formula-card">
+
+        <div class="formula-icon">
+            🧮
+        </div>
+
+        <div>
+
+            <span class="section-label">
+                CONVERSION FORMULA
+            </span>
+
+            <h2>
+                Celsius ↔ Fahrenheit Formula
+            </h2>
+
+            <div class="formula-box">
+
+                <p>
+                    <strong>
+                        Fahrenheit:
+                    </strong>
+                </p>
+
+                <code>
+                    °F = (°C × 9/5) + 32
+                </code>
+
+
+                <p>
+                    <strong>
+                        Celsius:
+                    </strong>
+                </p>
+
+                <code>
+                    °C = (°F − 32) × 5/9
+                </code>
+
+            </div>
+
+        </div>
+
     </div>
-</div>
 
-    <script>
-        function swapUnits() {
-            let from = document.getElementById("fromUnit");
-            let to = document.getElementById("toUnit");
-            let temp = from.value;
-            from.value = to.value;
-            to.value = temp;
-        }
+</section>
 
-        function convert() {
-            let value = parseFloat(document.getElementById("inputValue").value);
-            let fromUnit = document.getElementById("fromUnit").value;
-            let toUnit = document.getElementById("toUnit").value;
-            let resultBox = document.getElementById("result");
 
-            if (isNaN(value)) {
-                resultBox.innerText = "Please enter a valid number!";
-                return;
-            }
 
-            let result;
-            if (fromUnit === "celsius" && toUnit === "fahrenheit") {
-                result = (value * 9/5) + 32;
-            } else if (fromUnit === "fahrenheit" && toUnit === "celsius") {
-                result = (value - 32) * 5/9;
-            } else {
-                result = value;
-            }
+<!-- =====================================================
+     INFORMATION
+===================================================== -->
 
-            resultBox.innerText = `Result: ${result.toFixed(2)} ${toUnit}`;
-        }
-    </script>
+<section
+    class="information-section"
+    id="information"
+>
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            TEMPERATURE GUIDE
+        </span>
+
+        <h2>
+            Celsius & Fahrenheit
+        </h2>
+
+        <p>
+            Learn more about both temperature scales.
+        </p>
+
+    </div>
+
+
+    <div class="info-grid">
+
+
+        <!-- CELSIUS -->
+
+        <article class="info-card">
+
+            <div class="info-card-icon">
+                🌍
+            </div>
+
+            <h3>
+                Celsius (°C)
+            </h3>
+
+            <p>
+                Celsius is a metric temperature scale commonly used
+                around the world.
+            </p>
+
+            <div class="info-detail">
+
+                <strong>
+                    Freezing Point
+                </strong>
+
+                <span>
+                    0°C
+                </span>
+
+            </div>
+
+
+            <div class="info-detail">
+
+                <strong>
+                    Boiling Point
+                </strong>
+
+                <span>
+                    100°C
+                </span>
+
+            </div>
+
+
+            <div class="info-detail">
+
+                <strong>
+                    Common Use
+                </strong>
+
+                <span>
+                    Weather, science & daily life
+                </span>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- FAHRENHEIT -->
+
+        <article class="info-card">
+
+            <div class="info-card-icon">
+                🇺🇸
+            </div>
+
+            <h3>
+                Fahrenheit (°F)
+            </h3>
+
+            <p>
+                Fahrenheit is a temperature scale mainly used in
+                the United States.
+            </p>
+
+            <div class="info-detail">
+
+                <strong>
+                    Freezing Point
+                </strong>
+
+                <span>
+                    32°F
+                </span>
+
+            </div>
+
+
+            <div class="info-detail">
+
+                <strong>
+                    Boiling Point
+                </strong>
+
+                <span>
+                    212°F
+                </span>
+
+            </div>
+
+
+            <div class="info-detail">
+
+                <strong>
+                    Common Use
+                </strong>
+
+                <span>
+                    Weather & household temperature
+                </span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONVERSION TABLE
+===================================================== -->
+
+<section class="table-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            QUICK REFERENCE
+        </span>
+
+        <h2>
+            Celsius to Fahrenheit Table
+        </h2>
+
+    </div>
+
+
+    <div class="table-card">
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Celsius (°C)
+                        </th>
+
+                        <th>
+                            Fahrenheit (°F)
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+                        <td>−40°C</td>
+                        <td>−40°F</td>
+                    </tr>
+
+                    <tr>
+                        <td>−10°C</td>
+                        <td>14°F</td>
+                    </tr>
+
+                    <tr>
+                        <td>0°C</td>
+                        <td>32°F</td>
+                    </tr>
+
+                    <tr>
+                        <td>10°C</td>
+                        <td>50°F</td>
+                    </tr>
+
+                    <tr>
+                        <td>20°C</td>
+                        <td>68°F</td>
+                    </tr>
+
+                    <tr>
+                        <td>25°C</td>
+                        <td>77°F</td>
+                    </tr>
+
+                    <tr>
+                        <td>30°C</td>
+                        <td>86°F</td>
+                    </tr>
+
+                    <tr>
+                        <td>37°C</td>
+                        <td>98.6°F</td>
+                    </tr>
+
+                    <tr>
+                        <td>40°C</td>
+                        <td>104°F</td>
+                    </tr>
+
+                    <tr>
+                        <td>50°C</td>
+                        <td>122°F</td>
+                    </tr>
+
+                    <tr>
+                        <td>100°C</td>
+                        <td>212°F</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EXAMPLE
+===================================================== -->
+
+<section class="example-section">
+
+    <div class="example-card">
+
+        <div class="example-icon">
+            💡
+        </div>
+
+        <div>
+
+            <span class="section-label">
+                EXAMPLE
+            </span>
+
+            <h2>
+                How to Convert 15°C to Fahrenheit
+            </h2>
+
+            <p>
+                Use the Celsius to Fahrenheit formula:
+            </p>
+
+            <div class="example-formula">
+
+                15 × 9/5 + 32 = <strong>59°F</strong>
+
+            </div>
+
+            <p class="example-result">
+                Therefore, <strong>15°C = 59°F</strong>.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     HOW IT WORKS
+===================================================== -->
+
+<section class="how-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            SIMPLE PROCESS
+        </span>
+
+        <h2>
+            How It Works
+        </h2>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <h3>
+                Enter Value
+            </h3>
+
+            <p>
+                Enter the temperature value you want to convert.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <h3>
+                Select Units
+            </h3>
+
+            <p>
+                Choose Celsius or Fahrenheit as your source and
+                target unit.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <h3>
+                Get Result
+            </h3>
+
+            <p>
+                Click convert and get your accurate result instantly.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     POPULAR CONVERSIONS
+===================================================== -->
+
+<section class="popular-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            EXPLORE MORE
+        </span>
+
+        <h2>
+            Popular Conversions
+        </h2>
+
+    </div>
+
+
+    <div class="popular-grid">
+
+        <a
+            href="Centemeter_to_Inches.html"
+            class="popular-card"
+        >
+
+            <span>📏</span>
+
+            <div>
+
+                <h3>
+                    cm to inches
+                </h3>
+
+                <p>
+                    Centimeters → Inches
+                </p>
+
+            </div>
+
+            <b>→</b>
+
+        </a>
+
+
+        <a
+            href="KG_to_LBS_Converter.html"
+            class="popular-card"
+        >
+
+            <span>⚖️</span>
+
+            <div>
+
+                <h3>
+                    kg to lbs
+                </h3>
+
+                <p>
+                    Kilograms → Pounds
+                </p>
+
+            </div>
+
+            <b>→</b>
+
+        </a>
+
+
+        <a
+            href="meters_to_feet.html"
+            class="popular-card"
+        >
+
+            <span>📐</span>
+
+            <div>
+
+                <h3>
+                    meters to feet
+                </h3>
+
+                <p>
+                    Meters → Feet
+                </p>
+
+            </div>
+
+            <b>→</b>
+
+        </a>
+
+
+        <a
+            href="km_to_miles.html"
+            class="popular-card"
+        >
+
+            <span>🛣️</span>
+
+            <div>
+
+                <h3>
+                    km to miles
+                </h3>
+
+                <p>
+                    Kilometers → Miles
+                </p>
+
+            </div>
+
+            <b>→</b>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <h2>
+            <span class="quick">Quick</span>
+            Converter
+        </h2>
+
+        <p>
+            Fast, simple and accurate unit conversion.
+        </p>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="#converter">
+                Converter
+            </a>
+
+            <a href="#information">
+                Information
+            </a>
+
+        </div>
+
+
+        <div class="footer-line"></div>
+
+
+        <p class="copyright">
+            © 2026 Quick Converter. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
+<button
+    class="back-to-top"
+    id="backToTop"
+    onclick="scrollToTop()"
+    aria-label="Back to top"
+>
+    ↑
+</button>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+function swapUnits() {
+
+    const from =
+        document.getElementById("fromUnit");
+
+    const to =
+        document.getElementById("toUnit");
+
+    const temp = from.value;
+
+    from.value = to.value;
+
+    to.value = temp;
+
+}
+
+
+function convert() {
+
+    const value =
+        parseFloat(
+            document.getElementById("inputValue").value
+        );
+
+    const fromUnit =
+        document.getElementById("fromUnit").value;
+
+    const toUnit =
+        document.getElementById("toUnit").value;
+
+    const resultBox =
+        document.getElementById("result");
+
+
+    if (isNaN(value)) {
+
+        resultBox.innerText =
+            "Please enter a valid number.";
+
+        return;
+
+    }
+
+
+    let result;
+
+
+    if (
+        fromUnit === "celsius" &&
+        toUnit === "fahrenheit"
+    ) {
+
+        result =
+            (value * 9 / 5) + 32;
+
+    }
+
+
+    else if (
+        fromUnit === "fahrenheit" &&
+        toUnit === "celsius"
+    ) {
+
+        result =
+            (value - 32) * 5 / 9;
+
+    }
+
+
+    else {
+
+        result = value;
+
+    }
+
+
+    const unit =
+        toUnit === "celsius"
+            ? "°C"
+            : "°F";
+
+
+    resultBox.innerText =
+        `${result.toFixed(2)} ${unit}`;
+
+}
+
+
+function copyResult() {
+
+    const result =
+        document.getElementById("result").innerText;
+
+
+    if (
+        !result ||
+        result === "Result will appear here"
+    ) {
+
+        alert("Please convert a value first.");
+
+        return;
+
+    }
+
+
+    navigator.clipboard.writeText(result)
+        .then(() => {
+
+            alert("Result copied!");
+
+        })
+        .catch(() => {
+
+            alert("Unable to copy result.");
+
+        });
+
+}
+
+
+function clearConverter() {
+
+    document.getElementById("inputValue").value = "";
+
+    document.getElementById("result").innerText =
+        "Result will appear here";
+
+}
+
+
+window.addEventListener("scroll", function() {
+
+    const button =
+        document.getElementById("backToTop");
+
+
+    if (window.scrollY > 400) {
+
+        button.classList.add("show");
+
+    } else {
+
+        button.classList.remove("show");
+
+    }
+
+});
+
+
+function scrollToTop() {
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+</script>
+
+
 </body>
+
 </html>
