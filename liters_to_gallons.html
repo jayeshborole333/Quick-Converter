@@ -4,82 +4,344 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liters to Gallons Converter</title>
-    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: #1e3a8a;
+            padding: 15px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .quick {
+            color: #ffffff;
+        }
+
+        .converter {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        .converter-box {
+            width: 90%;
+            max-width: 700px;
+            margin: 40px auto 25px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .converter-box h2 {
+            color: #1e3a8a;
+            margin-bottom: 25px;
+        }
+
+        input,
+        select {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        input {
+            width: 90%;
+            margin-bottom: 15px;
+        }
+
+        select {
+            width: 28%;
+        }
+
+        .converter-box span {
+            font-weight: bold;
+            color: #555;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 15px 5px 5px;
+            border: none;
+            border-radius: 6px;
+            background: #1e3a8a;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #2563eb;
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e0f2fe;
+            border-radius: 8px;
+            color: #075985;
+            font-weight: bold;
+        }
+
+        .info-box,
+        .conversion-table,
+        .conversion-info,
+        .common-conversions {
+            width: 90%;
+            max-width: 1100px;
+            margin: 25px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        h3,
+        .common-conversions h2 {
+            color: #1e3a8a;
+            margin-bottom: 12px;
+        }
+
+        .info-box h3 {
+            margin-top: 20px;
+        }
+
+        .info-box h3:first-child {
+            margin-top: 0;
+        }
+
+        .info-box p,
+        .conversion-info p {
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background: #f1f5f9;
+        }
+
+        .converter-list {
+            display: flex;
+            gap: 50px;
+        }
+
+        .converter-list ul {
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        .converter-list li {
+            margin: 8px 0;
+        }
+
+        .converter-list a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .converter-list a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .nav-container {
+                width: 92%;
+            }
+
+            .converter-box,
+            .info-box,
+            .conversion-table,
+            .conversion-info,
+            .common-conversions {
+                width: 94%;
+                padding: 20px;
+            }
+
+            select {
+                width: 100%;
+                margin: 7px 0;
+            }
+
+            .converter-box span {
+                display: block;
+                margin: 5px;
+            }
+
+            button {
+                width: 100%;
+                margin: 7px 0;
+            }
+
+            .converter-list {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            table {
+                font-size: 13px;
+            }
+
+            th,
+            td {
+                padding: 8px 4px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-          <h2 class="logo">
+
+<nav class="navbar">
+    <div class="nav-container">
+        <h2 class="logo">
             <a href="index.html">
-              <span class="quick">Quick</span> <span class="converter">Converter</span>
+                <span class="quick">Quick</span>
+                <span class="converter">Converter</span>
             </a>
-          </h2>
-          <ul class="nav-links">
+        </h2>
+
+        <ul class="nav-links">
             <li><a href="#">Home</a></li>
-          </ul>
-        </div>
-      </nav>
-
-    <div class="converter-box">
-        <h2>Liters to Gallons Converter</h2>
-        <input type="number" id="inputValue" placeholder="Enter value">
-        
-        <select id="fromUnit">
-            <option value="liters">Liters</option>
-            <option value="gallons">Gallons</option>
-        </select>
-
-        <span>to</span>
-
-        <select id="toUnit">
-            <option value="gallons">Gallons</option>
-            <option value="liters">Liters</option>
-        </select>
-
-        <button onclick="swapUnits()">Swap Unit</button>
-        <button onclick="convert()">Convert</button>
-
-        <div class="result-box">
-            <p id="result">Result:</p>
-        </div>
+        </ul>
     </div>
-    <div class="info-box">
-        <h3>Liter</h3>
-        <p><strong>Definition:</strong> A liter (symbol: L) is a unit of volume accepted for use with the International System of Units (SI), but not a SI unit itself. It is equal to 1 cubic decimeter (1 dm³), or 1,000 cubic centimeters (cm³).</p>
-        <p><strong>History/origin:</strong> The liter was introduced in France in 1795 as part of the metric system and originally defined as one cubic decimeter. It was redefined in 1964 based on the cubic decimeter.</p>
-        <p><strong>Current use:</strong> The liter is used worldwide to measure liquid volumes, especially in food and beverage packaging, fuel consumption, and scientific research.</p>
-    
-        <h3>Gallon (US)</h3>
-        <p><strong>Definition:</strong> A US gallon (symbol: gal) is a unit of volume in the US customary system. It is defined as exactly 231 cubic inches or 3.785411784 liters.</p>
-        <p><strong>History/origin:</strong> The US gallon originates from the English wine gallon used in the 1700s. The British and American gallons differ in size; the US gallon is smaller.</p>
-        <p><strong>Current use:</strong> The US gallon is used mainly in the United States to measure volumes of fuel, beverages, and containers, especially in retail and transportation.</p>
+</nav>
+
+<div class="converter-box">
+    <h2>Liters to Gallons Converter</h2>
+
+    <input type="number" id="inputValue" placeholder="Enter value">
+
+    <select id="fromUnit">
+        <option value="liters">Liters</option>
+        <option value="gallons">Gallons</option>
+    </select>
+
+    <span>to</span>
+
+    <select id="toUnit">
+        <option value="gallons">Gallons</option>
+        <option value="liters">Liters</option>
+    </select>
+
+    <button onclick="swapUnits()">Swap Unit</button>
+    <button onclick="convert()">Convert</button>
+
+    <div class="result-box">
+        <p id="result">Result:</p>
     </div>
-    
-    <div class="conversion-table">
-        <h3>Liter to Gallon Conversion Table</h3>
-        <table border="1">
-            <tr><th>Liter [L]</th><th>Gallon [gal]</th></tr>
-            <tr><td>0.1 L</td><td>0.02642 gal</td></tr>
-            <tr><td>1 L</td><td>0.26417 gal</td></tr>
-            <tr><td>2 L</td><td>0.52834 gal</td></tr>
-            <tr><td>5 L</td><td>1.32086 gal</td></tr>
-            <tr><td>10 L</td><td>2.64172 gal</td></tr>
-            <tr><td>20 L</td><td>5.28344 gal</td></tr>
-            <tr><td>50 L</td><td>13.2086 gal</td></tr>
-            <tr><td>100 L</td><td>26.4172 gal</td></tr>
-        </table>
-    </div>
-    
-    <div class="conversion-info">
-        <h3>How to Convert Liter to Gallon</h3>
-        <p>1 L = 0.26417 gal</p>
-        <p>1 gal = 3.78541 L</p>
-        <p><strong>Example:</strong> convert 5 L to gal:<br>5 × 0.26417 = 1.32085 gal</p>
-    </div>
-    
-<!-- Popular Length Unit Conversions Section -->
+</div>
+
+<div class="info-box">
+    <h3>Liter</h3>
+
+    <p><strong>Definition:</strong> A liter (symbol: L) is a unit of volume accepted for use with the International System of Units (SI), but not a SI unit itself. It is equal to 1 cubic decimeter (1 dm³), or 1,000 cubic centimeters (cm³).</p>
+
+    <p><strong>History/origin:</strong> The liter was introduced in France in 1795 as part of the metric system and originally defined as one cubic decimeter.</p>
+
+    <p><strong>Current use:</strong> The liter is used worldwide to measure liquid volumes, especially in food and beverage packaging, fuel consumption, and scientific research.</p>
+
+    <h3>Gallon (US)</h3>
+
+    <p><strong>Definition:</strong> A US gallon (symbol: gal) is a unit of volume in the US customary system. It is exactly 3.785411784 liters.</p>
+
+    <p><strong>History/origin:</strong> The US gallon originates from the English wine gallon used in the 1700s.</p>
+
+    <p><strong>Current use:</strong> The US gallon is used mainly in the United States to measure fuel, beverages, and containers.</p>
+</div>
+
+<div class="conversion-table">
+    <h3>Liter to Gallon Conversion Table</h3>
+
+    <table>
+        <tr>
+            <th>Liter [L]</th>
+            <th>Gallon [gal]</th>
+        </tr>
+        <tr><td>0.1 L</td><td>0.02642 gal</td></tr>
+        <tr><td>1 L</td><td>0.26417 gal</td></tr>
+        <tr><td>2 L</td><td>0.52834 gal</td></tr>
+        <tr><td>5 L</td><td>1.32086 gal</td></tr>
+        <tr><td>10 L</td><td>2.64172 gal</td></tr>
+        <tr><td>20 L</td><td>5.28344 gal</td></tr>
+        <tr><td>50 L</td><td>13.2086 gal</td></tr>
+        <tr><td>100 L</td><td>26.4172 gal</td></tr>
+    </table>
+</div>
+
+<div class="conversion-info">
+    <h3>How to Convert Liter to Gallon</h3>
+
+    <p>1 L = 0.26417 gal</p>
+    <p>1 gal = 3.78541 L</p>
+
+    <p>
+        <strong>Example:</strong> convert 5 L to gal:
+        <br>
+        5 × 0.26417 = 1.32085 gal
+    </p>
+</div>
+
 <div class="common-conversions">
     <h2>Popular Length Unit Conversions</h2>
+
     <div class="converter-list">
         <ul>
             <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
@@ -93,6 +355,7 @@
             <li><a href="cm_to_m.html">cm to m</a></li>
             <li><a href="cm_to_km.html">cm to km</a></li>
         </ul>
+
         <ul>
             <li><a href="mm_to_feet.html">mm to feet</a></li>
             <li><a href="meters_to_miles.html">meters to miles</a></li>
@@ -106,37 +369,42 @@
         </ul>
     </div>
 </div>
-    <script>
-        function swapUnits() {
-            let from = document.getElementById("fromUnit");
-            let to = document.getElementById("toUnit");
-            let temp = from.value;
-            from.value = to.value;
-            to.value = temp;
-        }
 
-        function convert() {
-            let value = parseFloat(document.getElementById("inputValue").value);
-            let fromUnit = document.getElementById("fromUnit").value;
-            let toUnit = document.getElementById("toUnit").value;
-            let resultBox = document.getElementById("result");
+<script>
+function swapUnits() {
+    let from = document.getElementById("fromUnit");
+    let to = document.getElementById("toUnit");
 
-            if (isNaN(value)) {
-                resultBox.innerText = "Please enter a valid number!";
-                return;
-            }
+    let temp = from.value;
+    from.value = to.value;
+    to.value = temp;
+}
 
-            let result;
-            if (fromUnit === "liters" && toUnit === "gallons") {
-                result = value * 0.264172;
-            } else if (fromUnit === "gallons" && toUnit === "liters") {
-                result = value / 0.264172;
-            } else {
-                result = value;
-            }
+function convert() {
+    let value = parseFloat(document.getElementById("inputValue").value);
+    let fromUnit = document.getElementById("fromUnit").value;
+    let toUnit = document.getElementById("toUnit").value;
+    let resultBox = document.getElementById("result");
 
-            resultBox.innerText = `Result: ${result.toFixed(2)} ${toUnit}`;
-        }
-    </script>
+    if (isNaN(value)) {
+        resultBox.innerText = "Please enter a valid number!";
+        return;
+    }
+
+    let result;
+
+    if (fromUnit === "liters" && toUnit === "gallons") {
+        result = value * 0.264172;
+    } else if (fromUnit === "gallons" && toUnit === "liters") {
+        result = value / 0.264172;
+    } else {
+        result = value;
+    }
+
+    resultBox.innerText =
+        `Result: ${result.toFixed(2)} ${toUnit}`;
+}
+</script>
+
 </body>
 </html>
