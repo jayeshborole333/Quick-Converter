@@ -116,14 +116,24 @@ textarea {
 
 
 /* =====================================================
+   MAIN
+===================================================== */
+
+.main {
+    width: 100%;
+    padding-top: 72px;
+}
+
+
+/* =====================================================
    HERO
 ===================================================== */
 
+.hero,
 .page-hero {
-    width: 100%;
-    min-height: 460px;
+    min-height: 600px;
 
-    padding: 140px 20px 80px;
+    padding: 120px 20px 100px;
 
     display: flex;
     justify-content: center;
@@ -135,12 +145,12 @@ textarea {
         radial-gradient(
             circle at 10% 20%,
             rgba(255, 87, 51, 0.13),
-            transparent 35%
+            transparent 32%
         ),
         radial-gradient(
             circle at 90% 80%,
             rgba(45, 123, 229, 0.13),
-            transparent 35%
+            transparent 32%
         ),
         linear-gradient(
             135deg,
@@ -165,37 +175,40 @@ textarea {
 
     border-radius: 50px;
 
-    background: #fff;
+    background: #ffffff;
 
     color: #ff5733;
 
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 700;
 
     box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.06);
+        0 8px 25px rgba(0, 0, 0, 0.07);
 }
 
+.hero h1,
 .page-hero h1 {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 
-    font-size: clamp(42px, 7vw, 72px);
+    font-size: clamp(42px, 7vw, 76px);
 
-    line-height: 1.1;
+    line-height: 1.08;
 
     font-weight: 800;
 
     color: #171717;
 }
 
+.hero h1 span,
 .page-hero h1 span {
     color: #ff5733;
 }
 
+.hero p,
 .page-hero p {
     max-width: 650px;
 
-    margin: 0 auto 30px;
+    margin: 0 auto 32px;
 
     color: #666;
 
@@ -219,13 +232,13 @@ textarea {
             #ff7b54
         );
 
-    color: #fff;
+    color: white;
 
     font-size: 15px;
     font-weight: 600;
 
     box-shadow:
-        0 10px 25px rgba(255, 87, 51, 0.30);
+        0 10px 25px rgba(255, 87, 51, 0.28);
 
     transition: 0.3s ease;
 }
@@ -234,27 +247,29 @@ textarea {
     transform: translateY(-3px);
 
     box-shadow:
-        0 15px 30px rgba(255, 87, 51, 0.40);
+        0 15px 35px rgba(255, 87, 51, 0.38);
 }
 
 
 /* =====================================================
-   CONVERTER SECTION
+   SECTIONS
 ===================================================== */
 
-.converter-section {
+.converter-section,
+.popular-section,
+.how-section {
     width: 100%;
     max-width: 1100px;
 
     margin: auto;
 
-    padding: 80px 20px;
+    padding: 85px 20px;
 }
 
 .section-heading {
     text-align: center;
 
-    margin-bottom: 40px;
+    margin-bottom: 38px;
 }
 
 .section-label {
@@ -265,7 +280,7 @@ textarea {
     color: #ff5733;
 
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 800;
 
     letter-spacing: 2px;
 
@@ -273,7 +288,7 @@ textarea {
 }
 
 .section-heading h2 {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 
     color: #222;
 
@@ -289,11 +304,260 @@ textarea {
 
 
 /* =====================================================
-   CONVERTER BOX
+   CATEGORY BOX
+===================================================== */
+
+.category-box {
+    width: 100%;
+    max-width: 560px;
+
+    margin: 0 auto 25px;
+
+    padding: 22px;
+
+    background: #fff;
+
+    border: 1px solid #ececf1;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.07);
+}
+
+.category-box label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #444;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.category-box select {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    background: #fafafa;
+
+    color: #333;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.category-box select:hover {
+    border-color: #ffb19f;
+}
+
+.category-box select:focus {
+    border-color: #ff5733;
+
+    box-shadow:
+        0 0 0 4px rgba(255, 87, 51, 0.08);
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search-box {
+    width: 100%;
+    max-width: 650px;
+
+    margin: 0 auto 15px;
+
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+
+    min-height: 55px;
+
+    padding: 15px 22px;
+
+    border: 1px solid #dedfe5;
+
+    border-radius: 50px;
+
+    outline: none;
+
+    background: #fff;
+
+    color: #333;
+
+    font-size: 15px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.05);
+
+    transition: 0.3s ease;
+}
+
+.search-box input::placeholder {
+    color: #999;
+}
+
+.search-box input:focus {
+    border-color: #ff5733;
+
+    box-shadow:
+        0 0 0 4px rgba(255, 87, 51, 0.09),
+        0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.search-results {
+    width: 100%;
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    position: relative;
+
+    z-index: 10;
+}
+
+.search-result-item {
+    padding: 13px 17px;
+
+    margin-bottom: 7px;
+
+    background: white;
+
+    border: 1px solid #eee;
+
+    border-radius: 12px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.search-result-item:hover {
+    border-color: #ffb09e;
+
+    background: #fff8f6;
+
+    transform: translateX(3px);
+}
+
+
+/* =====================================================
+   QUICK ACTIONS
+===================================================== */
+
+.quick-actions {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 25px 0 35px;
+
+    flex-wrap: wrap;
+}
+
+.quick-actions button,
+.action-btn {
+    min-width: 115px;
+
+    padding: 10px 17px;
+
+    border: 1px solid #e4e5ea;
+
+    border-radius: 50px;
+
+    background: #fff;
+
+    color: #444;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.05);
+
+    transition: 0.3s ease;
+}
+
+.quick-actions button:hover,
+.action-btn:hover {
+    color: #ff5733;
+
+    border-color: #ffb19f;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+}
+
+
+/* =====================================================
+   NEW CONVERTER CARD
+===================================================== */
+
+.conversion {
+    width: min(620px, 100%);
+
+    padding: 30px;
+
+    background: #fff;
+
+    border: 1px solid #ececf1;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 55px rgba(0, 0, 0, 0.08);
+
+    animation: cardIn 0.35s ease;
+}
+
+
+/* =====================================================
+   OLD CONVERTER CARD SUPPORT
 ===================================================== */
 
 .converter-box {
-    width: min(600px, 100%);
+    width: min(620px, 100%);
 
     margin: auto;
 
@@ -306,9 +570,9 @@ textarea {
     border-radius: 24px;
 
     box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.08);
+        0 20px 55px rgba(0, 0, 0, 0.08);
 
-    animation: cardIn 0.4s ease;
+    animation: cardIn 0.35s ease;
 }
 
 @keyframes cardIn {
@@ -327,7 +591,59 @@ textarea {
 
 
 /* =====================================================
-   CONVERTER TITLE
+   CONVERTER HEADER
+===================================================== */
+
+.conversion-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+
+    text-align: left;
+}
+
+.conversion-icon {
+    width: 55px;
+    height: 55px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: #fff0eb;
+
+    color: #ff5733;
+
+    font-size: 25px;
+}
+
+.conversion-header h2 {
+    margin: 0;
+
+    color: #222;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.conversion-header p {
+    color: #888;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   OLD CONVERTER TITLE
 ===================================================== */
 
 .converter-box h2 {
@@ -335,23 +651,23 @@ textarea {
 
     color: #222;
 
-    font-size: 25px;
-    font-weight: 700;
+    font-size: 24px;
 
     text-align: center;
 }
 
 
 /* =====================================================
-   MAIN INPUT
+   INPUT
 ===================================================== */
 
+.conversion > input,
 .converter-box > input {
     width: 100%;
 
-    min-height: 54px;
+    min-height: 52px;
 
-    padding: 15px 16px;
+    padding: 14px 16px;
 
     margin-bottom: 15px;
 
@@ -367,17 +683,15 @@ textarea {
 
     font-size: 16px;
 
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 
+.conversion > input::placeholder,
 .converter-box > input::placeholder {
     color: #aaa;
 }
 
-.converter-box > input:hover {
-    border-color: #ffb19f;
-}
-
+.conversion > input:focus,
 .converter-box > input:focus {
     border-color: #ff5733;
 
@@ -403,12 +717,6 @@ textarea {
     align-items: center;
 
     gap: 10px;
-
-    margin-bottom: 18px;
-}
-
-.unit-group {
-    width: 100%;
 }
 
 .unit-group label {
@@ -422,12 +730,13 @@ textarea {
     font-weight: 600;
 }
 
+.unit-row select,
 .unit-group select {
     width: 100%;
 
     min-height: 50px;
 
-    padding: 12px 13px;
+    padding: 12px;
 
     border: 1px solid #ddd;
 
@@ -443,13 +752,10 @@ textarea {
 
     cursor: pointer;
 
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 
-.unit-group select:hover {
-    border-color: #ffb19f;
-}
-
+.unit-row select:focus,
 .unit-group select:focus {
     border-color: #ff5733;
 
@@ -459,12 +765,11 @@ textarea {
 
 
 /* =====================================================
-   ARROW
+   UNIT ARROW
 ===================================================== */
 
+.unit-row span,
 .unit-arrow {
-    margin-top: 25px;
-
     display: flex;
 
     align-items: center;
@@ -472,9 +777,13 @@ textarea {
 
     color: #ff5733;
 
-    font-size: 22px;
+    font-size: 20px;
 
     font-weight: 800;
+}
+
+.unit-arrow {
+    margin-top: 25px;
 }
 
 
@@ -491,15 +800,13 @@ textarea {
 
     gap: 12px;
 
-    margin-top: 10px;
+    margin-top: 18px;
 }
 
 .converter-buttons button {
-    width: 100%;
-
     min-height: 48px;
 
-    padding: 13px;
+    padding: 12px;
 
     border: none;
 
@@ -514,9 +821,6 @@ textarea {
     transition: 0.3s ease;
 }
 
-
-/* Swap */
-
 .swap-btn {
     background: #f0f2f5;
 
@@ -529,9 +833,6 @@ textarea {
     transform: translateY(-2px);
 }
 
-
-/* Convert */
-
 .convert-btn {
     background:
         linear-gradient(
@@ -540,28 +841,25 @@ textarea {
             #ff7959
         );
 
-    color: #fff;
+    color: white;
 
     box-shadow:
-        0 8px 20px rgba(255, 87, 51, 0.25);
+        0 8px 20px rgba(255, 87, 51, 0.24);
 }
 
 .convert-btn:hover {
     transform: translateY(-2px);
 
     box-shadow:
-        0 12px 28px rgba(255, 87, 51, 0.35);
-}
-
-.converter-buttons button:active {
-    transform: translateY(0);
+        0 12px 28px rgba(255, 87, 51, 0.32);
 }
 
 
 /* =====================================================
-   RESULT BOX
+   RESULT
 ===================================================== */
 
+.result,
 .result-box {
     width: 100%;
 
@@ -581,6 +879,7 @@ textarea {
         );
 }
 
+.result p,
 .result-box p {
     color: #222;
 
@@ -591,6 +890,230 @@ textarea {
     word-break: break-word;
 }
 
+.result-actions {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+.result-actions button {
+    padding: 8px 14px;
+
+    border: 1px solid #e2e3e7;
+
+    border-radius: 9px;
+
+    background: #fff;
+
+    color: #555;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.result-actions button:hover {
+    color: #ff5733;
+
+    border-color: #ffb09e;
+
+    transform: translateY(-2px);
+}
+
+.result small {
+    display: block;
+
+    margin-top: 10px;
+
+    color: #777;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   POPULAR SECTION
+===================================================== */
+
+.popular-section {
+    max-width: 1100px;
+}
+
+.popular-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+.popular-card {
+    min-height: 90px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 18px;
+
+    background: #fff;
+
+    border: 1px solid #ececf1;
+
+    border-radius: 18px;
+
+    color: #222;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.05);
+
+    transition: 0.3s ease;
+}
+
+.popular-card > span {
+    width: 46px;
+    height: 46px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #fff0eb;
+
+    font-size: 21px;
+}
+
+.popular-card h3 {
+    margin-bottom: 2px;
+
+    font-size: 15px;
+}
+
+.popular-card p {
+    color: #888;
+
+    font-size: 12px;
+}
+
+.popular-card b {
+    margin-left: auto;
+
+    color: #ff5733;
+
+    font-size: 20px;
+}
+
+.popular-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #ffb19f;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.09);
+}
+
+
+/* =====================================================
+   COMMON CONVERSIONS
+===================================================== */
+
+.common-conversions {
+    width: min(1100px, 94%);
+
+    margin: 55px auto;
+
+    padding: 45px 40px;
+
+    background: #fff;
+
+    border: 1px solid #ececf1;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.06);
+}
+
+.common-conversions h2 {
+    margin-bottom: 28px;
+
+    color: #222;
+
+    text-align: center;
+
+    font-size: 28px;
+
+    font-weight: 800;
+}
+
+.conversion-links,
+.converter-list {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 35px;
+}
+
+.conversion-links ul,
+.converter-list ul {
+    list-style: none;
+
+    margin: 0;
+
+    padding: 0;
+}
+
+.conversion-links li,
+.converter-list li {
+    margin: 12px 0;
+
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.conversion-links a,
+.converter-list a {
+    color: #2457a6;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    transition: 0.25s ease;
+}
+
+.conversion-links a::before,
+.converter-list a::before {
+    content: "→ ";
+
+    color: #ff5733;
+
+    font-weight: 700;
+}
+
+.conversion-links a:hover,
+.converter-list a:hover {
+    color: #ff5733;
+
+    padding-left: 5px;
+}
+
 
 /* =====================================================
    INFORMATION BOX
@@ -599,7 +1122,7 @@ textarea {
 .info-box {
     width: min(1100px, 94%);
 
-    margin: 20px auto 50px;
+    margin: 30px auto 50px;
 
     padding: 40px;
 
@@ -610,7 +1133,7 @@ textarea {
     border-radius: 24px;
 
     box-shadow:
-        0 10px 35px rgba(0, 0, 0, 0.06);
+        0 12px 35px rgba(0, 0, 0, 0.06);
 }
 
 .info-box h3 {
@@ -623,8 +1146,6 @@ textarea {
     color: #222;
 
     font-size: 23px;
-
-    line-height: 1.4;
 }
 
 .info-box h3:not(:first-child) {
@@ -641,8 +1162,6 @@ textarea {
 
 .info-box strong {
     color: #333;
-
-    font-weight: 700;
 }
 
 
@@ -664,7 +1183,7 @@ textarea {
     border-radius: 24px;
 
     box-shadow:
-        0 10px 35px rgba(0, 0, 0, 0.06);
+        0 12px 35px rgba(0, 0, 0, 0.06);
 
     overflow-x: auto;
 }
@@ -674,16 +1193,13 @@ textarea {
 
     color: #222;
 
-    font-size: 25px;
-    font-weight: 700;
-
     text-align: center;
+
+    font-size: 25px;
 }
 
 .conversion-table table {
     width: 100%;
-
-    min-width: 550px;
 
     border-collapse: collapse;
 
@@ -697,10 +1213,9 @@ textarea {
 
     background: #ff5733;
 
-    color: #fff;
+    color: white;
 
     font-size: 14px;
-    font-weight: 600;
 
     text-align: center;
 }
@@ -717,11 +1232,11 @@ textarea {
     text-align: center;
 }
 
-.conversion-table tbody tr:nth-child(even) td {
+.conversion-table tr:nth-child(even) td {
     background: #fafafa;
 }
 
-.conversion-table tbody tr:hover td {
+.conversion-table tr:hover td {
     background: #fff4f0;
 }
 
@@ -757,7 +1272,6 @@ textarea {
     color: #222;
 
     font-size: 26px;
-    font-weight: 700;
 }
 
 .conversion-info p {
@@ -773,96 +1287,347 @@ textarea {
 
     padding: 10px 20px;
 
-    background: #fff;
+    background: white;
 
     border-radius: 10px;
 
     color: #ff5733;
 
     font-weight: 700;
-
-    box-shadow:
-        0 5px 15px rgba(0, 0, 0, 0.04);
 }
 
 
 /* =====================================================
-   COMMON CONVERSIONS
+   HOW IT WORKS
 ===================================================== */
 
-.common-conversions {
-    width: min(1100px, 94%);
+.how-section {
+    max-width: 1100px;
+}
 
-    margin: 60px auto;
+.steps {
+    display: grid;
 
-    padding: 45px 35px;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+.step {
+    padding: 30px;
 
     background: #fff;
 
     border: 1px solid #ececf1;
 
-    border-radius: 24px;
+    border-radius: 20px;
+
+    text-align: center;
 
     box-shadow:
-        0 10px 35px rgba(0, 0, 0, 0.06);
+        0 8px 25px rgba(0, 0, 0, 0.05);
+
+    transition: 0.3s;
 }
 
-.common-conversions h2 {
-    margin-bottom: 30px;
+.step:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.step-number {
+    width: 55px;
+    height: 55px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fff0eb;
+
+    color: #ff5733;
+
+    font-size: 18px;
+
+    font-weight: 800;
+}
+
+.step h3 {
+    margin-bottom: 8px;
 
     color: #222;
 
-    font-size: 30px;
-    font-weight: 800;
-
-    text-align: center;
+    font-size: 18px;
 }
 
-.converter-list {
+.step p {
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact-container {
+    width: 100%;
+
+    padding: 90px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff7f4,
+            #f3f7ff
+        );
+}
+
+.contact-wrapper {
+    width: 100%;
+    max-width: 1050px;
+
+    margin: auto;
+
     display: grid;
 
     grid-template-columns: 1fr 1fr;
 
-    gap: 30px;
+    gap: 60px;
+
+    align-items: center;
 }
 
-.converter-list ul {
-    list-style: none;
+.contact-info h2 {
+    margin-bottom: 15px;
 
-    margin: 0;
-    padding: 0;
+    color: #222;
+
+    font-size: 40px;
+
+    font-weight: 800;
 }
 
-.converter-list li {
-    margin: 10px 0;
+.contact-info > p {
+    max-width: 450px;
 
-    padding-bottom: 8px;
+    margin-bottom: 25px;
 
-    border-bottom: 1px solid #f0f0f0;
+    color: #777;
+
+    font-size: 15px;
 }
 
-.converter-list a {
-    color: #2457a6;
+.contact-feature {
+    margin: 12px 0;
+
+    color: #444;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+.contact-left {
+    width: 100%;
+
+    padding: 30px;
+
+    background: #fff;
+
+    border: 1px solid #ececf1;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.contact-left-title h2 {
+    margin-bottom: 8px;
+
+    color: #222;
+
+    font-size: 27px;
+}
+
+.contact-left-title hr {
+    width: 70px;
+    height: 4px;
+
+    margin-bottom: 22px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #ff5733;
+}
+
+.contact-input {
+    width: 100%;
+
+    padding: 14px 17px;
+
+    margin-bottom: 14px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    background: #fafafa;
+
+    color: #333;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+.contact-input:focus {
+    border-color: #ff5733;
+
+    background: #fff;
+
+    box-shadow:
+        0 0 0 4px rgba(255, 87, 51, 0.08);
+}
+
+textarea.contact-input {
+    min-height: 130px;
+
+    resize: vertical;
+}
+
+.contact-left button,
+.contact-submit {
+    width: 100%;
+
+    min-height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff5733,
+            #ff7a59
+        );
+
+    color: white;
 
     font-size: 15px;
 
-    font-weight: 500;
+    font-weight: 600;
 
-    transition: 0.3s ease;
+    cursor: pointer;
+
+    transition: 0.3s;
 }
 
-.converter-list a::before {
-    content: "→ ";
+.contact-left button:hover,
+.contact-submit:hover {
+    transform: translateY(-2px);
 
-    color: #ff5733;
-
-    font-weight: 700;
+    box-shadow:
+        0 10px 25px rgba(255, 87, 51, 0.25);
 }
 
-.converter-list a:hover {
-    color: #ff5733;
+.contact-right {
+    display: flex;
 
-    padding-left: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-right img {
+    width: min(100%, 450px);
+
+    height: auto;
+}
+
+
+/* =====================================================
+   HISTORY / FAVORITES
+===================================================== */
+
+.history-box,
+.favorites-box {
+    width: min(650px, 94%);
+
+    margin: 20px auto;
+
+    padding: 20px;
+
+    background: white;
+
+    border: 1px solid #ececf1;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.history-box h3,
+.favorites-box h3 {
+    margin-bottom: 15px;
+
+    color: #222;
+
+    font-size: 20px;
+}
+
+.history-item,
+.favorite-item {
+    padding: 12px 14px;
+
+    margin-bottom: 8px;
+
+    border-radius: 10px;
+
+    background: #f7f8fa;
+
+    text-align: left;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   EMPTY MESSAGE
+===================================================== */
+
+.empty-message {
+    padding: 15px;
+
+    color: #888;
+
+    text-align: center;
+
+    font-size: 14px;
 }
 
 
@@ -875,28 +1640,57 @@ textarea {
 
     margin-top: 70px;
 
-    padding: 45px 20px;
+    padding: 50px 20px;
 
     background: #202124;
 
-    color: #fff;
+    color: white;
 
     text-align: center;
+}
+
+.footer-content {
+    max-width: 800px;
+
+    margin: auto;
 }
 
 .footer h2 {
     margin-bottom: 8px;
 
-    color: #fff;
+    color: white;
 
     font-size: 28px;
-    font-weight: 800;
 }
 
 .footer p {
     color: #aaa;
 
     font-size: 14px;
+}
+
+.footer-links {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    margin: 20px 0;
+
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: #ddd;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ff5733;
 }
 
 .footer-line {
@@ -907,6 +1701,12 @@ textarea {
     margin: 20px auto;
 
     background: #3a3a3a;
+}
+
+.copyright {
+    color: #777 !important;
+
+    font-size: 12px !important;
 }
 
 
@@ -939,15 +1739,32 @@ textarea {
 
 @media (max-width: 900px) {
 
-    .nav-container {
-        padding: 0 20px;
+    .popular-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .converter-section {
-        padding-left: 20px;
-        padding-right: 20px;
+    .steps {
+        grid-template-columns: 1fr;
     }
 
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .contact-info {
+        text-align: center;
+    }
+
+    .contact-info > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .contact-right {
+        display: none;
+    }
 }
 
 
@@ -957,10 +1774,8 @@ textarea {
 
 @media (max-width: 768px) {
 
-    /* Navbar */
-
     .navbar {
-        height: 65px;
+        height: 64px;
     }
 
     .nav-container {
@@ -972,57 +1787,80 @@ textarea {
     }
 
     .nav-links {
-        gap: 10px;
+        gap: 12px;
     }
 
     .nav-links a {
         font-size: 13px;
     }
 
+    .main {
+        padding-top: 64px;
+    }
 
-    /* Hero */
-
+    .hero,
     .page-hero {
-        min-height: 430px;
+        min-height: 520px;
 
-        padding: 120px 20px 70px;
+        padding: 100px 18px 70px;
     }
 
+    .hero h1,
     .page-hero h1 {
-        font-size: 43px;
+        font-size: 42px;
     }
 
+    .hero p,
     .page-hero p {
         font-size: 15px;
     }
 
     .hero-button {
         width: 100%;
+
         max-width: 300px;
     }
 
-
-    /* Converter section */
-
-    .converter-section {
+    .converter-section,
+    .popular-section,
+    .how-section {
         padding: 60px 15px;
     }
 
-    .section-heading {
-        margin-bottom: 30px;
-    }
-
     .section-heading h2 {
-        font-size: 30px;
+        font-size: 29px;
     }
 
     .section-heading p {
         font-size: 14px;
     }
 
+    .category-box {
+        padding: 18px;
+    }
 
-    /* Converter */
+    .search-box input {
+        min-height: 50px;
 
+        font-size: 14px;
+    }
+
+    .quick-actions {
+        gap: 8px;
+
+        margin-bottom: 25px;
+    }
+
+    .quick-actions button,
+    .action-btn {
+        min-width: 105px;
+
+        padding: 9px 13px;
+
+        font-size: 12px;
+    }
+
+    .conversion,
     .converter-box {
         width: 100%;
 
@@ -1031,12 +1869,17 @@ textarea {
         border-radius: 20px;
     }
 
-    .converter-box h2 {
+    .conversion-header h2 {
         font-size: 21px;
     }
 
+    .conversion-header p {
+        font-size: 12px;
+    }
 
-    /* Unit row */
+    .converter-box h2 {
+        font-size: 21px;
+    }
 
     .unit-row {
         grid-template-columns: 1fr;
@@ -1044,93 +1887,33 @@ textarea {
         gap: 8px;
     }
 
-    .unit-arrow {
-        margin: 0;
-
+    .unit-row span {
         height: 25px;
 
         transform: rotate(90deg);
     }
 
+    .unit-arrow {
+        margin: 0;
 
-    /* Buttons */
+        transform: rotate(90deg);
+    }
 
     .converter-buttons {
         grid-template-columns: 1fr;
-
-        gap: 10px;
     }
 
-
-    /* Result */
-
-    .result-box {
-        padding: 18px;
+    .result-actions {
+        flex-direction: column;
     }
 
-    .result-box p {
-        font-size: 16px;
+    .result-actions button {
+        width: 100%;
     }
 
-
-    /* Info */
-
-    .info-box {
-        width: 94%;
-
-        padding: 25px 20px;
-
-        border-radius: 20px;
+    .popular-grid {
+        grid-template-columns: 1fr;
     }
-
-    .info-box h3 {
-        font-size: 21px;
-    }
-
-    .info-box p {
-        font-size: 13px;
-    }
-
-
-    /* Table */
-
-    .conversion-table {
-        width: 94%;
-
-        padding: 25px 15px;
-
-        border-radius: 20px;
-    }
-
-    .conversion-table h3 {
-        font-size: 21px;
-    }
-
-    .conversion-table table {
-        min-width: 550px;
-    }
-
-
-    /* Conversion info */
-
-    .conversion-info {
-        width: 94%;
-
-        padding: 25px 20px;
-
-        border-radius: 20px;
-    }
-
-    .conversion-info h3 {
-        font-size: 22px;
-    }
-
-    .conversion-info p {
-        font-size: 14px;
-    }
-
-
-    /* Common conversions */
 
     .common-conversions {
         width: 94%;
@@ -1141,32 +1924,51 @@ textarea {
     }
 
     .common-conversions h2 {
-        font-size: 25px;
+        font-size: 24px;
     }
 
+    .conversion-links,
     .converter-list {
         grid-template-columns: 1fr;
 
         gap: 0;
     }
 
-    .converter-list a {
-        font-size: 14px;
+    .info-box {
+        padding: 30px 20px;
     }
 
-
-    /* Footer */
-
-    .footer {
-        margin-top: 50px;
-
-        padding: 40px 15px;
+    .conversion-table {
+        padding: 25px 15px;
     }
 
-    .footer h2 {
-        font-size: 25px;
+    .conversion-table table {
+        min-width: 500px;
     }
 
+    .conversion-info {
+        padding: 25px 20px;
+    }
+
+    .conversion-info h3 {
+        font-size: 22px;
+    }
+
+    .contact-container {
+        padding: 65px 15px;
+    }
+
+    .contact-left {
+        padding: 22px;
+    }
+
+    .contact-info h2 {
+        font-size: 32px;
+    }
+
+    .footer-links {
+        gap: 15px;
+    }
 }
 
 
@@ -1176,130 +1978,81 @@ textarea {
 
 @media (max-width: 450px) {
 
-    .navbar {
-        height: 62px;
-    }
-
-    .nav-container {
-        padding: 0 12px;
-    }
-
     .logo a {
         font-size: 20px;
-    }
-
-    .nav-links {
-        gap: 7px;
     }
 
     .nav-links a {
         font-size: 12px;
     }
 
-
-    /* Hero */
-
+    .hero,
     .page-hero {
-        min-height: 410px;
-
-        padding: 105px 16px 65px;
+        padding-top: 90px;
     }
 
+    .hero h1,
     .page-hero h1 {
-        font-size: 36px;
+        font-size: 35px;
     }
 
+    .hero p,
     .page-hero p {
         font-size: 14px;
     }
 
     .hero-badge {
         font-size: 11px;
-
-        padding: 7px 14px;
     }
-
-
-    /* Section */
 
     .section-heading h2 {
         font-size: 26px;
     }
 
-
-    /* Converter */
-
+    .conversion,
     .converter-box {
         padding: 18px;
+    }
 
-        border-radius: 18px;
+    .conversion-header {
+        gap: 10px;
+    }
+
+    .conversion-icon {
+        width: 45px;
+        height: 45px;
+
+        font-size: 21px;
+    }
+
+    .conversion-header h2 {
+        font-size: 19px;
     }
 
     .converter-box h2 {
         font-size: 19px;
     }
 
-    .converter-box > input {
-        font-size: 15px;
+    .quick-actions {
+        flex-direction: column;
     }
 
-
-    /* Info */
-
-    .info-box {
-        width: 94%;
-
-        padding: 22px 17px;
+    .quick-actions button,
+    .action-btn {
+        width: 100%;
     }
-
-    .info-box h3 {
-        font-size: 20px;
-    }
-
-
-    /* Table */
-
-    .conversion-table {
-        width: 94%;
-
-        padding: 22px 12px;
-    }
-
-
-    /* Conversion info */
-
-    .conversion-info {
-        width: 94%;
-
-        padding: 22px 17px;
-    }
-
-    .conversion-info h3 {
-        font-size: 20px;
-    }
-
-
-    /* Common */
 
     .common-conversions {
-        width: 94%;
-
         padding: 25px 17px;
     }
 
-    .common-conversions h2 {
-        font-size: 23px;
+    .conversion-links a,
+    .converter-list a {
+        font-size: 14px;
     }
 
-
-    /* Footer */
-
-    .footer h2 {
-        font-size: 23px;
-    }
-
-    .footer p {
-        font-size: 13px;
+    .contact-info h2 {
+        font-size: 28px;
     }
 
 }
