@@ -1,147 +1,791 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meters to Feet Converter</title>
+
+    <title>Meters to Feet Converter | Quick Converter</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
     <nav class="navbar">
         <div class="nav-container">
-          <h2 class="logo">
-            <a href="index.html">
-              <span class="quick">Quick</span> <span class="converter">Converter</span>
-            </a>
-          </h2>
-          <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-          </ul>
+
+            <h2 class="logo">
+                <a href="index.html">
+                    <span class="quick">Quick</span>
+                    <span class="converter">Converter</span>
+                </a>
+            </h2>
+
+            <ul class="nav-links">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+            </ul>
+
         </div>
-      </nav>
-    
-    <div class="converter-box">
-        <h2>Meters to Feet Converter</h2>
-        <input type="number" id="inputValue" placeholder="Enter value">
-        
-        <select id="fromUnit">
-            <option value="meter">Meter</option>
-            <option value="feet">Feet</option>
-        </select>
+    </nav>
 
-        <span>to</span>
 
-        <select id="toUnit">
-            <option value="feet">Feet</option>
-            <option value="meter">Meter</option>
-        </select>
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
 
-        <button onclick="swapUnits()">Swap Unit</button>
-        <button onclick="convert()">Convert</button>
+    <main class="main">
 
-        <div class="result-box">
-            <p id="result">Result:</p>
+        <!-- =================================================
+             PAGE HERO
+        ================================================== -->
+
+        <section class="page-hero">
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+                    📏 Length Converter
+                </div>
+
+                <h1>
+                    Meters to <span>Feet</span> Converter
+                </h1>
+
+                <p>
+                    Convert meters to feet quickly and accurately.
+                    You can also convert feet back to meters.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CONVERTER SECTION
+        ================================================== -->
+
+        <section class="converter-section">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    Converter
+                </span>
+
+                <h2>
+                    Meters ↔ Feet
+                </h2>
+
+                <p>
+                    Enter a value and select the units you want to convert.
+                </p>
+
+            </div>
+
+
+            <!-- Converter Card -->
+
+            <div class="container">
+
+                <div class="conversion">
+
+                    <!-- Converter Header -->
+
+                    <div class="conversion-header">
+
+                        <div class="conversion-icon">
+                            📏
+                        </div>
+
+                        <div>
+                            <h2>
+                                Meters to Feet
+                            </h2>
+
+                            <p>
+                                Fast and accurate length conversion
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Input -->
+
+                    <input
+                        type="number"
+                        id="inputValue"
+                        placeholder="Enter value"
+                        step="any"
+                    >
+
+
+                    <!-- Unit Selection -->
+
+                    <div class="unit-row">
+
+                        <div class="unit-group">
+
+                            <label for="fromUnit">
+                                From
+                            </label>
+
+                            <select id="fromUnit">
+
+                                <option value="meter">
+                                    Meter (m)
+                                </option>
+
+                                <option value="feet">
+                                    Feet (ft)
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <span class="unit-arrow">
+                            →
+                        </span>
+
+
+                        <div class="unit-group">
+
+                            <label for="toUnit">
+                                To
+                            </label>
+
+                            <select id="toUnit">
+
+                                <option value="feet">
+                                    Feet (ft)
+                                </option>
+
+                                <option value="meter">
+                                    Meter (m)
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Buttons -->
+
+                    <div class="converter-buttons">
+
+                        <button
+                            type="button"
+                            class="swap-btn"
+                            onclick="swapUnits()"
+                        >
+                            ⇄ Swap
+                        </button>
+
+                        <button
+                            type="button"
+                            class="convert-btn"
+                            onclick="convert()"
+                        >
+                            Convert
+                        </button>
+
+                    </div>
+
+
+                    <!-- Result -->
+
+                    <div class="result">
+
+                        <p id="result">
+                            Result will appear here
+                        </p>
+
+                        <div class="result-actions">
+
+                            <button
+                                type="button"
+                                onclick="copyResult()"
+                            >
+                                📋 Copy Result
+                            </button>
+
+                            <button
+                                type="button"
+                                onclick="clearConverter()"
+                            >
+                                Clear
+                            </button>
+
+                        </div>
+
+                        <small>
+                            1 meter = 3.280839895 feet
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             INFORMATION
+        ================================================== -->
+
+        <div class="info-box">
+
+            <h3>Meter</h3>
+
+            <p>
+                <strong>Definition:</strong>
+                A meter, or metre (symbol: m), is the base unit of
+                length and distance in the International System of
+                Units (SI). The meter is defined as the distance
+                traveled by light in 1/299,792,458 of a second.
+            </p>
+
+            <p>
+                <strong>History/origin:</strong>
+                Originally, in 1793, the meter was defined as one
+                ten-millionth of the distance from the equator to
+                the North Pole. This changed in 1889, when the
+                International prototype metre was established.
+                In 1960, the meter was again redefined in terms
+                of wavelengths of a certain emission line of
+                krypton-86.
+            </p>
+
+            <p>
+                <strong>Current use:</strong>
+                The meter is used worldwide as the SI unit of
+                length for measuring distance, height, width,
+                depth and many other dimensions.
+            </p>
+
+
+            <h3>Foot</h3>
+
+            <p>
+                <strong>Definition:</strong>
+                A foot (symbol: ft) is a unit of length in the
+                imperial and US customary systems of measurement.
+                One foot is defined as exactly 0.3048 meters.
+                One foot contains 12 inches and one yard contains
+                three feet.
+            </p>
+
+            <p>
+                <strong>History/origin:</strong>
+                The foot has historically been used in many
+                measurement systems, including Greek, Roman,
+                English, Chinese and French systems. The exact
+                length varied between different systems before
+                international standardization.
+            </p>
+
+            <p>
+                <strong>Current use:</strong>
+                Feet are commonly used in the United States,
+                Canada and the United Kingdom for everyday
+                measurements such as height, shorter distances,
+                field lengths, altitude and elevation.
+            </p>
+
         </div>
-    </div>
 
-    <div class="info-box">
-        <h3>Meter</h3>
-        <p><strong>Definition:</strong> A meter, or metre (symbol: m), is the base unit of length and distance in the International System of Units (SI). The meter is defined as the distance traveled by light in 1/299 792 458 of a second. This definition was slightly modified in 2019 to reflect changes in the definition of the second.</p>
-        <p><strong>History/origin:</strong> Originally, in 1793, the meter was defined as one ten-millionth of the distance from the equator to the North Pole. This changed in 1889, when the International prototype metre was established as the length of a prototype meter bar (made of an alloy of 90% platinum and 10% iridium) measured at the melting point of ice. In 1960, the meter was again redefined, this time in terms of a certain number of wavelengths of a certain emission line of krypton-86. The current definition of the meter is effectively the same as the definition that was adopted in 1983, with slight modifications due to the change in definition of the second.</p>
-        <p><strong>Current use:</strong> Being the SI unit of length, the meter is used worldwide in many applications such as measuring distance, height, length, width, etc. The United States is one notable exception in that it largely uses US customary units such as yards, inches, feet, and miles instead of meters in everyday use.</p>
-    
-        <h3>Foot</h3>
-        <p><strong>Definition:</strong> A foot (symbol: ft) is a unit of length in the imperial and US customary systems of measurement. A foot was defined as exactly 0.3048 meters in 1959. One foot contains 12 inches, and one yard is comprised of three feet.</p>
-        <p><strong>History/origin:</strong> Prior to standardization of units of measurement, and the definition of the foot currently in use, the measurement of the foot was used in many different systems including the Greek, Roman, English, Chinese, and French systems, varying in length between each. The various lengths were due to parts of the human body historically being used as a basis for units of length (such as the cubit, hand, span, digit, and many others, sometimes referred to as anthropic units). This resulted in the measurement of a foot varying between 250 mm and 335 mm in the past compared to the current definition of 304.8 mm. While the United States is one of the few, if not only, countries in which the foot is still widely used, many countries used their own version of the foot prior to metrication, as evidenced by a fairly large list of obsolete feet measurements.</p>
-        <p><strong>Current use:</strong> The foot is primarily used in the United States, Canada, and the United Kingdom for many everyday applications. In the US, feet and inches are commonly used to measure height, shorter distances, field length (sometimes in the form of yards), etc. Feet are also commonly used to measure altitude (aviation) as well as elevation (such as that of a mountain). The international foot corresponds to human feet with shoe size 13 (UK), 14 (US male), 15.5 (US female), or 46 (EU).</p>
-    </div>
-    <div class="conversion-table">
-        <h3>Meter to Foot Conversion Table</h3>
-        <table border="1">
-            <tr><th>Meter [m]</th><th>Foot [ft]</th></tr>
-            <tr><td>0.01 m</td><td>0.032808399 ft</td></tr>
-            <tr><td>0.1 m</td><td>0.3280839895 ft</td></tr>
-            <tr><td>1 m</td><td>3.280839895 ft</td></tr>
-            <tr><td>2 m</td><td>6.56167979 ft</td></tr>
-            <tr><td>3 m</td><td>9.842519685 ft</td></tr>
-            <tr><td>5 m</td><td>16.4041994751 ft</td></tr>
-            <tr><td>10 m</td><td>32.8083989501 ft</td></tr>
-            <tr><td>20 m</td><td>65.6167979003 ft</td></tr>
-            <tr><td>50 m</td><td>164.0419947507 ft</td></tr>
-            <tr><td>100 m</td><td>328.0839895013 ft</td></tr>
-            <tr><td>1000 m</td><td>3280.8398950131 ft</td></tr>
-        </table>
-    </div>
-    
-    <div class="conversion-info">
-        <h3>How to Convert Meter to Foot</h3>
-        <p>1 m = 3.280839895 ft</p>
-        <p>1 ft = 0.3048 m</p>
-        <p><strong>Example:</strong> convert 15 m to ft:</p>
-        <p>15 m = 15 × 3.280839895 ft = 49.2125984252 ft</p>
-    </div>
-<!-- Popular Length Unit Conversions Section -->
-<div class="common-conversions">
-    <h2>Popular Length Unit Conversions</h2>
-    <div class="converter-list">
-        <ul>
-            <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
-            <li><a href="mm_to_inches.html">mm to inches</a></li>
-            <li><a href="meters_to_feet.html">meters to feet</a></li>
-            <li><a href="km_to_miles.html">km to miles</a></li>
-            <li><a href="cm_to_feet.html">cm to feet</a></li>
-            <li><a href="inches_to_feet.html">inches to feet</a></li>
-            <li><a href="meters_to_yards.html">meters to yards</a></li>
-            <li><a href="mm_to_cm.html">mm to cm</a></li>
-            <li><a href="cm_to_m.html">cm to m</a></li>
-            <li><a href="cm_to_km.html">cm to km</a></li>
-        </ul>
-        <ul>
-            <li><a href="mm_to_feet.html">mm to feet</a></li>
-            <li><a href="meters_to_miles.html">meters to miles</a></li>
-            <li><a href="feet_to_miles.html">feet to miles</a></li>
-            <li><a href="yards_to_feet.html">yards to feet</a></li>
-            <li><a href="inches_to_meters.html">inches to meters</a></li>
-            <li><a href="mm_to_m.html">mm to m</a></li>
-            <li><a href="km_to_m.html">km to m</a></li>
-            <li><a href="inches_to_yards.html">inches to yards</a></li>
-            <li><a href="yards_to_miles.html">yards to miles</a></li>
-        </ul>
-    </div>
-</div>
+
+        <!-- =================================================
+             CONVERSION TABLE
+        ================================================== -->
+
+        <div class="conversion-table">
+
+            <h3>
+                Meter to Foot Conversion Table
+            </h3>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Meter [m]</th>
+                        <th>Foot [ft]</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>0.01 m</td>
+                        <td>0.032808399 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>0.1 m</td>
+                        <td>0.3280839895 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>1 m</td>
+                        <td>3.280839895 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>2 m</td>
+                        <td>6.56167979 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>3 m</td>
+                        <td>9.842519685 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>5 m</td>
+                        <td>16.404199475 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>10 m</td>
+                        <td>32.8083989501 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>20 m</td>
+                        <td>65.6167979003 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>50 m</td>
+                        <td>164.0419947507 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>100 m</td>
+                        <td>328.0839895013 ft</td>
+                    </tr>
+
+                    <tr>
+                        <td>1000 m</td>
+                        <td>3280.8398950131 ft</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- =================================================
+             CONVERSION INFO
+        ================================================== -->
+
+        <div class="conversion-info">
+
+            <h3>
+                How to Convert Meter to Foot
+            </h3>
+
+            <p>
+                1 m = 3.280839895 ft
+            </p>
+
+            <p>
+                1 ft = 0.3048 m
+            </p>
+
+            <p>
+                <strong>Example:</strong>
+                Convert 15 m to ft:
+            </p>
+
+            <p>
+                15 m × 3.280839895 =
+                <strong>49.2125984252 ft</strong>
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             POPULAR CONVERSIONS
+        ================================================== -->
+
+        <div class="common-conversions">
+
+            <h2>
+                Popular Length Unit Conversions
+            </h2>
+
+            <div class="converter-list">
+
+                <ul>
+
+                    <li>
+                        <a href="Centemeter_to_Inches.html">
+                            cm to inches
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="mm_to_inches.html">
+                            mm to inches
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="meters_to_feet.html">
+                            meters to feet
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="km_to_miles.html">
+                            km to miles
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="cm_to_feet.html">
+                            cm to feet
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="inches_to_feet.html">
+                            inches to feet
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="meters_to_yards.html">
+                            meters to yards
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="mm_to_cm.html">
+                            mm to cm
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="cm_to_m.html">
+                            cm to m
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="cm_to_km.html">
+                            cm to km
+                        </a>
+                    </li>
+
+                </ul>
+
+
+                <ul>
+
+                    <li>
+                        <a href="mm_to_feet.html">
+                            mm to feet
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="meters_to_miles.html">
+                            meters to miles
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="feet_to_miles.html">
+                            feet to miles
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="yards_to_feet.html">
+                            yards to feet
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="inches_to_meters.html">
+                            inches to meters
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="mm_to_m.html">
+                            mm to m
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="km_to_m.html">
+                            km to m
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="inches_to_yards.html">
+                            inches to yards
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="yards_to_miles.html">
+                            yards to miles
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <h2>
+                <span class="quick">Quick</span>
+                Converter
+            </h2>
+
+            <p>
+                Simple, fast and accurate online unit converters.
+            </p>
+
+            <div class="footer-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="meters_to_feet.html">
+                    Meters to Feet
+                </a>
+
+                <a href="km_to_miles.html">
+                    KM to Miles
+                </a>
+
+            </div>
+
+            <div class="footer-line"></div>
+
+            <p class="copyright">
+                © 2026 Quick Converter. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
     <script>
+
+        const inputValue = document.getElementById("inputValue");
+        const fromUnit = document.getElementById("fromUnit");
+        const toUnit = document.getElementById("toUnit");
+        const resultBox = document.getElementById("result");
+
+
+        // =================================================
+        // SWAP UNITS
+        // =================================================
+
         function swapUnits() {
-            let from = document.getElementById("fromUnit");
-            let to = document.getElementById("toUnit");
-            let temp = from.value;
-            from.value = to.value;
-            to.value = temp;
+
+            const temp = fromUnit.value;
+
+            fromUnit.value = toUnit.value;
+            toUnit.value = temp;
+
+            // Automatically convert after swapping
+            if (inputValue.value !== "") {
+                convert();
+            }
         }
 
+
+        // =================================================
+        // CONVERT
+        // =================================================
+
         function convert() {
-            let value = parseFloat(document.getElementById("inputValue").value);
-            let fromUnit = document.getElementById("fromUnit").value;
-            let toUnit = document.getElementById("toUnit").value;
-            let resultBox = document.getElementById("result");
+
+            const value = parseFloat(inputValue.value);
 
             if (isNaN(value)) {
-                resultBox.innerText = "Please enter a valid number!";
+
+                resultBox.innerText =
+                    "Please enter a valid number!";
+
                 return;
             }
 
-            let result;
-            
-            if (fromUnit === "meter" && toUnit === "feet") {
-                result = value * 3.28084;
-            } else if (fromUnit === "feet" && toUnit === "meter") {
-                result = value / 3.28084;
-            } else {
-                result = value;
-            }
-        
 
-            resultBox.innerText = `Result: ${result.toFixed(2)} ${toUnit}`;
+            let result;
+
+
+            // Meter → Feet
+            if (
+                fromUnit.value === "meter" &&
+                toUnit.value === "feet"
+            ) {
+
+                result = value * 3.280839895;
+
+            }
+
+
+            // Feet → Meter
+            else if (
+                fromUnit.value === "feet" &&
+                toUnit.value === "meter"
+            ) {
+
+                result = value * 0.3048;
+
+            }
+
+
+            // Same unit
+            else {
+
+                result = value;
+
+            }
+
+
+            const unitName =
+                toUnit.value === "feet"
+                    ? "ft"
+                    : "m";
+
+
+            resultBox.innerText =
+                `Result: ${formatNumber(result)} ${unitName}`;
         }
+
+
+        // =================================================
+        // NUMBER FORMAT
+        // =================================================
+
+        function formatNumber(number) {
+
+            return Number(number.toFixed(10))
+                .toLocaleString("en-US", {
+                    maximumFractionDigits: 10
+                });
+
+        }
+
+
+        // =================================================
+        // COPY RESULT
+        // =================================================
+
+        function copyResult() {
+
+            const text = resultBox.innerText;
+
+            if (
+                !text ||
+                text === "Result will appear here"
+            ) {
+                return;
+            }
+
+
+            navigator.clipboard.writeText(text)
+                .then(() => {
+
+                    const originalText =
+                        resultBox.innerText;
+
+                    resultBox.innerText =
+                        "✓ Result copied!";
+
+                    setTimeout(() => {
+
+                        resultBox.innerText =
+                            originalText;
+
+                    }, 1200);
+
+                })
+                .catch(() => {
+
+                    alert("Unable to copy result.");
+
+                });
+        }
+
+
+        // =================================================
+        // CLEAR
+        // =================================================
+
+        function clearConverter() {
+
+            inputValue.value = "";
+
+            resultBox.innerText =
+                "Result will appear here";
+
+            inputValue.focus();
+
+        }
+
+
+        // =================================================
+        // ENTER KEY
+        // =================================================
+
+        inputValue.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Enter") {
+                    convert();
+                }
+
+            }
+        );
+
     </script>
+
 </body>
+
 </html>
