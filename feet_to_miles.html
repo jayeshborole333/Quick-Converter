@@ -3,133 +3,850 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feet to Miles Converter</title>
-    <link rel="stylesheet" href="style.css">
+
+    <meta name="description"
+        content="Feet to Miles Converter - Quickly convert feet to miles and miles to feet with our easy-to-use online converter.">
+
+    <meta name="keywords"
+        content="feet to miles, ft to mi, miles to feet, feet converter, length converter">
+
+    <title>Feet to Miles Converter | Quick Converter</title>
+
+    <style>
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 15px 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            margin: 0;
+            font-size: 25px;
+        }
+
+        .logo a {
+            text-decoration: none;
+        }
+
+        .quick {
+            color: #2563eb;
+        }
+
+        .converter {
+            color: #111827;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+
+        /* =========================
+           MAIN CONVERTER
+        ========================= */
+
+        .converter-box {
+            max-width: 750px;
+            margin: 45px auto 30px;
+            padding: 30px;
+
+            background: #ffffff;
+            border-radius: 14px;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+            text-align: center;
+        }
+
+        .converter-box h2 {
+            margin-bottom: 25px;
+            color: #111827;
+            font-size: 28px;
+        }
+
+        #inputValue {
+            width: 100%;
+            padding: 13px 15px;
+            margin-bottom: 15px;
+
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+
+            font-size: 16px;
+            outline: none;
+        }
+
+        #inputValue:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        select {
+            padding: 12px 14px;
+            margin: 5px;
+
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+
+            background: #fff;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .converter-box span {
+            margin: 0 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 15px 5px 5px;
+
+            border: none;
+            border-radius: 8px;
+
+            background: #2563eb;
+            color: white;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 16px;
+
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+        }
+
+        .result-box p {
+            margin: 0;
+            color: #1d4ed8;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           INFORMATION BOX
+        ========================= */
+
+        .info-box,
+        .conversion-table,
+        .conversion-info,
+        .common-conversions {
+            max-width: 1100px;
+            margin: 25px auto;
+
+            background: #ffffff;
+            padding: 30px;
+
+            border-radius: 14px;
+
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        .info-box h3,
+        .conversion-table h3,
+        .conversion-info h3 {
+            color: #111827;
+            margin-bottom: 12px;
+            margin-top: 10px;
+            font-size: 22px;
+        }
+
+        .info-box p,
+        .conversion-info p {
+            margin-bottom: 12px;
+            color: #4b5563;
+        }
+
+
+        /* =========================
+           CONVERSION TABLE
+        ========================= */
+
+        .conversion-table {
+            overflow-x: auto;
+        }
+
+        .conversion-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .conversion-table th,
+        .conversion-table td {
+            padding: 13px;
+            text-align: center;
+            border: 1px solid #d1d5db;
+        }
+
+        .conversion-table th {
+            background: #2563eb;
+            color: #ffffff;
+        }
+
+        .conversion-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .conversion-table tr:hover {
+            background: #eff6ff;
+        }
+
+
+        /* =========================
+           CONVERSION INFO
+        ========================= */
+
+        .conversion-info {
+            border-left: 5px solid #2563eb;
+        }
+
+
+        /* =========================
+           POPULAR CONVERSIONS
+        ========================= */
+
+        .common-conversions h2 {
+            text-align: center;
+            color: #111827;
+            margin-bottom: 25px;
+        }
+
+        .converter-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .converter-list ul {
+            list-style: none;
+        }
+
+        .converter-list li {
+            margin-bottom: 12px;
+        }
+
+        .converter-list a {
+            display: block;
+            padding: 11px 14px;
+
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+
+            border-radius: 7px;
+
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+
+            transition: 0.2s ease;
+        }
+
+        .converter-list a:hover {
+            background: #eff6ff;
+            border-color: #93c5fd;
+            transform: translateX(3px);
+        }
+
+
+        /* =========================
+           MOBILE RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .nav-container {
+                padding: 14px 15px;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .converter-box {
+                margin: 25px 15px;
+                padding: 22px 18px;
+            }
+
+            .converter-box h2 {
+                font-size: 23px;
+            }
+
+            select {
+                width: 100%;
+                margin: 6px 0;
+            }
+
+            .converter-box span {
+                display: block;
+                margin: 5px 0;
+            }
+
+            button {
+                width: 100%;
+                margin: 8px 0;
+            }
+
+            .info-box,
+            .conversion-table,
+            .conversion-info,
+            .common-conversions {
+                margin: 20px 15px;
+                padding: 20px;
+            }
+
+            .converter-list {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+        }
+    </style>
 </head>
+
 <body>
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
     <nav class="navbar">
+
         <div class="nav-container">
-          <h2 class="logo">
-            <a href="index.html">
-              <span class="quick">Quick</span> <span class="converter">Converter</span>
-            </a>
-          </h2>
-          <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-          </ul>
+
+            <h2 class="logo">
+                <a href="index.html">
+                    <span class="quick">Quick</span>
+                    <span class="converter">Converter</span>
+                </a>
+            </h2>
+
+            <ul class="nav-links">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+            </ul>
+
         </div>
-      </nav>
-    
+
+    </nav>
+
+
+    <!-- =========================
+         CONVERTER
+    ========================= -->
+
     <div class="converter-box">
+
         <h2>Feet to Miles Converter</h2>
-        <input type="number" id="inputValue" placeholder="Enter value">
-        
+
+        <input
+            type="number"
+            id="inputValue"
+            placeholder="Enter value"
+            step="any"
+        >
+
         <select id="fromUnit">
-            <option value="feet">Feet</option>
-            <option value="miles">Miles</option>
+
+            <option value="feet">
+                Feet
+            </option>
+
+            <option value="miles">
+                Miles
+            </option>
+
         </select>
 
         <span>to</span>
 
         <select id="toUnit">
-            <option value="miles">Miles</option>
-            <option value="feet">Feet</option>
+
+            <option value="miles">
+                Miles
+            </option>
+
+            <option value="feet">
+                Feet
+            </option>
+
         </select>
 
-        <button onclick="swapUnits()">Swap Unit</button>
-        <button onclick="convert()">Convert</button>
+        <br>
+
+        <button onclick="swapUnits()">
+            Swap Unit
+        </button>
+
+        <button onclick="convert()">
+            Convert
+        </button>
 
         <div class="result-box">
-            <p id="result">Result:</p>
+
+            <p id="result">
+                Result:
+            </p>
+
         </div>
+
     </div>
+
+
+    <!-- =========================
+         INFORMATION
+    ========================= -->
 
     <div class="info-box">
+
         <h3>Foot</h3>
-        <p><strong>Definition:</strong> A foot (symbol: ft) is a unit of length in the imperial and US customary systems. One foot equals 12 inches or 0.3048 meters.</p>
-        <p><strong>History/origin:</strong> Derived from the average human foot size, it was standardized in 1959 to exactly 0.3048 meters.</p>
-        <p><strong>Current use:</strong> Commonly used in the US and UK for height, elevation, and shorter distances.</p>
-    
+
+        <p>
+            <strong>Definition:</strong>
+            A foot (symbol: ft) is a unit of length in the imperial
+            and US customary systems. One foot equals 12 inches or
+            exactly 0.3048 meters.
+        </p>
+
+        <p>
+            <strong>History/origin:</strong>
+            The foot was historically based on the length of the
+            human foot. It was standardized internationally in 1959
+            as exactly 0.3048 meters.
+        </p>
+
+        <p>
+            <strong>Current use:</strong>
+            Feet are commonly used in the United States and the
+            United Kingdom for height, elevation, construction,
+            and shorter distances.
+        </p>
+
+
         <h3>Mile</h3>
-        <p><strong>Definition:</strong> A mile (mi) is 5280 feet or exactly 1609.344 meters.</p>
-        <p><strong>History/origin:</strong> Derived from the Roman “mille passus,” meaning “a thousand paces.”</p>
-        <p><strong>Current use:</strong> Primarily used in the US and UK for road distances and travel.</p>
+
+        <p>
+            <strong>Definition:</strong>
+            A mile (symbol: mi) is a unit of length equal to
+            5,280 feet or exactly 1,609.344 meters.
+        </p>
+
+        <p>
+            <strong>History/origin:</strong>
+            The word mile comes from the Roman term
+            "mille passus", meaning one thousand paces.
+        </p>
+
+        <p>
+            <strong>Current use:</strong>
+            Miles are commonly used in the United States and
+            United Kingdom for road distances, travel distances,
+            and geographical measurements.
+        </p>
+
     </div>
-    
+
+
+    <!-- =========================
+         CONVERSION TABLE
+    ========================= -->
+
     <div class="conversion-table">
-        <h3>Feet to Mile Conversion Table</h3>
-        <table border="1">
-            <tr><th>Feet [ft]</th><th>Mile [mi]</th></tr>
-            <tr><td>1 ft</td><td>0.000189394 mi</td></tr>
-            <tr><td>10 ft</td><td>0.00189394 mi</td></tr>
-            <tr><td>100 ft</td><td>0.0189394 mi</td></tr>
-            <tr><td>5280 ft</td><td>1 mi</td></tr>
+
+        <h3>
+            Feet to Mile Conversion Table
+        </h3>
+
+        <table>
+
+            <tr>
+                <th>Feet [ft]</th>
+                <th>Mile [mi]</th>
+            </tr>
+
+            <tr>
+                <td>1 ft</td>
+                <td>0.000189394 mi</td>
+            </tr>
+
+            <tr>
+                <td>10 ft</td>
+                <td>0.001893939 mi</td>
+            </tr>
+
+            <tr>
+                <td>100 ft</td>
+                <td>0.018939394 mi</td>
+            </tr>
+
+            <tr>
+                <td>500 ft</td>
+                <td>0.094696970 mi</td>
+            </tr>
+
+            <tr>
+                <td>1000 ft</td>
+                <td>0.189393939 mi</td>
+            </tr>
+
+            <tr>
+                <td>2000 ft</td>
+                <td>0.378787879 mi</td>
+            </tr>
+
+            <tr>
+                <td>5000 ft</td>
+                <td>0.946969697 mi</td>
+            </tr>
+
+            <tr>
+                <td>5280 ft</td>
+                <td>1 mi</td>
+            </tr>
+
+            <tr>
+                <td>10000 ft</td>
+                <td>1.893939394 mi</td>
+            </tr>
+
         </table>
+
     </div>
-    
+
+
+    <!-- =========================
+         CONVERSION INFO
+    ========================= -->
+
     <div class="conversion-info">
-        <h3>How to Convert Feet to Miles</h3>
-        <p>1 ft = 0.000189394 mi</p>
-        <p>1 mi = 5280 ft</p>
-        <p><strong>Example:</strong> convert 5000 ft to mi:</p>
-        <p>5000 × 0.000189394 = 0.94697 mi</p>
-    </div>    
-    
-<!-- Popular Length Unit Conversions Section -->
-<div class="common-conversions">
-    <h2>Popular Length Unit Conversions</h2>
-    <div class="converter-list">
-        <ul>
-            <li><a href="Centemeter_to_Inches.html">cm to inches</a></li>
-            <li><a href="mm_to_inches.html">mm to inches</a></li>
-            <li><a href="meters_to_feet.html">meters to feet</a></li>
-            <li><a href="km_to_miles.html">km to miles</a></li>
-            <li><a href="cm_to_feet.html">cm to feet</a></li>
-            <li><a href="inches_to_feet.html">inches to feet</a></li>
-            <li><a href="meters_to_yards.html">meters to yards</a></li>
-            <li><a href="mm_to_cm.html">mm to cm</a></li>
-            <li><a href="cm_to_m.html">cm to m</a></li>
-            <li><a href="cm_to_km.html">cm to km</a></li>
-        </ul>
-        <ul>
-            <li><a href="mm_to_feet.html">mm to feet</a></li>
-            <li><a href="meters_to_miles.html">meters to miles</a></li>
-            <li><a href="feet_to_miles.html">feet to miles</a></li>
-            <li><a href="yards_to_feet.html">yards to feet</a></li>
-            <li><a href="inches_to_meters.html">inches to meters</a></li>
-            <li><a href="mm_to_m.html">mm to m</a></li>
-            <li><a href="km_to_m.html">km to m</a></li>
-            <li><a href="inches_to_yards.html">inches to yards</a></li>
-            <li><a href="yards_to_miles.html">yards to miles</a></li>
-        </ul>
+
+        <h3>
+            How to Convert Feet to Miles
+        </h3>
+
+        <p>
+            1 ft = 0.000189393939 mi
+        </p>
+
+        <p>
+            1 mi = 5280 ft
+        </p>
+
+        <p>
+            <strong>Formula:</strong>
+            Miles = Feet ÷ 5280
+        </p>
+
+        <p>
+            <strong>Example:</strong>
+            Convert 5000 ft to miles:
+        </p>
+
+        <p>
+            5000 ft ÷ 5280 = 0.946969697 mi
+        </p>
+
     </div>
-</div>
+
+
+    <!-- =========================
+         POPULAR LENGTH CONVERSIONS
+    ========================= -->
+
+    <div class="common-conversions">
+
+        <h2>
+            Popular Length Unit Conversions
+        </h2>
+
+        <div class="converter-list">
+
+            <ul>
+
+                <li>
+                    <a href="Centemeter_to_Inches.html">
+                        cm to inches
+                    </a>
+                </li>
+
+                <li>
+                    <a href="mm_to_inches.html">
+                        mm to inches
+                    </a>
+                </li>
+
+                <li>
+                    <a href="meters_to_feet.html">
+                        meters to feet
+                    </a>
+                </li>
+
+                <li>
+                    <a href="km_to_miles.html">
+                        km to miles
+                    </a>
+                </li>
+
+                <li>
+                    <a href="cm_to_feet.html">
+                        cm to feet
+                    </a>
+                </li>
+
+                <li>
+                    <a href="inches_to_feet.html">
+                        inches to feet
+                    </a>
+                </li>
+
+                <li>
+                    <a href="meters_to_yards.html">
+                        meters to yards
+                    </a>
+                </li>
+
+                <li>
+                    <a href="mm_to_cm.html">
+                        mm to cm
+                    </a>
+                </li>
+
+                <li>
+                    <a href="cm_to_m.html">
+                        cm to m
+                    </a>
+                </li>
+
+                <li>
+                    <a href="cm_to_km.html">
+                        cm to km
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <ul>
+
+                <li>
+                    <a href="mm_to_feet.html">
+                        mm to feet
+                    </a>
+                </li>
+
+                <li>
+                    <a href="meters_to_miles.html">
+                        meters to miles
+                    </a>
+                </li>
+
+                <li>
+                    <a href="feet_to_miles.html">
+                        feet to miles
+                    </a>
+                </li>
+
+                <li>
+                    <a href="yards_to_feet.html">
+                        yards to feet
+                    </a>
+                </li>
+
+                <li>
+                    <a href="inches_to_meters.html">
+                        inches to meters
+                    </a>
+                </li>
+
+                <li>
+                    <a href="mm_to_m.html">
+                        mm to m
+                    </a>
+                </li>
+
+                <li>
+                    <a href="km_to_m.html">
+                        km to m
+                    </a>
+                </li>
+
+                <li>
+                    <a href="inches_to_yards.html">
+                        inches to yards
+                    </a>
+                </li>
+
+                <li>
+                    <a href="yards_to_miles.html">
+                        yards to miles
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
     <script>
+
         function swapUnits() {
-            let from = document.getElementById("fromUnit");
-            let to = document.getElementById("toUnit");
+
+            let from =
+                document.getElementById("fromUnit");
+
+            let to =
+                document.getElementById("toUnit");
+
             let temp = from.value;
+
             from.value = to.value;
             to.value = temp;
+
         }
+
 
         function convert() {
-            let value = parseFloat(document.getElementById("inputValue").value);
-            let fromUnit = document.getElementById("fromUnit").value;
-            let toUnit = document.getElementById("toUnit").value;
-            let resultBox = document.getElementById("result");
+
+            let value =
+                parseFloat(
+                    document.getElementById("inputValue").value
+                );
+
+            let fromUnit =
+                document.getElementById("fromUnit").value;
+
+            let toUnit =
+                document.getElementById("toUnit").value;
+
+            let resultBox =
+                document.getElementById("result");
+
 
             if (isNaN(value)) {
-                resultBox.innerText = "Please enter a valid number!";
+
+                resultBox.innerText =
+                    "Please enter a valid number!";
+
                 return;
+
             }
 
-            let result = value * 0.000189394 ;
-            if (fromUnit === "miles") {
-                result = value / 0.000189394;
+
+            let result;
+
+
+            // Feet to Miles
+            if (
+                fromUnit === "feet" &&
+                toUnit === "miles"
+            ) {
+
+                result = value / 5280;
+
             }
-            resultBox.innerText = `Result: ${result.toFixed(4)} ${toUnit}`;
+
+
+            // Miles to Feet
+            else if (
+                fromUnit === "miles" &&
+                toUnit === "feet"
+            ) {
+
+                result = value * 5280;
+
+            }
+
+
+            // Same unit
+            else {
+
+                result = value;
+
+            }
+
+
+            let unit =
+                toUnit === "feet"
+                    ? "ft"
+                    : "mi";
+
+
+            resultBox.innerText =
+                `Result: ${result.toFixed(6)} ${unit}`;
+
         }
+
     </script>
+
 </body>
 </html>
