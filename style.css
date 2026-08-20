@@ -1,4 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   display: flex;
@@ -6,15 +20,17 @@ body {
   align-items: center;
   font-family: 'Poppins', sans-serif;
   text-align: center;
-  margin-top: 50px;
   background-color: rgb(240, 240, 240);
-  padding-top: 60px;
+  padding-top: 100px;
+  min-height: 100vh;
+  color: #222;
 }
 
 h1 {
   font-size: 50px;
   word-break: break-word;
   max-width: 90vw;
+  margin-bottom: 10px;
 }
 
 h2 {
@@ -23,10 +39,14 @@ h2 {
 }
 
 h5 {
-  margin: 0;
+  margin: 0 0 10px;
 }
 
-/* ✅ Navbar */
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
 .navbar {
   background-color: #333;
   color: white;
@@ -36,6 +56,7 @@ h5 {
   top: 0;
   left: 0;
   z-index: 1000;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 }
 
 .nav-container {
@@ -47,11 +68,16 @@ h5 {
   padding: 0 20px;
 }
 
+.logo {
+  margin: 0;
+}
+
 .logo a {
   color: white;
   text-decoration: none;
   font-size: 30px;
   font-weight: bold;
+  transition: 0.3s;
 }
 
 .logo a:hover {
@@ -69,6 +95,9 @@ h5 {
 .nav-links {
   list-style: none;
   display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links li {
@@ -82,32 +111,183 @@ h5 {
   transition: color 0.3s;
 }
 
-body {
-  padding-top: 100px;
-}
-
 .nav-links a:hover {
   color: #f4a261;
 }
 
-/* ✅ Converter Box */
-.converter-box,
-.conversion {
-  background: white;
-  padding: 25px 40px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  width: 350px;
-  margin-top: 80px;
-  border: 2px solid black;
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main {
+  width: 100%;
+  max-width: 1000px;
+  padding: 20px;
 }
+
+
+/* =========================================================
+   SEARCH BOX
+========================================================= */
+
+.search-box {
+  width: 100%;
+  max-width: 650px;
+  margin: 20px auto;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  outline: none;
+  background-color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.search-box input:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.12);
+}
+
+
+/* =========================================================
+   QUICK ACTIONS
+========================================================= */
+
+.quick-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 15px auto 25px;
+}
+
+.quick-actions button {
+  width: auto;
+  min-width: 130px;
+  padding: 10px 18px;
+  margin: 0;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.quick-actions button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   SEARCH RESULTS
+========================================================= */
+
+.search-results {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto 20px;
+}
+
+.search-results p {
+  color: #777;
+  font-size: 14px;
+}
+
+.search-results button {
+  width: auto;
+  display: inline-block;
+  margin: 5px;
+  padding: 9px 15px;
+  background-color: white;
+  color: #007BFF;
+  border: 1px solid #007BFF;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.search-results button:hover {
+  background-color: #007BFF;
+  color: white;
+}
+
+
+/* =========================================================
+   CATEGORY SELECT
+========================================================= */
+
+#conversionCategory {
+  width: 250px;
+  max-width: 90%;
+  margin: 10px auto 20px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background-color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  outline: none;
+}
+
+#conversionCategory:focus {
+  border-color: #007BFF;
+}
+
+
+/* =========================================================
+   CONVERTER CONTAINER
+========================================================= */
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
+
+
+/* =========================================================
+   CONVERTER BOX
+========================================================= */
+
+.converter-box,
+.conversion {
+  background: white;
+  padding: 25px 40px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 400px;
+  max-width: 100%;
+  margin-top: 25px;
+  border: 2px solid #222;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.conversion h2 {
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   INPUT / SELECT
+========================================================= */
 
 .container input,
 .container select,
@@ -115,50 +295,143 @@ body {
 input,
 select,
 button {
+  font-family: 'Poppins', sans-serif;
   font-size: 15px;
-  padding: 10px;
+}
+
+.container input,
+.container select {
+  width: 100%;
+  padding: 11px;
   margin: 8px 0;
   border-radius: 10px;
-  width: 100%;
   box-sizing: border-box;
   border: 1px solid #ccc;
+  outline: none;
+  background-color: white;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ✅ Buttons */
-button {
+.container input:focus,
+.container select:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+
+/* =========================================================
+   TO TEXT
+========================================================= */
+
+.conversion span {
+  display: block;
+  margin: 5px 0;
+  color: #555;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.conversion button {
+  width: 100%;
+  padding: 11px;
+  margin: 7px 0;
+  border-radius: 10px;
+  border: none;
   background-color: #007BFF;
   color: white;
-  border: none;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.25);
 }
 
-button:hover {
+.conversion button:hover {
   background-color: #0056b3;
-  transform: scale(1.05);
+  transform: translateY(-2px);
 }
 
-/* ✅ Result */
+.conversion button:active {
+  transform: scale(0.98);
+}
+
+
+/* =========================================================
+   RESULT
+========================================================= */
+
 .result,
 .result-box {
-  margin-top: 15px;
-  padding: 10px;
-  background: #ccc;
+  margin-top: 18px;
+  padding: 15px;
+  background: #f1f3f5;
   border-radius: 10px;
   font-size: 16px;
-  width: 95%;
+  width: 100%;
   align-self: center;
+  border: 1px solid #ddd;
 }
 
-/* ✅ Common Conversions */
+.result p {
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 5px;
+  word-break: break-word;
+}
+
+.result small {
+  display: block;
+  margin-top: 8px;
+  color: #666;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   RESULT ACTIONS
+========================================================= */
+
+.result-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.result-actions button {
+  width: auto !important;
+  min-width: 110px;
+  margin: 0 !important;
+  padding: 8px 12px !important;
+  background-color: #333 !important;
+  color: white;
+  border-radius: 7px !important;
+  box-shadow: none !important;
+  font-size: 13px;
+}
+
+.result-actions button:hover {
+  background-color: #555 !important;
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   COMMON CONVERSIONS
+========================================================= */
+
 .common-conversions {
   margin-top: 30px;
-  padding: 20px;
+  padding: 25px;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 12px;
   width: 700px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 95%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
@@ -166,10 +439,14 @@ button:hover {
   font-size: 30px;
   font-weight: bold;
   color: #1e4d2b;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-/* ✅ Conversion Links */
+
+/* =========================================================
+   CONVERSION LINKS
+========================================================= */
+
 .conversion-links {
   display: flex;
   justify-content: space-between;
@@ -186,13 +463,14 @@ button:hover {
 }
 
 .conversion-links ul li {
-  margin: 5px 0;
+  margin: 7px 0;
 }
 
 .conversion-links ul li a {
   text-decoration: none;
   color: #0645AD;
   font-size: 16px;
+  transition: 0.3s;
 }
 
 .conversion-links ul li a:hover {
@@ -200,9 +478,50 @@ button:hover {
   color: #ff6600;
 }
 
-/* ✅ Info Box */
+
+/* =========================================================
+   CONVERTER LIST
+========================================================= */
+
+.converter-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  text-align: left;
+  font-size: 20px;
+}
+
+.converter-list ul {
+  list-style-type: disc;
+  margin: 0 30px;
+  padding: 0;
+}
+
+.converter-list ul li {
+  margin: 7px 0;
+}
+
+.converter-list a {
+  color: #006400;
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.converter-list a:hover {
+  text-decoration: underline;
+  color: #ff6600;
+}
+
+
+/* =========================================================
+   INFO BOX
+========================================================= */
+
 .info-box {
   animation: fadeInUp 0.8s ease-out;
+  width: 100%;
   max-width: 800px;
   margin: 40px auto;
   background-color: #ffffff;
@@ -210,7 +529,7 @@ button:hover {
   border-radius: 10px;
   line-height: 1.7;
   font-size: 16px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   color: #000000;
 }
 
@@ -227,16 +546,19 @@ button:hover {
   text-align: justify;
 }
 
-/* ✅ Conversion Table */
+
+/* =========================================================
+   CONVERSION TABLE
+========================================================= */
+
 .conversion-table {
   margin-top: 30px;
   background-color: #ffffff;
   padding: 25px 30px;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  width: 100%;
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
   animation: fadeInUp 0.8s ease-out;
 }
 
@@ -269,7 +591,11 @@ button:hover {
   background-color: #f0f8f5;
 }
 
-/* ✅ Conversion Info */
+
+/* =========================================================
+   CONVERSION INFO
+========================================================= */
+
 .conversion-info {
   background-color: #ffffff;
   border-left: 5px solid #2e7d32;
@@ -279,10 +605,9 @@ button:hover {
   font-size: 16px;
   line-height: 1.6;
   color: #000000;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  width: 100%;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .conversion-info h3 {
@@ -301,31 +626,25 @@ button:hover {
   color: #000;
 }
 
-/* ✅ Fade-in Animation */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-/* ✅ Contact Section */
+/* =========================================================
+   CONTACT SECTION
+========================================================= */
+
 .contact-container {
-  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  padding: 20px;
+  gap: 50px;
+  padding: 40px 20px;
 }
 
 .contact-left {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   gap: 20px;
 }
 
@@ -353,14 +672,17 @@ form {
 
 .contact-input {
   width: 400px;
-  max-width: 600px;
+  max-width: 100%;
   height: 50px;
   border: none;
   outline: none;
   padding-left: 25px;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   color: #666;
   border-radius: 50px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .contact-left textarea {
@@ -368,6 +690,7 @@ form {
   padding-top: 15px;
   border-radius: 20px;
   padding-left: 25px;
+  resize: vertical;
 }
 
 .contact-input:focus {
@@ -381,6 +704,7 @@ form {
 .contact-left button {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 15px 30px;
   font-size: 16px;
   color: #fff;
@@ -389,6 +713,12 @@ form {
   border-radius: 50px;
   background: linear-gradient(270deg, #ff994f, #fa6d86);
   cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.3s;
+}
+
+.contact-left button:hover {
+  transform: translateY(-2px);
 }
 
 .contact-left button img {
@@ -397,103 +727,351 @@ form {
 
 .contact-right img {
   width: 500px;
+  max-width: 100%;
 }
 
-/* ✅ Converter Link Grid */
-.converter-list {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 30px;
-  text-align: left;
-  font-size: 20px;
-}
 
-.converter-list ul {
-  list-style-type: disc;
-  margin: 0 30px;
-  padding: 0;
-}
+/* =========================================================
+   ANIMATION
+========================================================= */
 
-.converter-list a {
-  color: #006400;
-  text-decoration: none;
-}
-
-.converter-list a:hover {
-  text-decoration: underline;
-  color: #ff6600;
-}
-
-/* ✅ Mobile Responsive */
-@media (max-width: 768px) {
-  .converter-box,
-  .conversion {
-    width: 90%;
-    margin: 20px auto;
-    padding: 20px;
-    font-size: 14px;
-    font-size: 30px;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
 
-  h1 {
-    font-size: 36px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  .info-box,
-  .conversion-info,
-  .conversion-table,
-  .common-conversions {
-    width: 95%;
-    padding: 15px;
-  }
 
-  .conversion-links {
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .contact-container {
     flex-direction: column;
-    align-items: center;
-  }
-
-  .nav-container {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-  }
-
-  .nav-links {
-    flex-direction: row;
-    gap: 10px;
-    margin: 0;
-    padding: 0;
-    margin-right: 50px;
-  }
-
-  .nav-links li {
-    margin: 0;
-  }
-}
-
-  .logo a {
-    font-size: 24px;
-  }
-
-  .navbar {
-    height: auto;
-    padding: 15px 0;
-  }
-
-  body {
-    padding-top: 100px;
-  }
-
-  .contact-input {
-    width: 80vw;
+    justify-content: center;
   }
 
   .contact-right {
     display: none;
   }
 
+  .contact-left {
+    align-items: center;
+    width: 100%;
+  }
+
+  .contact-left-title {
+    text-align: center;
+  }
+
+  .conversion,
+  .converter-box {
+    width: 90%;
+  }
+
+  .common-conversions {
+    width: 90%;
+  }
+}
 
 
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  body {
+    padding-top: 90px;
+  }
+
+  h1 {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  /* Navbar */
+
+  .navbar {
+    padding: 10px 0;
+  }
+
+  .nav-container {
+    width: 100%;
+    padding: 8px 15px;
+  }
+
+  .logo a {
+    font-size: 24px;
+  }
+
+  .nav-links {
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links li {
+    margin: 0;
+  }
+
+  .nav-links a {
+    font-size: 15px;
+  }
+
+
+  /* Main */
+
+  .main {
+    padding: 10px;
+  }
+
+
+  /* Search */
+
+  .search-box {
+    width: 95%;
+  }
+
+  .search-box input {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+
+  /* Quick Actions */
+
+  .quick-actions {
+    gap: 8px;
+  }
+
+  .quick-actions button {
+    min-width: 100px;
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+
+
+  /* Category */
+
+  #conversionCategory {
+    width: 90%;
+  }
+
+
+  /* Converter */
+
+  .converter-box,
+  .conversion {
+    width: 95%;
+    max-width: 450px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .conversion h2 {
+    font-size: 24px;
+  }
+
+
+  /* Inputs */
+
+  .container input,
+  .container select {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+
+  /* Result */
+
+  .result {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .result p {
+    font-size: 15px;
+  }
+
+  .result small {
+    font-size: 12px;
+  }
+
+
+  /* Result Buttons */
+
+  .result-actions {
+    flex-direction: column;
+  }
+
+  .result-actions button {
+    width: 100% !important;
+  }
+
+
+  /* Common Conversions */
+
+  .common-conversions {
+    width: 95%;
+    padding: 18px;
+  }
+
+  .common-conversions h2 {
+    font-size: 24px;
+  }
+
+  .conversion-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .conversion-links ul {
+    margin: 0 20px;
+  }
+
+  .conversion-links ul li a {
+    font-size: 15px;
+  }
+
+
+  /* Converter List */
+
+  .converter-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .converter-list ul {
+    margin: 0 20px;
+  }
+
+  .converter-list a {
+    font-size: 15px;
+  }
+
+
+  /* Info */
+
+  .info-box,
+  .conversion-info,
+  .conversion-table {
+    width: 95%;
+    padding: 18px;
+  }
+
+
+  /* Table */
+
+  .conversion-table {
+    overflow-x: auto;
+  }
+
+  .conversion-table table {
+    min-width: 600px;
+  }
+
+
+  /* Contact */
+
+  .contact-container {
+    min-height: auto;
+    padding: 50px 15px;
+  }
+
+  .contact-left {
+    width: 100%;
+    align-items: center;
+  }
+
+  .contact-left-title h2 {
+    font-size: 32px;
+  }
+
+  .contact-input {
+    width: 90vw;
+    max-width: 400px;
+  }
+
+  .contact-left form {
+    width: 100%;
+    align-items: center;
+  }
+
+  .contact-left button {
+    width: 90vw;
+    max-width: 400px;
+  }
+
+  .contact-right {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  body {
+    padding-top: 85px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .logo a {
+    font-size: 20px;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+  }
+
+  .quick-actions {
+    flex-direction: column;
+  }
+
+  .quick-actions button {
+    width: 200px;
+  }
+
+  .conversion,
+  .converter-box {
+    width: 95%;
+    padding: 18px 15px;
+  }
+
+  .conversion h2 {
+    font-size: 22px;
+  }
+
+  .common-conversions h2 {
+    font-size: 21px;
+  }
+
+  .conversion-links ul,
+  .converter-list ul {
+    margin-left: 15px;
+  }
+
+  .contact-left-title h2 {
+    font-size: 28px;
+  }
+}
