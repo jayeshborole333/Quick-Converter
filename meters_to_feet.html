@@ -5,787 +5,1565 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta
+        name="description"
+        content="Meters to Feet Converter - Quickly convert meters to feet and feet to meters with our accurate and easy-to-use converter."
+    >
+
     <title>Meters to Feet Converter | Quick Converter</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f7fb;
+            color: #202124;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 72px;
+
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid #e8eaf0;
+
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            height: 100%;
+
+            margin: auto;
+            padding: 0 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            margin: 0;
+        }
+
+        .logo a {
+            font-size: 28px;
+            font-weight: 800;
+            color: #222;
+        }
+
+        .quick {
+            color: #ff5733;
+        }
+
+        .converter {
+            color: #222;
+        }
+
+        .nav-links {
+            list-style: none;
+
+            display: flex;
+            align-items: center;
+
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #444;
+            font-size: 15px;
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff5733;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .page-hero {
+            min-height: 460px;
+
+            padding: 140px 20px 80px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #ffe9e3,
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    #e2f0ff,
+                    transparent 35%
+                ),
+                #f8faff;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+
+            padding: 8px 18px;
+            margin-bottom: 20px;
+
+            border-radius: 50px;
+
+            background: #fff;
+            color: #ff5733;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.06);
+        }
+
+        .page-hero h1 {
+            font-size: clamp(42px, 7vw, 72px);
+
+            line-height: 1.1;
+            font-weight: 800;
+
+            color: #171717;
+
+            margin-bottom: 20px;
+        }
+
+        .page-hero h1 span {
+            color: #ff5733;
+        }
+
+        .page-hero p {
+            max-width: 650px;
+
+            margin: auto auto 30px;
+
+            font-size: 17px;
+            color: #666;
+        }
+
+        .hero-button {
+            display: inline-block;
+
+            padding: 14px 28px;
+
+            border-radius: 50px;
+
+            background: linear-gradient(
+                135deg,
+                #ff5733,
+                #ff7b54
+            );
+
+            color: white;
+
+            font-weight: 600;
+
+            box-shadow:
+                0 10px 25px rgba(255, 87, 51, 0.3);
+
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 30px rgba(255, 87, 51, 0.4);
+        }
+
+
+        /* =====================================================
+           CONVERTER SECTION
+        ===================================================== */
+
+        .converter-section {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 80px 20px;
+        }
+
+        .section-heading {
+            text-align: center;
+
+            margin-bottom: 40px;
+        }
+
+        .section-label {
+            display: inline-block;
+
+            color: #ff5733;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 8px;
+        }
+
+        .section-heading h2 {
+            font-size: 38px;
+
+            color: #222;
+
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: #777;
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           CONVERTER BOX
+        ===================================================== */
+
+        .converter-box {
+            width: min(600px, 100%);
+
+            margin: auto;
+
+            padding: 30px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            border: 1px solid #ececf1;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.08);
+
+            animation: cardIn 0.4s ease;
+        }
+
+        @keyframes cardIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        .converter-box h2 {
+            font-size: 25px;
+
+            color: #222;
+
+            margin-bottom: 25px;
+
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           INPUT
+        ===================================================== */
+
+        .converter-box > input {
+            width: 100%;
+
+            padding: 16px;
+
+            margin-bottom: 15px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 12px;
+
+            outline: none;
+
+            background: #fff;
+
+            font-size: 16px;
+
+            transition: 0.3s;
+        }
+
+        .converter-box > input:focus {
+            border-color: #ff5733;
+
+            box-shadow:
+                0 0 0 4px rgba(255, 87, 51, 0.08);
+        }
+
+
+        /* =====================================================
+           UNIT ROW
+        ===================================================== */
+
+        .unit-row {
+            display: grid;
+
+            grid-template-columns: 1fr 40px 1fr;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 18px;
+        }
+
+        .unit-group label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            color: #555;
+        }
+
+        .unit-group select {
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 12px;
+
+            background: #fafafa;
+
+            outline: none;
+
+            cursor: pointer;
+
+            color: #333;
+        }
+
+        .unit-group select:focus {
+            border-color: #ff5733;
+        }
+
+        .unit-arrow {
+            margin-top: 25px;
+
+            text-align: center;
+
+            color: #ff5733;
+
+            font-size: 22px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        .converter-buttons {
+            display: grid;
+
+            grid-template-columns: 1fr 1.5fr;
+
+            gap: 12px;
+
+            margin-top: 10px;
+        }
+
+        .converter-buttons button {
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .swap-btn {
+            background: #f1f3f6;
+
+            color: #444;
+        }
+
+        .swap-btn:hover {
+            background: #e5e7eb;
+
+            transform: translateY(-2px);
+        }
+
+        .convert-btn {
+            background: linear-gradient(
+                135deg,
+                #ff5733,
+                #ff7a59
+            );
+
+            color: white;
+
+            box-shadow:
+                0 8px 20px rgba(255, 87, 51, 0.25);
+        }
+
+        .convert-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 25px rgba(255, 87, 51, 0.35);
+        }
+
+
+        /* =====================================================
+           RESULT
+        ===================================================== */
+
+        .result-box {
+            margin-top: 20px;
+
+            padding: 20px;
+
+            border-radius: 16px;
+
+            background: #f6f8fb;
+
+            border: 1px solid #e9ebef;
+        }
+
+        .result-box p {
+            color: #222;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            word-break: break-word;
+        }
+
+
+        /* =====================================================
+           INFO BOX
+        ===================================================== */
+
+        .info-box {
+            width: min(1100px, 94%);
+
+            margin: 20px auto 50px;
+
+            padding: 40px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            border: 1px solid #ececf1;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.06);
+        }
+
+        .info-box h3 {
+            font-size: 23px;
+
+            color: #222;
+
+            margin-bottom: 12px;
+
+            padding-left: 14px;
+
+            border-left: 4px solid #ff5733;
+        }
+
+        .info-box p {
+            color: #666;
+
+            font-size: 14px;
+
+            margin-bottom: 15px;
+        }
+
+        .info-box h3:not(:first-child) {
+            margin-top: 30px;
+        }
+
+        .info-box strong {
+            color: #333;
+        }
+
+
+        /* =====================================================
+           CONVERSION TABLE
+        ===================================================== */
+
+        .conversion-table {
+            width: min(900px, 94%);
+
+            margin: 50px auto;
+
+            padding: 35px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.06);
+
+            overflow-x: auto;
+        }
+
+        .conversion-table h3 {
+            text-align: center;
+
+            font-size: 25px;
+
+            color: #222;
+
+            margin-bottom: 25px;
+        }
+
+        .conversion-table table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            overflow: hidden;
+
+            border-radius: 12px;
+        }
+
+        .conversion-table th {
+            padding: 14px;
+
+            background: #ff5733;
+
+            color: white;
+
+            font-size: 14px;
+
+            text-align: center;
+        }
+
+        .conversion-table td {
+            padding: 13px;
+
+            border-bottom: 1px solid #eee;
+
+            text-align: center;
+
+            font-size: 14px;
+
+            color: #555;
+        }
+
+        .conversion-table tr:nth-child(even) td {
+            background: #fafafa;
+        }
+
+        .conversion-table tr:hover td {
+            background: #fff4f0;
+        }
+
+
+        /* =====================================================
+           CONVERSION INFO
+        ===================================================== */
+
+        .conversion-info {
+            width: min(900px, 94%);
+
+            margin: 50px auto;
+
+            padding: 35px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff7f4,
+                    #f3f7ff
+                );
+
+            border-radius: 24px;
+
+            border: 1px solid #ececf1;
+
+            text-align: center;
+        }
+
+        .conversion-info h3 {
+            font-size: 26px;
+
+            margin-bottom: 20px;
+
+            color: #222;
+        }
+
+        .conversion-info p {
+            color: #555;
+
+            margin: 10px 0;
+
+            font-size: 15px;
+        }
+
+        .conversion-info p:first-of-type {
+            display: inline-block;
+
+            padding: 10px 20px;
+
+            background: white;
+
+            border-radius: 10px;
+
+            color: #ff5733;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           COMMON CONVERSIONS
+        ===================================================== */
+
+        .common-conversions {
+            width: min(1100px, 94%);
+
+            margin: 60px auto;
+
+            padding: 45px 35px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.06);
+        }
+
+        .common-conversions h2 {
+            text-align: center;
+
+            font-size: 30px;
+
+            color: #222;
+
+            margin-bottom: 30px;
+        }
+
+        .converter-list {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 30px;
+        }
+
+        .converter-list ul {
+            list-style: none;
+        }
+
+        .converter-list li {
+            margin: 10px 0;
+
+            padding-bottom: 8px;
+
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .converter-list a {
+            color: #2457a6;
+
+            font-size: 15px;
+
+            font-weight: 500;
+
+            transition: 0.3s;
+        }
+
+        .converter-list a::before {
+            content: "→ ";
+
+            color: #ff5733;
+
+            font-weight: 700;
+        }
+
+        .converter-list a:hover {
+            color: #ff5733;
+
+            padding-left: 5px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+            margin-top: 70px;
+
+            background: #202124;
+
+            color: white;
+
+            padding: 45px 20px;
+
+            text-align: center;
+        }
+
+        .footer h2 {
+            font-size: 28px;
+
+            margin-bottom: 8px;
+        }
+
+        .footer p {
+            color: #aaa;
+
+            font-size: 14px;
+        }
+
+        .footer-line {
+            width: min(700px, 90%);
+
+            height: 1px;
+
+            background: #3a3a3a;
+
+            margin: 20px auto;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                height: 65px;
+            }
+
+            .nav-container {
+                padding: 0 15px;
+            }
+
+            .logo a {
+                font-size: 22px;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .page-hero {
+                min-height: 430px;
+
+                padding: 120px 20px 70px;
+            }
+
+            .page-hero h1 {
+                font-size: 43px;
+            }
+
+            .page-hero p {
+                font-size: 15px;
+            }
+
+            .converter-section {
+                padding: 60px 15px;
+            }
+
+            .section-heading h2 {
+                font-size: 30px;
+            }
+
+            .converter-box {
+                padding: 22px;
+
+                border-radius: 18px;
+            }
+
+            .converter-box h2 {
+                font-size: 21px;
+            }
+
+            .unit-row {
+                grid-template-columns: 1fr;
+
+                gap: 8px;
+            }
+
+            .unit-arrow {
+                margin: 0;
+
+                transform: rotate(90deg);
+            }
+
+            .converter-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .info-box {
+                padding: 25px 20px;
+            }
+
+            .conversion-table {
+                padding: 25px 15px;
+            }
+
+            .conversion-table h3 {
+                font-size: 21px;
+            }
+
+            .conversion-table table {
+                min-width: 500px;
+            }
+
+            .conversion-info {
+                padding: 25px 20px;
+            }
+
+            .conversion-info h3 {
+                font-size: 22px;
+            }
+
+            .common-conversions {
+                padding: 30px 20px;
+            }
+
+            .common-conversions h2 {
+                font-size: 25px;
+            }
+
+            .converter-list {
+                grid-template-columns: 1fr;
+
+                gap: 0;
+            }
+
+        }
+
+
+        @media (max-width: 450px) {
+
+            .page-hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-button {
+                width: 100%;
+            }
+
+            .converter-box {
+                width: 100%;
+            }
+
+            .info-box,
+            .conversion-table,
+            .conversion-info,
+            .common-conversions {
+                width: 94%;
+            }
+
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-    <!-- =====================================================
-         NAVBAR
-    ====================================================== -->
 
-    <nav class="navbar">
-        <div class="nav-container">
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
 
-            <h2 class="logo">
-                <a href="index.html">
-                    <span class="quick">Quick</span>
-                    <span class="converter">Converter</span>
-                </a>
-            </h2>
+<nav class="navbar">
 
-            <ul class="nav-links">
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-            </ul>
+    <div class="nav-container">
 
-        </div>
-    </nav>
+        <h2 class="logo">
 
-
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
-
-    <main class="main">
-
-        <!-- =================================================
-             PAGE HERO
-        ================================================== -->
-
-        <section class="page-hero">
-
-            <div class="hero-content">
-
-                <div class="hero-badge">
-                    📏 Length Converter
-                </div>
-
-                <h1>
-                    Meters to <span>Feet</span> Converter
-                </h1>
-
-                <p>
-                    Convert meters to feet quickly and accurately.
-                    You can also convert feet back to meters.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             CONVERTER SECTION
-        ================================================== -->
-
-        <section class="converter-section">
-
-            <div class="section-heading">
-
-                <span class="section-label">
-                    Converter
-                </span>
-
-                <h2>
-                    Meters ↔ Feet
-                </h2>
-
-                <p>
-                    Enter a value and select the units you want to convert.
-                </p>
-
-            </div>
-
-
-            <!-- Converter Card -->
-
-            <div class="container">
-
-                <div class="conversion">
-
-                    <!-- Converter Header -->
-
-                    <div class="conversion-header">
-
-                        <div class="conversion-icon">
-                            📏
-                        </div>
-
-                        <div>
-                            <h2>
-                                Meters to Feet
-                            </h2>
-
-                            <p>
-                                Fast and accurate length conversion
-                            </p>
-                        </div>
-
-                    </div>
-
-
-                    <!-- Input -->
-
-                    <input
-                        type="number"
-                        id="inputValue"
-                        placeholder="Enter value"
-                        step="any"
-                    >
-
-
-                    <!-- Unit Selection -->
-
-                    <div class="unit-row">
-
-                        <div class="unit-group">
-
-                            <label for="fromUnit">
-                                From
-                            </label>
-
-                            <select id="fromUnit">
-
-                                <option value="meter">
-                                    Meter (m)
-                                </option>
-
-                                <option value="feet">
-                                    Feet (ft)
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <span class="unit-arrow">
-                            →
-                        </span>
-
-
-                        <div class="unit-group">
-
-                            <label for="toUnit">
-                                To
-                            </label>
-
-                            <select id="toUnit">
-
-                                <option value="feet">
-                                    Feet (ft)
-                                </option>
-
-                                <option value="meter">
-                                    Meter (m)
-                                </option>
-
-                            </select>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Buttons -->
-
-                    <div class="converter-buttons">
-
-                        <button
-                            type="button"
-                            class="swap-btn"
-                            onclick="swapUnits()"
-                        >
-                            ⇄ Swap
-                        </button>
-
-                        <button
-                            type="button"
-                            class="convert-btn"
-                            onclick="convert()"
-                        >
-                            Convert
-                        </button>
-
-                    </div>
-
-
-                    <!-- Result -->
-
-                    <div class="result">
-
-                        <p id="result">
-                            Result will appear here
-                        </p>
-
-                        <div class="result-actions">
-
-                            <button
-                                type="button"
-                                onclick="copyResult()"
-                            >
-                                📋 Copy Result
-                            </button>
-
-                            <button
-                                type="button"
-                                onclick="clearConverter()"
-                            >
-                                Clear
-                            </button>
-
-                        </div>
-
-                        <small>
-                            1 meter = 3.280839895 feet
-                        </small>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             INFORMATION
-        ================================================== -->
-
-        <div class="info-box">
-
-            <h3>Meter</h3>
-
-            <p>
-                <strong>Definition:</strong>
-                A meter, or metre (symbol: m), is the base unit of
-                length and distance in the International System of
-                Units (SI). The meter is defined as the distance
-                traveled by light in 1/299,792,458 of a second.
-            </p>
-
-            <p>
-                <strong>History/origin:</strong>
-                Originally, in 1793, the meter was defined as one
-                ten-millionth of the distance from the equator to
-                the North Pole. This changed in 1889, when the
-                International prototype metre was established.
-                In 1960, the meter was again redefined in terms
-                of wavelengths of a certain emission line of
-                krypton-86.
-            </p>
-
-            <p>
-                <strong>Current use:</strong>
-                The meter is used worldwide as the SI unit of
-                length for measuring distance, height, width,
-                depth and many other dimensions.
-            </p>
-
-
-            <h3>Foot</h3>
-
-            <p>
-                <strong>Definition:</strong>
-                A foot (symbol: ft) is a unit of length in the
-                imperial and US customary systems of measurement.
-                One foot is defined as exactly 0.3048 meters.
-                One foot contains 12 inches and one yard contains
-                three feet.
-            </p>
-
-            <p>
-                <strong>History/origin:</strong>
-                The foot has historically been used in many
-                measurement systems, including Greek, Roman,
-                English, Chinese and French systems. The exact
-                length varied between different systems before
-                international standardization.
-            </p>
-
-            <p>
-                <strong>Current use:</strong>
-                Feet are commonly used in the United States,
-                Canada and the United Kingdom for everyday
-                measurements such as height, shorter distances,
-                field lengths, altitude and elevation.
-            </p>
-
-        </div>
-
-
-        <!-- =================================================
-             CONVERSION TABLE
-        ================================================== -->
-
-        <div class="conversion-table">
-
-            <h3>
-                Meter to Foot Conversion Table
-            </h3>
-
-            <table>
-
-                <thead>
-                    <tr>
-                        <th>Meter [m]</th>
-                        <th>Foot [ft]</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <td>0.01 m</td>
-                        <td>0.032808399 ft</td>
-                    </tr>
-
-                    <tr>
-                        <td>0.1 m</td>
-                        <td>0.3280839895 ft</td>
-                    </tr>
-
-                    <tr>
-                        <td>1 m</td>
-                        <td>3.280839895 ft</td>
-                    </tr>
-
-                    <tr>
-                        <td>2 m</td>
-                        <td>6.56167979 ft</td>
-                    </tr>
-
-                    <tr>
-                        <td>3 m</td>
-                        <td>9.842519685 ft</td>
-                    </tr>
-
-                    <tr>
-                        <td>5 m</td>
-                        <td>16.404199475 ft</td>
-                    </tr>
-
-                    <tr>
-                        <td>10 m</td>
-                        <td>32.8083989501 ft</td>
-                    </tr>
-
-                    <tr>
-                        <td>20 m</td>
-                        <td>65.6167979003 ft</td>
-                    </tr>
-
-                    <tr>
-                        <td>50 m</td>
-                        <td>164.0419947507 ft</td>
-                    </tr>
-
-                    <tr>
-                        <td>100 m</td>
-                        <td>328.0839895013 ft</td>
-                    </tr>
-
-                    <tr>
-                        <td>1000 m</td>
-                        <td>3280.8398950131 ft</td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-
-        <!-- =================================================
-             CONVERSION INFO
-        ================================================== -->
-
-        <div class="conversion-info">
-
-            <h3>
-                How to Convert Meter to Foot
-            </h3>
-
-            <p>
-                1 m = 3.280839895 ft
-            </p>
-
-            <p>
-                1 ft = 0.3048 m
-            </p>
-
-            <p>
-                <strong>Example:</strong>
-                Convert 15 m to ft:
-            </p>
-
-            <p>
-                15 m × 3.280839895 =
-                <strong>49.2125984252 ft</strong>
-            </p>
-
-        </div>
-
-
-        <!-- =================================================
-             POPULAR CONVERSIONS
-        ================================================== -->
-
-        <div class="common-conversions">
-
-            <h2>
-                Popular Length Unit Conversions
-            </h2>
-
-            <div class="converter-list">
-
-                <ul>
-
-                    <li>
-                        <a href="Centemeter_to_Inches.html">
-                            cm to inches
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="mm_to_inches.html">
-                            mm to inches
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="meters_to_feet.html">
-                            meters to feet
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="km_to_miles.html">
-                            km to miles
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="cm_to_feet.html">
-                            cm to feet
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="inches_to_feet.html">
-                            inches to feet
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="meters_to_yards.html">
-                            meters to yards
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="mm_to_cm.html">
-                            mm to cm
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="cm_to_m.html">
-                            cm to m
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="cm_to_km.html">
-                            cm to km
-                        </a>
-                    </li>
-
-                </ul>
-
-
-                <ul>
-
-                    <li>
-                        <a href="mm_to_feet.html">
-                            mm to feet
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="meters_to_miles.html">
-                            meters to miles
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="feet_to_miles.html">
-                            feet to miles
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="yards_to_feet.html">
-                            yards to feet
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="inches_to_meters.html">
-                            inches to meters
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="mm_to_m.html">
-                            mm to m
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="km_to_m.html">
-                            km to m
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="inches_to_yards.html">
-                            inches to yards
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="yards_to_miles.html">
-                            yards to miles
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </main>
-
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-
-    <footer class="footer">
-
-        <div class="footer-content">
-
-            <h2>
+            <a href="index.html">
                 <span class="quick">Quick</span>
-                Converter
-            </h2>
+                <span class="converter">Converter</span>
+            </a>
 
-            <p>
-                Simple, fast and accurate online unit converters.
-            </p>
+        </h2>
 
-            <div class="footer-links">
+        <ul class="nav-links">
 
+            <li>
                 <a href="index.html">Home</a>
+            </li>
 
-                <a href="meters_to_feet.html">
-                    Meters to Feet
-                </a>
+        </ul>
 
-                <a href="km_to_miles.html">
-                    KM to Miles
-                </a>
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<header class="page-hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            📏 Length Converter
+        </div>
+
+        <h1>
+            Meters
+            <span>to</span>
+            Feet
+        </h1>
+
+        <p>
+            Quickly convert meters to feet or feet to
+            meters with our simple and accurate converter.
+        </p>
+
+        <a href="#converter" class="hero-button">
+            Start Converting ↓
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     CONVERTER
+===================================================== -->
+
+<main>
+
+<section class="converter-section" id="converter">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            QUICK CONVERTER
+        </span>
+
+        <h2>
+            Meters ↔ Feet
+        </h2>
+
+        <p>
+            Enter a value and select the units you want to convert.
+        </p>
+
+    </div>
+
+
+    <div class="converter-box">
+
+        <h2>
+            📏 Meters to Feet Converter
+        </h2>
+
+
+        <input
+            type="number"
+            id="inputValue"
+            placeholder="Enter value"
+            step="any"
+            autocomplete="off"
+        >
+
+
+        <div class="unit-row">
+
+            <div class="unit-group">
+
+                <label for="fromUnit">
+                    From
+                </label>
+
+                <select id="fromUnit">
+
+                    <option value="meter">
+                        Meters
+                    </option>
+
+                    <option value="feet">
+                        Feet
+                    </option>
+
+                </select>
 
             </div>
 
-            <div class="footer-line"></div>
 
-            <p class="copyright">
-                © 2026 Quick Converter. All rights reserved.
+            <div class="unit-arrow">
+                →
+            </div>
+
+
+            <div class="unit-group">
+
+                <label for="toUnit">
+                    To
+                </label>
+
+                <select id="toUnit">
+
+                    <option value="feet">
+                        Feet
+                    </option>
+
+                    <option value="meter">
+                        Meters
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="converter-buttons">
+
+            <button
+                type="button"
+                class="swap-btn"
+                onclick="swapUnits()"
+            >
+                🔄 Swap Unit
+            </button>
+
+            <button
+                type="button"
+                class="convert-btn"
+                onclick="convert()"
+            >
+                Convert
+            </button>
+
+        </div>
+
+
+        <div class="result-box">
+
+            <p id="result">
+                Result will appear here
             </p>
 
         </div>
 
-    </footer>
+    </div>
+
+</section>
 
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
+<!-- =====================================================
+     INFORMATION
+===================================================== -->
 
-    <script>
+<section class="info-box">
 
-        const inputValue = document.getElementById("inputValue");
-        const fromUnit = document.getElementById("fromUnit");
-        const toUnit = document.getElementById("toUnit");
-        const resultBox = document.getElementById("result");
+    <h3>
+        Meter
+    </h3>
 
+    <p>
+        <strong>Definition:</strong>
+        A meter, or metre (symbol: m), is the base unit of
+        length in the International System of Units (SI).
+        One meter is equal to 100 centimeters.
+    </p>
 
-        // =================================================
-        // SWAP UNITS
-        // =================================================
+    <p>
+        <strong>History/origin:</strong>
+        Originally, the meter was defined as one ten-millionth
+        of the distance from the equator to the North Pole.
+        The definition was later refined through physical
+        standards and eventually became based on the speed
+        of light.
+    </p>
 
-        function swapUnits() {
-
-            const temp = fromUnit.value;
-
-            fromUnit.value = toUnit.value;
-            toUnit.value = temp;
-
-            // Automatically convert after swapping
-            if (inputValue.value !== "") {
-                convert();
-            }
-        }
-
-
-        // =================================================
-        // CONVERT
-        // =================================================
-
-        function convert() {
-
-            const value = parseFloat(inputValue.value);
-
-            if (isNaN(value)) {
-
-                resultBox.innerText =
-                    "Please enter a valid number!";
-
-                return;
-            }
+    <p>
+        <strong>Current use:</strong>
+        The meter is used worldwide as the standard SI unit
+        of length. It is commonly used to measure distance,
+        height, width, depth, and many other dimensions.
+    </p>
 
 
-            let result;
+    <h3>
+        Foot
+    </h3>
+
+    <p>
+        <strong>Definition:</strong>
+        A foot (symbol: ft) is a unit of length in the imperial
+        and US customary systems. One foot is exactly equal to
+        0.3048 meters.
+    </p>
+
+    <p>
+        <strong>History/origin:</strong>
+        The foot was historically based on the length of the
+        human foot and was used in several measurement systems
+        before being internationally standardized.
+    </p>
+
+    <p>
+        <strong>Current use:</strong>
+        Feet are commonly used in the United States, United
+        Kingdom, and Canada for measuring height, distances,
+        construction, aviation, and elevation.
+    </p>
+
+</section>
 
 
-            // Meter → Feet
-            if (
-                fromUnit.value === "meter" &&
-                toUnit.value === "feet"
-            ) {
+<!-- =====================================================
+     CONVERSION TABLE
+===================================================== -->
 
-                result = value * 3.280839895;
+<section class="conversion-table">
 
-            }
+    <h3>
+        Meter to Foot Conversion Table
+    </h3>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Meter [m]</th>
+                <th>Foot [ft]</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>0.01 m</td>
+                <td>0.032808 ft</td>
+            </tr>
+
+            <tr>
+                <td>0.1 m</td>
+                <td>0.328084 ft</td>
+            </tr>
+
+            <tr>
+                <td>1 m</td>
+                <td>3.280840 ft</td>
+            </tr>
+
+            <tr>
+                <td>2 m</td>
+                <td>6.561680 ft</td>
+            </tr>
+
+            <tr>
+                <td>3 m</td>
+                <td>9.842520 ft</td>
+            </tr>
+
+            <tr>
+                <td>5 m</td>
+                <td>16.404200 ft</td>
+            </tr>
+
+            <tr>
+                <td>10 m</td>
+                <td>32.808399 ft</td>
+            </tr>
+
+            <tr>
+                <td>20 m</td>
+                <td>65.616798 ft</td>
+            </tr>
+
+            <tr>
+                <td>50 m</td>
+                <td>164.041995 ft</td>
+            </tr>
+
+            <tr>
+                <td>100 m</td>
+                <td>328.083990 ft</td>
+            </tr>
+
+            <tr>
+                <td>1000 m</td>
+                <td>3280.839895 ft</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
 
 
-            // Feet → Meter
-            else if (
-                fromUnit.value === "feet" &&
-                toUnit.value === "meter"
-            ) {
+<!-- =====================================================
+     CONVERSION INFO
+===================================================== -->
 
-                result = value * 0.3048;
+<section class="conversion-info">
 
-            }
+    <h3>
+        How to Convert Meter to Foot
+    </h3>
+
+    <p>
+        1 m = 3.280839895 ft
+    </p>
+
+    <p>
+        1 ft = 0.3048 m
+    </p>
+
+    <p>
+        <strong>Example:</strong>
+        Convert 15 m to feet:
+        <br>
+        15 × 3.280839895 = 49.212598425 ft
+    </p>
+
+</section>
 
 
-            // Same unit
-            else {
+<!-- =====================================================
+     COMMON CONVERSIONS
+===================================================== -->
 
-                result = value;
+<section class="common-conversions">
 
-            }
+    <h2>
+        Popular Length Unit Conversions
+    </h2>
+
+    <div class="converter-list">
+
+        <ul>
+
+            <li>
+                <a href="Centemeter_to_Inches.html">
+                    cm to inches
+                </a>
+            </li>
+
+            <li>
+                <a href="mm_to_inches.html">
+                    mm to inches
+                </a>
+            </li>
+
+            <li>
+                <a href="meters_to_feet.html">
+                    meters to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="km_to_miles.html">
+                    km to miles
+                </a>
+            </li>
+
+            <li>
+                <a href="cm_to_feet.html">
+                    cm to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="inches_to_feet.html">
+                    inches to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="meters_to_yards.html">
+                    meters to yards
+                </a>
+            </li>
+
+            <li>
+                <a href="mm_to_cm.html">
+                    mm to cm
+                </a>
+            </li>
+
+            <li>
+                <a href="cm_to_m.html">
+                    cm to m
+                </a>
+            </li>
+
+            <li>
+                <a href="cm_to_km.html">
+                    cm to km
+                </a>
+            </li>
+
+        </ul>
 
 
-            const unitName =
-                toUnit.value === "feet"
-                    ? "ft"
-                    : "m";
+        <ul>
 
+            <li>
+                <a href="mm_to_feet.html">
+                    mm to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="meters_to_miles.html">
+                    meters to miles
+                </a>
+            </li>
+
+            <li>
+                <a href="feet_to_miles.html">
+                    feet to miles
+                </a>
+            </li>
+
+            <li>
+                <a href="yards_to_feet.html">
+                    yards to feet
+                </a>
+            </li>
+
+            <li>
+                <a href="inches_to_meters.html">
+                    inches to meters
+                </a>
+            </li>
+
+            <li>
+                <a href="mm_to_m.html">
+                    mm to m
+                </a>
+            </li>
+
+            <li>
+                <a href="km_to_m.html">
+                    km to m
+                </a>
+            </li>
+
+            <li>
+                <a href="inches_to_yards.html">
+                    inches to yards
+                </a>
+            </li>
+
+            <li>
+                <a href="yards_to_miles.html">
+                    yards to miles
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <h2>
+        <span class="quick">Quick</span>
+        Converter
+    </h2>
+
+    <p>
+        Fast, simple and accurate unit conversion.
+    </p>
+
+    <div class="footer-line"></div>
+
+    <p>
+        © 2026 Quick Converter. All rights reserved.
+    </p>
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+    function swapUnits() {
+
+        const from =
+            document.getElementById("fromUnit");
+
+        const to =
+            document.getElementById("toUnit");
+
+        const temp = from.value;
+
+        from.value = to.value;
+
+        to.value = temp;
+
+    }
+
+
+    function convert() {
+
+        const value =
+            parseFloat(
+                document.getElementById("inputValue").value
+            );
+
+        const fromUnit =
+            document.getElementById("fromUnit").value;
+
+        const toUnit =
+            document.getElementById("toUnit").value;
+
+        const resultBox =
+            document.getElementById("result");
+
+
+        if (isNaN(value)) {
 
             resultBox.innerText =
-                `Result: ${formatNumber(result)} ${unitName}`;
-        }
+                "Please enter a valid number!";
 
-
-        // =================================================
-        // NUMBER FORMAT
-        // =================================================
-
-        function formatNumber(number) {
-
-            return Number(number.toFixed(10))
-                .toLocaleString("en-US", {
-                    maximumFractionDigits: 10
-                });
+            return;
 
         }
 
 
-        // =================================================
-        // COPY RESULT
-        // =================================================
-
-        function copyResult() {
-
-            const text = resultBox.innerText;
-
-            if (
-                !text ||
-                text === "Result will appear here"
-            ) {
-                return;
-            }
+        let result;
 
 
-            navigator.clipboard.writeText(text)
-                .then(() => {
+        if (
+            fromUnit === "meter" &&
+            toUnit === "feet"
+        ) {
 
-                    const originalText =
-                        resultBox.innerText;
+            result = value * 3.280839895;
 
-                    resultBox.innerText =
-                        "✓ Result copied!";
-
-                    setTimeout(() => {
-
-                        resultBox.innerText =
-                            originalText;
-
-                    }, 1200);
-
-                })
-                .catch(() => {
-
-                    alert("Unable to copy result.");
-
-                });
         }
 
+        else if (
+            fromUnit === "feet" &&
+            toUnit === "meter"
+        ) {
 
-        // =================================================
-        // CLEAR
-        // =================================================
+            result = value * 0.3048;
 
-        function clearConverter() {
+        }
 
-            inputValue.value = "";
+        else {
 
-            resultBox.innerText =
-                "Result will appear here";
-
-            inputValue.focus();
+            result = value;
 
         }
 
 
-        // =================================================
-        // ENTER KEY
-        // =================================================
+        const unit =
+            toUnit === "feet"
+                ? "ft"
+                : "m";
 
-        inputValue.addEventListener(
-            "keydown",
-            function (event) {
 
-                if (event.key === "Enter") {
-                    convert();
-                }
+        resultBox.innerText =
+            `Result: ${result.toFixed(2)} ${unit}`;
 
-            }
-        );
+    }
 
-    </script>
+</script>
 
 </body>
-
 </html>
